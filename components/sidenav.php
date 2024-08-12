@@ -51,13 +51,13 @@
                     </nav>
                 </div> -->
                 <div class="sb-sidenav-menu-heading">รายการสลิป</div>
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="history_income.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     ตารางรายการย้อนหลัง
                 </a>
-                <a class="nav-link" href="components/eslip.php">
+                <a class="nav-link" href="./menu_eslip.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-receipt"></i></div>
-                    E-Slip
+                    E-Slip(PDF)
                 </a>
             </div>
         </div>

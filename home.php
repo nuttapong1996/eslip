@@ -21,11 +21,8 @@ $title = "สรุปรายการเงินเดือน";
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4"><?php echo $title ?></h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active"><?php echo $title ?></li>
-                    </ol>
-
+                    <!-- Breadcrumb -->
+                     <?php include 'components/breadcrumb.php'; ?>
                     <!-- Current income component -->
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-md-6">
@@ -33,10 +30,10 @@ $title = "สรุปรายการเงินเดือน";
                         </div>
                     </div>
 
-                    <!-- History income component -->
+                    <!-- current year income component -->
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-md-6">
-                        <?php include 'components/history_income.php'; ?>
+                        <?php include 'components/current_year_income.php'; ?>
                         </div>
                     </div>
                 </div>
