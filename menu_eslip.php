@@ -27,7 +27,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
                                         <h5 class="m-0">กรุณาเลือกงวดและปีของสลิปเงินเดือน</h5>
                                     </div>
                                     <div class="card-body">
-                                        <form class="d-flex flex-column justify-content-center" action="eslip.php?id=?year=" method="POST">    
+                                        <form class="d-flex flex-column justify-content-center" action="eslip_pdf.php" method="POST">    
                                                 <div class="input-group mb-3">
                                                     <span class="input-group-text">งวดที่ : </span>
                                                     <select class="form-select form-select-sm" name="period" id="">
