@@ -21,9 +21,9 @@
                         <input type="password" class="form-control" id="floatingPassword" placeholder="รหัสผ่าน">
                         <label for="floatingPassword">รหัสผ่าน</label>
                     </div>
-                    <button type="submit" class="btn btn-sm btn-primary w-100">เข้าสู่ระบบ</button>
+                    <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
                     <hr>
-                    <a href="#" class="text-decoration-none"><b>สมัครสมาชิก</b"></a>
+                    <a href="register.php" class="text-decoration-none"><b>สมัครสมาชิก</b"></a>
                 </form>                
             </div>
             <br>

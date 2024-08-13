@@ -55,9 +55,9 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                     ตารางรายการย้อนหลัง
                 </a>
-                <a class="nav-link" href="./menu_eslip.php">
+                <a class="nav-link" href="./eslip.php">
                     <div class="sb-nav-link-icon"><i class="fas fa-receipt"></i></div>
-                    E-Slip(PDF)
+                    E-Slip (PDF)
                 </a>
             </div>
         </div>
