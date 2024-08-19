@@ -19,7 +19,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
             <main>
                 <div class="container-fluid px-4">
                     <!-- Breadcrumb -->
-                     <?php include 'components/breadcrumb.php'; ?>
+                     <?php breadcrumb($title); ?>
                     <div class="row justify-content-center">
                             <div class="col-sm-5">
                                 <div class="card border-success mb-4">

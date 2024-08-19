@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row justify-content-center">
         <div class="text-center mt-5"><img src="assets/images/logo.png" width="300px"></div>
-            <div class="col-sm-5 mt-3">
+            <div class="col-sm-5 mt-5">
                 <form action="home.php" method="post" class=" bg-white text-center p-3 rounded-3 shadow">
                 <h5>เข้าสู่ระบบ</h5>
                     <div class="form-floating mt-3 mb-3">
@@ -22,12 +22,20 @@
                         <input type="password" class="form-control" id="floatingPassword" placeholder="รหัสผ่าน">
                         <label for="floatingPassword">รหัสผ่าน</label>
                     </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">จดจำรหัสพนักงาน</label>
+                        </div>
+                        <a href="#"><b>ลืมรหัสผ่าน</b></a>
+                   </div>
                     <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
                     <hr>
-                    <a href="register.php" class="text-decoration-none"><b>สมัครสมาชิก</b"></a>
-                    <div class="d-flex justify-content-center">
-                        <button class="btn btn-warning" id="install-button" style="display: none;">Install App</button>
-                    </div>
+                    <a href="register.php" class=""><b>สมัครสมาชิก</b"></a>
+
+                    <!-- <div class="d-flex justify-content-center"> -->
+                        <!-- <button class="btn btn-warning" id="install-button" style="display: none;">Install App</button> -->
+                    <!-- </div> -->
                 </form>                
             </div>
             <br>

@@ -10,7 +10,7 @@ $title = "สรุปรายการเงินเดือน";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'components/head.php'; ?>
-    <title><?php echo $title ?></title>
+   <title><?php echo $title; ?></title>
 </head>
 <body class="sb-nav-fixed ibm-plex-sans-thai-regular">
     <!-- topnav -->
@@ -22,7 +22,7 @@ $title = "สรุปรายการเงินเดือน";
             <main>
                 <div class="container-fluid px-4">
                     <!-- Breadcrumb -->
-                     <?php include 'components/breadcrumb.php'; ?>
+                     <?php breadcrumb($title); ?>
                     <!-- Current income component -->
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-md-6">
