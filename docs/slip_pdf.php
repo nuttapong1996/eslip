@@ -1,37 +1,54 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../includes/connect_db.php';
+
 $mpdf = new \Mpdf\Mpdf();
-$mpdf->charset_in = 'utf-8';
 
 
-// $year = date("Y");
-// $period ="15";
-// $empcode = "2630065";
 
-// $sql ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year and period_payslip = :period ";
-// $stmt = $conn->prepare($sql);
-// $stmt->bindParam(':empcode', $empcode);
-// $stmt->bindParam(':year', $year);
-// $stmt->bindParam(':period', $period);
-// $stmt->execute();
+$year = date("Y");
+$period ="15";
+$empcode = "2630065";
 
-// $row = $stmt->fetch(PDO::FETCH_ASSOC);
+$sql ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year and period_payslip = :period ";
+$stmt = $conn->prepare($sql);
+$stmt->bindParam(':empcode', $empcode);
+$stmt->bindParam(':year', $year);
+$stmt->bindParam(':period', $period);
+$stmt->execute();
 
-$page =2;
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$rowcount = $stmt->rowCount();
 
 
-$content ="
+//เช็คค่าชั่วโมง
+    if($row['hourly_rate_payslip'] > 0){
+        $hourly = "<tr>
+                        <td colspan='2'>ค่าชั่วโมง</td>
+                        <td>#,###,###.##</td>
+                        <td style='border-left: 1px solid black;' colspan='2'></td>
+                        <td></td>
+                    </tr>"; 
+    }else{ $hourly = ""; }
+
+//เช็คค่าไฟ
+if($row['electricity_bill_payslip'] > 0){ $ebill = "<td style='border-left: 1px solid black;'  colspan='2'>ค่าไฟ</td><td>".$row['electricity_bill_payslip']."</td>"; }else{ $ebill = "<td style='border-left: 1px solid black;'  colspan='2'></td>";}
+
+
+
+$html ="
 <style>
     body{
         font-family: Garuda;
-        font-size: 16px;
+        font-size: 12pt;
     }
     table{
         width: 100%;
         border-spacing: 0px;
     }
     td ,th{
-        padding: 5px;
+        padding: 8px;
        
         
     }
@@ -53,15 +70,15 @@ $content ="
             </tr>
             <tr>
                 <th style='text-align: left; width: 20%'><b>รหัสพนักงาน (EMP.NO.)</b></th>
-                <td>"."</td>
+                <td>".$row['code_emp_payslip']."</td>
                 <th style='text-align: left; width: 20%'><b>ชื่อ(NAME)</b></th>
-                <td>"."</td>
+                <td>".$row['title_name_emp_payslip']." ".$row['name_emp_payslip']." ".$row['surname_emp_payslip']."</td>
             </tr>
             <tr>
                 <th style='text-align: left; width: 20%'><b>ประจำงวด(FOR PERIOD)</b></th>
-                <td>xx (xx/xx/xxxx)</td>
+                <td>".$row['period_payslip']." (".date_format(date_create($row['date_payslip']),"d/m/Y").")</td>
                 <th style='text-align: left; width: 20%'><b>ฝากเข้าเลขที่บัญชี</b></th>
-                <td>xxxxxxxxxx</td>
+                <td>".$row['id_bank_payslip']."</td>
             </tr>
         </table>
         <!-- Slip Detail -->
@@ -78,46 +95,51 @@ $content ="
                 <!-- Detail part -->
                 <tr>
                     <td colspan='2'>ค่าแรง/เงินเดือน</td>
-                    <td >#,###,###.##</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['period_salary_payslip'],2)."</td>
                     <td style='border-left: 1px solid black;'  colspan='2'>ภาษี</td>
-                    <td >#,###,###.##</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['period_tax_payslip'],2)."</td>
                 </tr>
                 <tr>
                     <td colspan='2'>ค่าครองชีพ</td>
-                    <td>#,###,###.##</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['costofliving_payslip'],2)."</td>
                     <td style='border-left: 1px solid black;'  colspan='2'>ประกันสังคม</td>
-                    <td>#,###,###.##</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['period_sso_payslip'],2)."</td>
                 </tr>
                 <tr>
                     <td>OT 1</td>
-                    <td>00:00</td>
-                    <td>#,###,###.##</td>
+                    <td>".date('H:i',mktime($row['ot1_hr_payslip'],0))."</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['ot1_hr_payslip'],2)."</td>
                     <td style='border-left: 1px solid black;' colspan='2'>กองทุนสำรองเลี้ยงชีพ</td>
-                    <td>#,###,###.##</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['period_provident_fund_payslip'],2)."</td>
                 </tr>
                 <tr>
                     <td>OT 1.5</td>
-                    <td>00:00</td>
-                    <td>#,###,###.##</td>
-                    <td style='border-left: 1px solid black;'  colspan='2'></td>
-                    <td></td>
-                </tr>
+                    <td>".date('H:i',mktime($row['ot15_hr_payslip'],0))."</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['ot15_hr_payslip'],2)."</td>".
+                    $ebill.
+                "</tr>
                 <tr>
                     <td>OT 2</td>
-                    <td >00:00</td>
-                    <td>#,###,###.##</td>
+                    <td>".date('H:i',mktime($row['ot2_hr_payslip'],0))."</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['ot2_hr_payslip'],2)."</td>
                     <td style='border-left: 1px solid black;'  colspan='2'></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td>OT 3</td>
-                    <td>00:00</td>
+                    <td>".date('H:i',mktime($row['ot3_hr_payslip'],0))."</td>
+                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['ot3_hr_payslip'],2)."</td>
+                    <td style='border-left: 1px solid black;' colspan='2'></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan='2'>ค่าชั่วโมง</td>
                     <td>#,###,###.##</td>
                     <td style='border-left: 1px solid black;' colspan='2'></td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan='2'>ค่าทำงานต่างประเทศ</td>
+                    <td colspan='2'>ค่าเที่ยว</td>
                     <td>#,###,###.##</td>
                     <td style='border-left: 1px solid black;' colspan='2'></td>
                     <td></td>
@@ -159,10 +181,11 @@ $content ="
 
 
 
-while ($page > 0) {
+while ($rowcount > 0) {
     $mpdf->AddPage('L');
-    $mpdf->WriteHTML($content);
-    $page--;
+    $html = mb_convert_encoding($html, 'UTF-8', 'UTF-8');
+    $mpdf->WriteHTML($html);
+    $rowcount--;
 }
 // $mpdf->SetProtection(array(),'12032539');
 $mpdf->Output('slip.pdf','I');

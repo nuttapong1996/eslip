@@ -122,11 +122,6 @@
                                                     echo "<td>บาท</td>";
                                                 echo"</tr>";
                                                 echo"<tr>";
-                                                    echo "<td colspan='2'>ประกันสังคม</td>";
-                                                    echo "<td>".number_format($row['period_sso_payslip'],2)."</td>";
-                                                    echo "<td>บาท</td>";
-                                                echo"</tr>";
-                                                echo"<tr>";
                                                     echo "<td colspan='2'>กองทุนสำรองเลี้ยงชีพ</td>";
                                                     echo "<td>".number_format($row['period_provident_fund_payslip'],2)."</td>";
                                                     echo "<td>บาท</td>";

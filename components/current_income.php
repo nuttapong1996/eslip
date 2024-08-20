@@ -35,7 +35,7 @@
                     <div class="accordion-body">
                         <div class="table-responsive">
                         <table class="table border-start border-end"> 
-                            <!-- รายการหัก(DEDUCTION) -->                                             
+                            <!-- รายการได้ (INCOME) -->                                             
                             <tbody class="text-success ">
                                 <tr><th class="bg-success text-white" colspan="4">รายการได้ (INCOME)</th></tr>
                                 <!-- รายละเอียดรรายการได้ (INCOME)-->
@@ -109,11 +109,6 @@
                                     echo"<tr>";
                                         echo "<td colspan='2'>ภาษี</td>";
                                         echo "<td>".number_format($row['period_tax_payslip'],2)."</td>";
-                                        echo "<td>บาท</td>";
-                                    echo"</tr>";
-                                    echo"<tr>";
-                                        echo "<td colspan='2'>ประกันสังคม</td>";
-                                        echo "<td>".number_format($row['period_sso_payslip'],2)."</td>";
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
                                     echo"<tr>";
