@@ -31,7 +31,6 @@ $rowcount = $stmt->rowCount();
                         <td></td>
                     </tr>"; 
     }else{ $hourly = ""; }
-
 //เช็คค่าไฟ
 if($row['electricity_bill_payslip'] > 0){ $ebill = "<td style='border-left: 1px solid black;'  colspan='2'>ค่าไฟ</td><td>".$row['electricity_bill_payslip']."</td>"; }else{ $ebill = "<td style='border-left: 1px solid black;'  colspan='2'></td>";}
 
@@ -116,8 +115,8 @@ $html ="
                     <td>OT 1.5</td>
                     <td>".date('H:i',mktime($row['ot15_hr_payslip'],0))."</td>
                     <td style='text-align: right; padding-right: 20px;'>".number_format($row['ot15_hr_payslip'],2)."</td>".
-                    $ebill.
-                "</tr>
+                    $ebill."
+                </tr>
                 <tr>
                     <td>OT 2</td>
                     <td>".date('H:i',mktime($row['ot2_hr_payslip'],0))."</td>
@@ -132,12 +131,7 @@ $html ="
                     <td style='border-left: 1px solid black;' colspan='2'></td>
                     <td></td>
                 </tr>
-                <tr>
-                    <td colspan='2'>ค่าชั่วโมง</td>
-                    <td>#,###,###.##</td>
-                    <td style='border-left: 1px solid black;' colspan='2'></td>
-                    <td></td>
-                </tr>
+                ".$hourly."
                 <tr>
                     <td colspan='2'>ค่าเที่ยว</td>
                     <td>#,###,###.##</td>
