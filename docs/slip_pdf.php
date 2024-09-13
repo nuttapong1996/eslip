@@ -24,7 +24,7 @@ $empcode = "2630065";
 
 $sql = "SELECT * FROM tbl_payslip WHERE code_emp_payslip =:empcode 
         AND  year_payslip BETWEEN :year1 AND :year2
-        AND period_payslip  BETWEEN :period1 AND :period2";
+        AND period_payslip  BETWEEN :period1 AND :period2 ORDER BY code_tbl_payslip ASC";
 
 
 $stmt = $conn->prepare($sql);
