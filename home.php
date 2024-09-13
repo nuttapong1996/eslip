@@ -31,12 +31,12 @@ $title = "สรุปรายการเงินเดือน";
                     </div>
 
                     <!-- current year income component -->
-                    <div class="row justify-content-center">
+                    <!-- <div class="row justify-content-center">
                         <div class="col-xl-6 col-md-6">
-                        <?php include 'components/current_year_income.php'; ?>
+                        <?php //include 'components/current_year_income.php'; ?>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </main>
             <!-- footer -->
             <?php include 'components/foot.php'; ?>        

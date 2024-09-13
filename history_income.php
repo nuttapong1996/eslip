@@ -10,7 +10,7 @@ if(isset($_POST['slipyear'])){
 }
 $empcode = "2630065";
 
-$sql = "SELECT * FROM tbl_payslip WHERE year_payslip = :year and code_emp_payslip = :empcode ORDER BY period_payslip ASC";
+$sql = "SELECT * FROM tbl_payslip WHERE year_payslip = :year and code_emp_payslip = :empcode ORDER BY code_tbl_payslip DESC";
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':empcode', $empcode);
 $stmt->bindParam(':year', $year);

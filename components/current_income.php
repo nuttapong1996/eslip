@@ -4,7 +4,7 @@
     $year = date("Y");
     $empcode = "2630065";
 
-    $sql ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year ORDER BY period_payslip DESC LIMIT 1";
+    $sql ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year ORDER BY code_tbl_payslip DESC LIMIT 1";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':empcode', $empcode);
     $stmt->bindParam(':year', $year);
@@ -47,7 +47,7 @@
                                     echo"</tr>";
                                     echo"<tr>";
                                         echo "<td colspan='2'>ค่าครองชีพ</td>";
-                                        echo "<td>".number_format($row['costofliving_payslip'],2)."</td>";
+                                        echo "<td>".number_format($row['in_co1'],2)."</td>";
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
                                     // OT หากไม่มีจะไม่แสดง
@@ -78,18 +78,18 @@
                                     echo"</tr>";
                                     }
                                     // ค่าชั่วโมง หากไม่มีจะไม่แสดง
-                                    if($row['hourly_rate_payslip'] > 0){
+                                    if($row['in_hr01'] > 0){
                                     echo"<tr>";
                                         echo "<td colspan='2'>ค่าชั่วโมง</td>";
-                                        echo "<td>".number_format($row['hourly_rate_payslip'],2)."</td>";
+                                        echo "<td>".number_format($row['in_hr01'],2)."</td>";
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
                                     }
                                     // ค่าเที่ยว หากไม่มีจะไม่แสดง
-                                    if($row['trip_cost_payslip'] > 0){
+                                    if($row['in_tr01'] > 0){
                                     echo"<tr>";
                                         echo "<td colspan='2'>ค่าเที่ยว</td>";
-                                        echo "<td>".number_format($row['trip_cost_payslip'],2)."</td>";
+                                        echo "<td>".number_format($row['in_tr01'],2)."</td>";
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
                                     }
@@ -123,10 +123,10 @@
                                     echo"</tr>";
 
                                     // ค่าไฟ หากไม่มีจะไม่แสดง
-                                    if($row['electricity_bill_payslip'] > 0){
+                                    if($row['de_de02'] > 0){
                                     echo"<tr>";
                                         echo "<td colspan='2'>ค่าไฟ</td>";
-                                        echo "<td>".number_format($row['electricity_bill_payslip'],2)."</td>";
+                                        echo "<td>".number_format($row['de_de02'],2)."</td>";
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
                                     }
