@@ -15,8 +15,8 @@
 <div class="card border-primary text-white mb-4">
 <!-- card header -->
     <div class="card-header bg-sq d-flex justify-content-between">
-        <h5 class="m-0"><?php echo"งวดที่ : ".$row['period_payslip']; ?></h5>
-        <h5 class="m-0"><?php echo"วันที่ : ".date_format(date_create($row['date_payslip']),"d/m/Y"); ?></h5>
+        <h6 class="m-0"><?php echo"งวดที่ : ".$row['period_payslip']; ?></h6>
+        <h6 class="m-0"><?php echo"วันที่ : ".date_format(date_create($row['date_payslip']),"d/m/Y"); ?></h6>
     </div>
 <!-- card body -->
     <div class="accordion" id="currentincome">

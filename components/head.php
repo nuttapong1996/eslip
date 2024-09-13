@@ -13,10 +13,10 @@
 
 
 <?php 
+//  <h1 class='mt-4'>$title</h1>
 function breadcrumb($title){
            echo 
-           "<h1 class='mt-4'>$title</h1>
-            <nav aria-label='breadcrumb'>
+            "<nav class='mt-4' aria-label='breadcrumb'>
                 <ol class='breadcrumb mb-4'>
                     <li class='breadcrumb-item '><a class='text-decoration-none' href='home.php'>หน้าหลัก</a></li> 
                     <li class='breadcrumb-item active'>$title</li>
