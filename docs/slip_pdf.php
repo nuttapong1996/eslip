@@ -10,8 +10,7 @@ $mpdf->AddPage('L');
 date_default_timezone_set('Asia/Bangkok');
 
 $year1 = "2024";
-$year2 = "2024";
-$period1 ="15";
+$period1 ="1";
 $period2 ="16";
 
 $empcode = "2630065";
@@ -23,14 +22,13 @@ $empcode = "2630065";
 
 
 $sql = "SELECT * FROM tbl_payslip WHERE code_emp_payslip =:empcode 
-        AND  year_payslip BETWEEN :year1 AND :year2
+        AND  year_payslip =:year
         AND period_payslip  BETWEEN :period1 AND :period2 ORDER BY code_tbl_payslip ASC";
 
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':empcode', $empcode);
-$stmt->bindParam(':year1', $year1);
-$stmt->bindParam(':year2', $year2);
+$stmt->bindParam(':year', $year1);
 $stmt->bindParam(':period1', $period1);
 $stmt->bindParam(':period2', $period2);
 $stmt->execute();

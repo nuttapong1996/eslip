@@ -93,9 +93,15 @@ function generateYearOptions($startYear, $endYear, $selectedYear=null) {
                     </div>
                 </div>
             </main>
+            <div class="py-5"></div>
             <!-- footer -->
-            <?php include 'components/foot.php'; ?>
+             <div class="desktop">
+                <?php include 'components/foot.php'; ?>
+             </div>
         </div>
+    </div>
+    <div class="mobilenav">
+        <?php include 'components/bottomnav.php'; ?>
     </div>
 </body>
 </html>

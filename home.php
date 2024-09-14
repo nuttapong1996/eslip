@@ -18,11 +18,14 @@ $title = "สรุปรายการเงินเดือน";
     <div id="layoutSidenav">
         <!-- sidenav -->
         <?php include 'components/sidenav.php'; ?>
+        <div class="mobilenav">
+        <?php include 'components/sidenav-m.php'; ?>
+        </div>
         <div id="layoutSidenav_content">
-            <main>
+            <main class="mt-3 mb-3">
                 <div class="container-fluid px-4">
                     <!-- Breadcrumb -->
-                     <?php breadcrumb($title); ?>
+                     <?php //breadcrumb($title); ?>
                     <!-- Current income component -->
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-md-6">
@@ -35,12 +38,20 @@ $title = "สรุปรายการเงินเดือน";
                         <div class="col-xl-6 col-md-6">
                         <?php //include 'components/current_year_income.php'; ?>
                         </div>
-                    </div>
-                </div> -->
+                    </div> -->
+                </div>
             </main>
+            <div class="py-5"></div>
             <!-- footer -->
-            <?php include 'components/foot.php'; ?>        
+             <div class="desktop">
+                <?php include 'components/foot.php'; ?>  
+            </div>
+                  
         </div>
+    </div>
+    
+    <div class="mobilenav">
+        <?php include 'components/bottomnav.php'; ?>
     </div>
 </body>
 </html>
