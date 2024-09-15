@@ -1,24 +1,38 @@
 <?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../includes/connect_db.php';
 
-// $mpdf = new \Mpdf\Mpdf(['debug' => true]);
-$mpdf = new \Mpdf\Mpdf();
-$mpdf->SetDisplayMode('fullpage'); 
-$mpdf->AddPage('L'); 
-
 date_default_timezone_set('Asia/Bangkok');
 
-$year1 = "2024";
-$period1 ="1";
-$period2 ="16";
-
+$year = isset($_POST['year']) ? $_POST['year'] : 'ไม่มีข้อมูล';
+$period1 = isset($_POST['period1']) ? $_POST['period1'] : 'ไม่มีข้อมูล';
+$period2 = isset($_POST['period2']) ? $_POST['period2'] : 'ไม่มีข้อมูล';
 $empcode = "2630065";
+
+
+// $mpdf = new \Mpdf\Mpdf(['debug' => true]);
+$mpdf = new \Mpdf\Mpdf();
+// $mpdf->SetDisplayMode('fullpage'); 
+$mpdf->AddPage('L'); 
+
+
+// $year = '2024';
+// $period1 = '15';
+// $period2 = '16';
+// $empcode = "2630065";
+
+
+
 // $empcode = "2530151"; //ค่าไฟ พี่แซ็ก
 // $empcode = "2600217"; // test ค่าไฟ
 // $empcode = "2600051"; //กยศ
 // $empcode ="2620268"; //พี่ตูน
 // $empcode ="2670087"; //พี่ท็อป
+
+// echo $year."<br>";
+// echo $period1."<br>";
+// echo $period2."<br>";
 
 
 $sql = "SELECT * FROM tbl_payslip WHERE code_emp_payslip =:empcode 
@@ -28,7 +42,7 @@ $sql = "SELECT * FROM tbl_payslip WHERE code_emp_payslip =:empcode
 
 $stmt = $conn->prepare($sql);
 $stmt->bindParam(':empcode', $empcode);
-$stmt->bindParam(':year', $year1);
+$stmt->bindParam(':year', $year);
 $stmt->bindParam(':period1', $period1);
 $stmt->bindParam(':period2', $period2);
 $stmt->execute();
@@ -303,6 +317,7 @@ $mpdf->WriteHTML("
         }
         td ,th{
             padding: 8px;
+            // border: 1px solid black;
             
         }
         #payslip{
@@ -349,7 +364,7 @@ $mpdf->WriteHTML("
                     <td colspan='2'>ค่าแรง/เงินเดือน</td>
                     <td style='text-align: right; padding-right: 20px;'>".number_format($row['period_salary_payslip'],2)."</td>
                     <td style='border-left: 1px solid black;'  colspan='2'>ภาษี</td>
-                    <td style='text-align: right; padding-right: 20px;'>".number_format($row['period_tax_payslip'],2)."</td>
+                    <td style='text-align: right; padding-right: 20px; width: 100px;'>".number_format($row['period_tax_payslip'],2)."</td>
                 </tr>
                 <tr>
                     <td colspan='2'>ค่าครองชีพ</td>
@@ -359,7 +374,7 @@ $mpdf->WriteHTML("
                 </tr>
                 <tr>
                     <td>OT 1</td>
-                    <td>".sprintf('%02d:00',$row['ot1_hr_payslip'])."</td>
+                    <td style='width: 50px;'>".sprintf('%02d:00',$row['ot1_hr_payslip'])."</td>
                     <td style='text-align: right; padding-right: 20px;'>".number_format($row['ot1_baht_payslip'],2)."</td>
 
                     <td style='border-left: 1px solid black;' colspan='2'>กองทุนสำรองเลี้ยงชีพ</td>
@@ -414,8 +429,7 @@ $mpdf->WriteHTML("
                     <td style='text-align: right; padding-right: 20px;'></td>
                 </tr>
 
-                    
-                <!-- Slip Footer -->
+                     <!-- Slip Footer -->
                 <tr>
                     <th style='border-top: 1px solid black;'>รวมรายได้</th>
                     <td style='border-top: 1px solid black;'>".number_format($row['total_income_payslip'],2)."</td>
@@ -427,7 +441,10 @@ $mpdf->WriteHTML("
                 <tr>
                     <th style='border-top: 1px solid black;'>รายได้สุทธิ(NET INCOME)</th>
                     <td style='border-top: 1px solid black;'>".number_format($row['total_net_income_payslip'],2)."</td>
-                    <th style='text-align: center; border-top: 1px solid black' colspan='4' >บาท(Bath)</th>
+                    <th style='border-top: 1px solid black;'></th>
+                    <th style='text-align: center; border-top: 1px solid black'  >บาท(Bath)</th>
+                    <th style='border-top: 1px solid black;'></th>
+                    <th style='border-top: 1px solid black;'></th>
                 </tr>
                 <tr>
                     <th style='border-top: 1px solid black; border-right: 1px solid black; text-align:center'>เงินได้สะสม</th>
@@ -436,17 +453,34 @@ $mpdf->WriteHTML("
                     <th style='border-top: 1px solid black; text-align:center' colspan='2'>กองทุนสำรองเลี้ยงชีพสะสม</th>
                 </tr>
                 <tr>
-                    <td style='border-top: 1px solid black; border-right: 1px solid black; text-align:center'>".number_format($row['salary_or_year'],2)."</td>
-                    <td style='border-top: 1px solid black; border-right: 1px solid black; text-align:center' colspan='2'>".number_format($row['tax_or_year'],2)."</td>
-                    <td style='border-top: 1px solid black; border-right: 1px solid black; text-align:center'>".number_format($row['sso_or_year'],2)."</td>
-                    <td style='border-top: 1px solid black; text-align:center' colspan='2'>".number_format($row['pf_com_money_or_year'],2)."</td>
+                    <td style='border-top: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black; text-align:center'>".number_format($row['salary_or_year'],2)."</td>
+                    <td style='border-top: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black; text-align:center' colspan='2'>".number_format($row['tax_or_year'],2)."</td>
+                    <td style='border-top: 1px solid black; border-bottom: 1px solid black; border-right: 1px solid black; text-align:center'>".number_format($row['sso_or_year'],2)."</td>
+                    <td style='border-top: 1px solid black; border-bottom: 1px solid black; text-align:center' colspan='2'>".number_format($row['pf_com_money_or_year'],2)."</td>
                 </tr>
             </tbody>
         </table>
-        <pagebreak>
+        <table>
+            <tr>
+                <th style='height: 50px; text-align:right;'>ได้รับเงินเรียบร้อยแล้ว&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ..................................ผู้รับเงิน</th>
+            </tr>
+        </table>
     </body>");
 
 }
 // $mpdf->SetProtection(array(),'12032539');
-$mpdf->Output('slip.pdf','I');
+$slipname ="SQMM_ESL_".$empcode."_".$year."_PP".$period1."-".$period2.".pdf";
+// $mpdf->Output($slipname,'S');
+// $mpdf->Output($slipname , \Mpdf\Output\Destination::INLINE);// แสดง PDF ในบราวเซอร์
+$pdfContent = $mpdf->Output('' ,'S');// แสดง PDF ในบราวเซอร์
+
+
+// ส่ง PDF ไปยังหน้าที่ต้องการในรูปแบบที่ดาวน์โหลดได้
+header('Content-Type: application/pdf');
+header('Content-Disposition: attachment; filename="'.$slipname.'"');
+echo $pdfContent;
+}
+?>
+
+
 

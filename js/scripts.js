@@ -47,16 +47,8 @@ window.addEventListener('DOMContentLoaded', event => {
         let options = {
             searchable: false,
             perPageSelect: false,
-            perPage: 10,
+            perPage: 10,           
         };
         new simpleDatatables.DataTable(datatablesSimple ,options);
     }
-
-  
-
-   
-
-
-
-
 });

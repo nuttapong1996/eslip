@@ -18,7 +18,8 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-sq-orange" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">ตั้งค่า</a></li>
+                <li><a class="dropdown-item" href="#!">แก้ไขข้อมูลผู้ใช้งาน</a></li>
+                <li><a class="dropdown-item" href="#!">เปลี่ยนรหัสผ่าน</a></li>
                 <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item text-danger" href="index.php">ออกจากระบบ &nbsp<i class="fa-solid fa-right-from-bracket"></i></a></li>
@@ -29,7 +30,7 @@
 </div>
 
 <div class="mobilenav">
-    <nav class="sb-topnav navbar navbar-expand bg-sq-dark text-center" style="height: 50px">
+    <nav class="sb-topnav navbar navbar-expand bg-sq-dark shadow-sm text-center" style="height: 50px">
         <!-- Navbar Brand-->
         <!-- <a class="navbar-brand ps-3" href="home.php">SQ : E-slip</a> -->
         <a class="navbar-brand ps-3 w-100" href="home.php"><img src="assets/images/logo_white.png" width="100px" alt=""></a>

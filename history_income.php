@@ -38,17 +38,17 @@ function generateYearOptions($startYear, $endYear, $selectedYear=null) {
     <?php include 'components/head.php'; ?>
     <title><?php echo $title ?></title>
 </head>
-<body class="sb-nav-fixed ibm-plex-sans-thai-regular">
+<body class="sb-nav-fixed bg-gray ibm-plex-sans-thai-regular">
     <!-- topnav -->
      <?php include 'components/topnav.php'; ?> 
     <div id="layoutSidenav">
         <!-- sidenav -->
         <?php include 'components/sidenav.php'; ?>
         <div id="layoutSidenav_content">
-            <main>
+            <main  class="mt-3 mb-3">
                 <div class="container-fluid px-4">
                     <!-- Breadcrumb -->
-                     <?php breadcrumb($title); ?>
+                     <?php //breadcrumb($title); ?>
                     <div class="row justify-content-center">
                         <div class="col-xl-6 col-md-6">
                             <div class="row justify-content-center">
@@ -62,12 +62,29 @@ function generateYearOptions($startYear, $endYear, $selectedYear=null) {
                                     </form>
                                 </div>
                             </div>
-                            <div class="card border-sq-orange text-sq-dark fw-bold">
-                                <div class="card-header bg-sq-orange">
-                                    <i class="fas fa-table me-1"></i>รายการย้อนหลัง
-                                </div>
-                                <div class="card-body">
-                                    <table id="datatablesSimple">
+                           
+                                    <table id="datatablesSimple" class="table tabble-bordered bg-light text-center shadow-sm" style="background-color: #fff;" >
+                                        <thead >
+                                            <!-- <th class="hidden">No.</th>
+                                            <th class="hidden">รหัสพนง</th> -->
+                                            <th>งวด</th>
+                                            <th>วันที่</th>
+                                            <th>รายได้สุทธิ</th>
+                                            <th>เพิ่มเติม</th>
+                                        </thead>
+                                        <tbody class="text-sq-dark">
+                                            <?php
+                                            foreach($stmt as $row){
+                                                echo"<tr>";
+                                                echo"<td >". $row['period_payslip']."</td>";
+                                                echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
+                                                echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
+                                                echo"<td><a class='btn btn-sm text-secondary ' href='./detail.php?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
+                                                echo"</tr>";        
+                                            }  ?>
+                                        </tbody>
+                                    </table>
+                                    <!-- <table id="datatablesSimple">
                                         <thead>
                                             <th>งวด</th>
                                             <th>วันที่</th>
@@ -77,18 +94,18 @@ function generateYearOptions($startYear, $endYear, $selectedYear=null) {
                                         <tbody>
                                             <?php
                                             
-                                            foreach($stmt as $row){
-                                                echo"<tr>";
-                                                echo"<td>". $row['period_payslip']."</td>";
-                                                echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
-                                                echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
-                                                echo"<td><a class='btn btn-sm btn-primary' href='./select_income.php?id=". $row['code_tbl_payslip']."&prd=". $row['period_payslip']."&dp=". $row['date_payslip']."'><i class='fa-solid fa-eye'></i></a></td>";
-                                                echo"</tr>";                
-                                            }  ?>
+                                            // foreach($stmt as $row){
+                                            //     echo"<tr>";
+                                            //     echo"<td>". $row['period_payslip']."</td>";
+                                            //     echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
+                                            //     echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
+                                            //     echo"<td><a class='btn btn-sm btn-primary' href='./select_income.php?id=". $row['code_tbl_payslip']."&prd=". $row['period_payslip']."&dp=". $row['date_payslip']."'><i class='fa-solid fa-eye'></i></a></td>";
+                                            //     echo"</tr>";                
+                                            // }  
+                                            ?>
                                         </tbody>
-                                    </table>
-                                </div> 
-                            </div>
+                                    </table> -->
+                                
                         </div>
                     </div>
                 </div>
@@ -105,3 +122,4 @@ function generateYearOptions($startYear, $endYear, $selectedYear=null) {
     </div>
 </body>
 </html>
+

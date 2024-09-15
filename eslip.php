@@ -9,7 +9,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
     <?php include 'components/head.php'; ?>
     <title><?php echo $title ?></title>
 </head>
-<body class="sb-nav-fixed ibm-plex-sans-thai-regular">
+<body class="sb-nav-fixed bg-gray ibm-plex-sans-thai-regular">
     <!-- topnav -->
      <?php include 'components/topnav.php'; ?>
     <div id="layoutSidenav">
@@ -18,55 +18,40 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <!-- Breadcrumb -->
-                     <?php breadcrumb($title); ?>
+                    <h3 class="mt-5 mb-4 text-center">ดาวน์โหลด Eslip (PDF)</h3>
                     <div class="row justify-content-center">
                             <div class="col-sm-5">
-                                <div class="card border-success mb-4">
-                                    <div class="card-header bg-success text-white">
-                                        <h5 class="m-0">กรุณาเลือกงวดและปีของสลิปเงินเดือน</h5>
-                                    </div>
+                                <div class="card border-0 rounded-0 p-2 mb-4 shadow-sm">
+                                        <h5 class="m-0 text-center text-muted">กรุณาเลือกปีและงวด</h5>
                                     <div class="card-body">
-                                        <form class="d-flex flex-column justify-content-center" action="docs/slip_pdf.php" method="POST">
-                                            <h5>จาก</h5>    
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">งวดที่ : </span>
-                                                    <select class="form-select form-select-sm" name="period1" id="">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                    </select>
-                                                    <span class="input-group-text">ปี : </span>
-                                                    <select class="form-select form-select-sm" name="year1" id="">
-                                                        <option value="2024">2024</option>
-                                                        <option value="2023">2023</option>
-                                                    </select>
-                                                </div>
-                                                <h5>ถึง</h5>  
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text">งวดที่ : </span>
-                                                    <select class="form-select form-select-sm" name="period2" id="">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                    </select>
-                                                    <span class="input-group-text">ปี : </span>
-                                                    <select class="form-select form-select-sm" name="year2" id="">
-                                                        <option value="2024">2024</option>
-                                                        <option value="2023">2023</option>
-                                                    </select>
-                                                </div>
-                                            <button class="btn btn-sm btn-success p-3"><i class="fas fa-search"></i> ค้นหา</button>
+                                        <form class="d-flex flex-column justify-content-center" action="components/pdf.php"  method="POST" target="pdfFrame">                                           
+                                            <?php include 'components/year_select.php'; ?>
+                                            <button class="btn btn-sm btn-outline-success p-3"><i class="fas fa-download"></i> ดาวน์โหลด</button>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                     </div>
+                    <div class="row justify-content-center">
+                        <div class="col-sm-12">
+                            <!-- <h3>PDF ที่สร้าง:</h3> -->
+                            <!-- <iframe name="pdfFrame" src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://192.168.100.105/www/eslip/components/pdf.php" style="width:100%; height:1000px;" frameborder="0"></iframe> -->
+                            <!-- <iframe name="pdfFrame" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://de8a-115-84-77-13.ngrok-free.app/www/eslip/components/pdf.php" style="width:100%; height:1000px;" frameborder="0"></iframe> -->
+                            <!-- <iframe name="pdfFrame" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://app.sqmm.myds.me:8443/pdf/SQMM_ESL_2630065_2024_PP1-16.pdf" style="width:100%; height:1000px;" frameborder="0"></iframe> -->
+                            <!-- <iframe id="theFrame" name="pdfFrame" src="https://docs.google.com/viewerng/viewer?url="http://192.168.100.105/www/eslip/SQMM_ESL_2600217_2024_PP16-16.pdf'&embedded=true" width="100%" height="800" type="application/pdf"></iframe> -->
+                        </div>
+                    </div>
                 </div>
             </main>
+            <div class="py-5"></div>
             <!-- footer -->
-            <?php include 'components/foot.php'; ?>
+             <div class="desktop">
+                <?php include 'components/foot.php'; ?>  
+            </div>
         </div>
+    </div>
+    <div class="mobilenav">
+        <?php include 'components/bottomnav.php'; ?>
     </div>
 </body>
 </html>

@@ -12,7 +12,7 @@ $title = "สรุปรายการเงินเดือน";
     <?php include 'components/head.php'; ?>
    <title><?php echo $title; ?></title>
 </head>
-<body class="sb-nav-fixed ibm-plex-sans-thai-regular">
+<body class="sb-nav-fixed bg-gray ibm-plex-sans-thai-regular">
     <!-- topnav -->
     <?php include 'components/topnav.php'; ?>
     <div id="layoutSidenav">
@@ -28,7 +28,7 @@ $title = "สรุปรายการเงินเดือน";
                      <?php //breadcrumb($title); ?>
                     <!-- Current income component -->
                     <div class="row justify-content-center">
-                        <div class="col-xl-6 col-md-6">
+                        <div class="col-md-6">
                             <?php include 'components/current_income.php'; ?>
                         </div>
                     </div>

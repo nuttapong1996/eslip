@@ -8169,17 +8169,20 @@ textarea.form-control-lg {
   --bs-bg-opacity: 1;
   background-color: #0D47A1 !important;
 }
+.bg-sq-navy{
+  background-color: #00509d;
+}
 .border-sq{
   --bs-border-opacity: 1;
   border-color: #0D47A1 !important;
 }
 .text-sq-dark{
   --bs-text-opacity: 1;
-  color: #06357a !important;
+  color: #00296B !important;
 }
 .bg-sq-dark{
   --bs-bg-opacity: 1;
-  background-color: #06357a !important;
+  background-color: #003f88 !important;
 }
 .border-sq-dark{
   --bs-border-opacity: 1;
@@ -8187,15 +8190,18 @@ textarea.form-control-lg {
 }
 .text-sq-orange{
   --bs-text-opacity: 1;
-  color: #ff8f00 !important;
+  color: #fdc500 !important;
 }
 .bg-sq-orange{
   --bs-bg-opacity: 1;
-  background-color: #ff8f00 !important;
+  background-color: #fdc500 !important;
 }
 .border-sq-orange{
   --bs-border-opacity: 1;
   border-color: #ff8f00 !important;
+}
+.bg-gray{
+  background-color: #EFEFEF;
 }
 .bg-primary {
   --bs-bg-opacity: 1;
@@ -11321,6 +11327,14 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: #06357A;
+  color: white;
   
+}
+/* แก้ไขหัวตารางของ Simple DataTable */
+.datatable-sorter{
+  text-align: center;
+  padding: 0px !important;
+}
+.datatable-top{
+  padding: 0px !important;
 }

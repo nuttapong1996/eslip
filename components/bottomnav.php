@@ -1,12 +1,12 @@
-<nav class="fixed-bottom navbar navbar-expand  bg-sq-dark">
+<nav class="fixed-bottom navbar navbar-expand  bg-sq-dark" style="height: 90px!important;">
     <!-- Navbar Brand-->
     <!-- <a class="navbar-brand ps-3" href="home.php">SQ : E-slip</a> -->
      <div class="d-flex w-100 justify-content-around">
-    <a class="navbar-brand ps-3" href="home.php"><i class="fa-solid fa-house text-white "></i></a>
-    <a class="navbar-brand ps-3" href="history_income.php"><i class="fa-solid fa-table text-white"></i></a>
-    <a class="navbar-brand ps-3" href="./eslip.php"><i class="fa-solid fa-receipt text-white"></i></a>
+    <a class="navbar-brand ps-3" href="home.php"><i class="fa-solid fa-house  fa-lg text-white "></i></a>
+    <a class="navbar-brand ps-3" href="history_income.php"><i class="fa-solid fa-table  fa-lg text-white"></i></a>
+    <a class="navbar-brand ps-3" href="./eslip.php"><i class="fa-solid fa-receipt  fa-lg text-white"></i></a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm text-white order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle-m" href="#!"><i id="collapse_icon" class="fas fa-user"></i></button>
+    <button class="btn btn-link btn-sm text-white order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle-m" href="#!"><i id="collapse_icon" class="fas fa-user  fa-lg"></i></button>
     </div>
     <!-- <div class="ms-auto me-0 me-md-3 my-2 my-md-0"></div> -->
     <!-- Navbar-->
