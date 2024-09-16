@@ -1,0 +1,73 @@
+<?php 
+session_start();
+if(isset($_POST['username']) && isset($_POST['password'])){
+    // session_start();
+    require_once __DIR__ . '/../includes/connect_db.php';
+
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $keep = isset($_POST['keep']) ? $_POST['keep'] : '';
+
+    // คำสั่ง SQL ตรวจสอบการเข้าสู่ระบบ
+    $login = "SELECT 
+                table_emp.code_emp, 
+                table_emp.name_thai_emp, 
+                table_emp.position_emp, 
+                table_dept.name_deptemp,
+                table_regis.iden_code,
+                table_regis.birthdate,
+                table_regis.email,
+                table_regis.password
+              FROM
+                tbl_regis AS table_regis
+              JOIN tbl_emp AS table_emp ON table_regis.emp_code = table_emp.code_emp
+              JOIN tbl_dept_emp AS table_dept ON table_emp.dept_emp = table_dept.code_tbl_deptemp
+              WHERE
+                table_regis.emp_code = :empcode";
+
+    $stmt_login = $conn->prepare($login);
+    $stmt_login->bindParam(':empcode', $username);
+    $stmt_login->execute();
+    $row = $stmt_login->fetch(PDO::FETCH_ASSOC);
+
+    // 1. ตรวจสอบรหัสพนักงาน
+    if($stmt_login->rowCount() > 0){     
+
+        // 2. ตรวจสอบรหัสผ่าน
+        if(password_verify(trim($password), trim($row['password']))){ 
+
+            // 3. เก็บ Session
+            $_SESSION['empcode'] = $row['code_emp'];
+            $_SESSION['name'] = $row['name_thai_emp'];
+            $_SESSION['position'] = $row['position_emp'];
+            $_SESSION['dept_emp'] = $row['name_deptemp'];
+            $_SESSION['iden_code'] = $row['iden_code'];
+            $_SESSION['birthdate'] = $row['birthdate'];
+            $_SESSION['email'] = $row['email'];
+
+            // 4. เก็บ Cookie รหัสพนักงาน
+            if($keep == "on"){
+                setcookie('empcode', $row['code_emp'], time() + (86400 * 30), "/");
+            }
+
+            // ไปยังหน้า Dashboard
+            header("location: ../home.php");
+            exit;
+
+        } else {
+            // รหัสผ่านไม่ถูกต้อง
+            header("location: ../login.php?wrong");
+            exit;
+        }
+    } else {
+        // รหัสพนักงานไม่ถูกต้อง
+        header("location: ../login.php?notfound");
+        exit;
+    }
+} else {
+    // กรอกข้อมูลไม่ครบ
+    header("location: ../login.php?error");
+    exit;
+}
+?>

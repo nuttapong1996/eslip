@@ -1,4 +1,5 @@
 <?php
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../includes/connect_db.php';
@@ -8,6 +9,7 @@ date_default_timezone_set('Asia/Bangkok');
 $year = isset($_POST['year']) ? $_POST['year'] : 'ไม่มีข้อมูล';
 $period1 = isset($_POST['period1']) ? $_POST['period1'] : 'ไม่มีข้อมูล';
 $period2 = isset($_POST['period2']) ? $_POST['period2'] : 'ไม่มีข้อมูล';
+$empcode =$_SESSION['empcode'];
 // $empcode = "2630065";
 
 
@@ -20,10 +22,10 @@ $mpdf->AddPage('L');
 // $year = '2024';
 // $period1 = '15';
 // $period2 = '16';
-$empcode = "2630065";
+// $empcode = "2630065";
 
 
-
+// $empcode ="2570095";
 // $empcode = "2530151"; //ค่าไฟ พี่แซ็ก
 // $empcode = "2600217"; // test ค่าไฟ
 // $empcode = "2600051"; //กยศ
@@ -64,8 +66,43 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         $in_val3="";
         $in_val4="";
 
-
-    // 1.ค่าชั่วโมง
+    // 1.โบนัส
+            //บรรทัด 1
+            if($row['in_bo01'] <> 0 && $in1 == "" ){ 
+                $in1 ="โบนัส";
+                $in_val1 = number_format($row['in_bo01'],2);
+            //บรรทัด 2
+            }else if($row['in_bo01'] != 0 && $in1 != "" && $in2 ==""){ 
+                $in2 ="โบนัส";
+                $in_val2 =   number_format($row['in_bo01'],2);
+            //บรรทัด 3
+            }else if($row['in_bo01'] != 0 && $in2 != "" && $in3 ==""){
+                $in3 ="โบนัส";
+                $in_val3 =  number_format($row['in_bo01'],2);
+            //บรรทัด 4
+            }else if($row['in_bo01'] != 0 && $in3 != "" && $in4 ==""){
+                $in4 ="โบนัส";
+                $in_val4 =  number_format($row['in_bo01'],2);
+            }
+    // 2.ค่าเข้ากะเช้า
+        //บรรทัด 1
+        if($row['in_a01'] <> 0 && $in1 == "" ){ 
+            $in1 ="ค่าเข้ากะเช้า";
+            $in_val1 = number_format($row['in_a01'],2);
+        //บรรทัด 2
+        }else if($row['in_a01'] != 0 && $in1 != "" && $in2 ==""){ 
+            $in2 ="ค่าเข้ากะเช้า";
+            $in_val2 =   number_format($row['in_a01'],2);
+        //บรรทัด 3
+        }else if($row['in_a01'] != 0 && $in2 != "" && $in3 ==""){
+            $in3 ="ค่าเข้ากะเช้า";
+            $in_val3 =  number_format($row['in_a01'],2);
+        //บรรทัด 4
+        }else if($row['in_a01'] != 0 && $in3 != "" && $in4 ==""){
+            $in4 ="ค่าเข้ากะเช้า";
+            $in_val4 =  number_format($row['in_a01'],2);
+        }
+    // 3.ค่าชั่วโมง
         //บรรทัด 1
         if($row['in_hr01'] <> 0 && $in1 == "" ){ 
             $in1 ="ค่าชั่วโมง";
@@ -84,7 +121,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $in_val4 =  number_format($row['in_hr01'],2);
         }
 
-    // 2.ค่าเที่ยว
+    // 4.ค่าเที่ยว
         //บรรทัด 1
         if($row['in_tr01'] <> 0 && $in1 == "" ){ 
             $in1 ="ค่าเที่ยว";
@@ -102,27 +139,43 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $in4 ="ค่าเที่ยว";
             $in_val4 =  number_format($row['in_tr01'],2);
         }
-    
-    // 3.ค่าเข้ากะเช้า
+    // 5.ค่าตอบแทนพิเศษ
         //บรรทัด 1
-        if($row['in_a01'] <> 0 && $in1 == "" ){ 
-            $in1 ="ค่าเข้ากะเช้า";
-            $in_val1 = number_format($row['in_a01'],2);
+        if($row['in_sc01'] <> 0 && $in1 == "" ){ 
+            $in1 ="ค่าตอบแทนพิเศษ";
+            $in_val1 = number_format($row['in_sc01'],2);
         //บรรทัด 2
-        }else if($row['in_a01'] != 0 && $in1 != "" && $in2 ==""){ 
-            $in2 ="ค่าเข้ากะเช้า";
-            $in_val2 =   number_format($row['in_a01'],2);
+        }else if($row['in_sc01'] != 0 && $in1 != "" && $in2 ==""){ 
+            $in2 ="ค่าตอบแทนพิเศษ";
+            $in_val2 =   number_format($row['in_sc01'],2);
         //บรรทัด 3
-        }else if($row['in_a01'] != 0 && $in2 != "" && $in3 ==""){
-            $in3 ="ค่าเข้ากะเช้า";
-            $in_val3 =  number_format($row['in_a01'],2);
+        }else if($row['in_sc01'] != 0 && $in2 != "" && $in3 ==""){
+            $in3 ="ค่าตอบแทนพิเศษ";
+            $in_val3 =  number_format($row['in_sc01'],2);
         //บรรทัด 4
-        }else if($row['in_a01'] != 0 && $in3 != "" && $in4 ==""){
-            $in4 ="ค่าเข้ากะเช้า";
-            $in_val4 =  number_format($row['in_a01'],2);
+        }else if($row['in_sc01'] != 0 && $in3 != "" && $in4 ==""){
+            $in4 ="ค่าตอบแทนพิเศษ";
+            $in_val4 =  number_format($row['in_sc01'],2);
         }
-    
-    // 4.ค่าทำงานต่างประเทศ
+    // 6.ค่าตอบแทนตามผลงาน
+        //บรรทัด 1
+        if($row['in_in01'] <> 0 && $in1 == "" ){ 
+            $in1 ="ค่าตอบแทนตามผลงาน";
+            $in_val1 = number_format($row['in_in01'],2);
+        //บรรทัด 2
+        }else if($row['in_in01'] != 0 && $in1 != "" && $in2 ==""){ 
+            $in2 ="ค่าตอบแทนตามผลงาน";
+            $in_val2 =   number_format($row['in_in01'],2);
+        //บรรทัด 3
+        }else if($row['in_in01'] != 0 && $in2 != "" && $in3 ==""){
+            $in3 ="ค่าตอบแทนตามผลงาน";
+            $in_val3 =  number_format($row['in_in01'],2);
+        //บรรทัด 4
+        }else if($row['in_in01'] != 0 && $in3 != "" && $in4 ==""){
+            $in4 ="ค่าตอบแทนตามผลงาน";
+            $in_val4 =  number_format($row['in_in01'],2);
+        }
+    // 7.ค่าทำงานต่างประเทศ
         //บรรทัด 1
         if($row['in_al02'] <> 0 && $in1 == "" ){ 
             $in1 ="ค่าทำงานต่างประเทศ";
@@ -141,7 +194,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $in_val4 =  number_format($row['in_al02'],2);
         }
     
-    // 5.รายได้อื่นๆ
+    // 8.รายได้อื่นๆ
         //บรรทัด 1
         if($row['in_al03'] <> 0 && $in1 == "" ){ 
             $in1 ="รายได้อื่นๆ";
@@ -160,62 +213,10 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $in_val4 =  number_format($row['in_al03'],2);
         }
 
-    // 6.โบนัส
-        //บรรทัด 1
-        if($row['in_bo01'] <> 0 && $in1 == "" ){ 
-            $in1 ="โบนัส";
-            $in_val1 = number_format($row['in_bo01'],2);
-        //บรรทัด 2
-        }else if($row['in_bo01'] != 0 && $in1 != "" && $in2 ==""){ 
-            $in2 ="โบนัส";
-            $in_val2 =   number_format($row['in_bo01'],2);
-        //บรรทัด 3
-        }else if($row['in_bo01'] != 0 && $in2 != "" && $in3 ==""){
-            $in3 ="โบนัส";
-            $in_val3 =  number_format($row['in_bo01'],2);
-        //บรรทัด 4
-        }else if($row['in_bo01'] != 0 && $in3 != "" && $in4 ==""){
-            $in4 ="โบนัส";
-            $in_val4 =  number_format($row['in_bo01'],2);
-        }
+    
+    
 
-    // 7.ค่าตอบแทนตามผลงาน
-        //บรรทัด 1
-        if($row['in_in01'] <> 0 && $in1 == "" ){ 
-            $in1 ="ค่าตอบแทนตามผลงาน";
-            $in_val1 = number_format($row['in_in01'],2);
-        //บรรทัด 2
-        }else if($row['in_in01'] != 0 && $in1 != "" && $in2 ==""){ 
-            $in2 ="ค่าตอบแทนตามผลงาน";
-            $in_val2 =   number_format($row['in_in01'],2);
-        //บรรทัด 3
-        }else if($row['in_in01'] != 0 && $in2 != "" && $in3 ==""){
-            $in3 ="ค่าตอบแทนตามผลงาน";
-            $in_val3 =  number_format($row['in_in01'],2);
-        //บรรทัด 4
-        }else if($row['in_in01'] != 0 && $in3 != "" && $in4 ==""){
-            $in4 ="ค่าตอบแทนตามผลงาน";
-            $in_val4 =  number_format($row['in_in01'],2);
-        }
-
-    // 8.ค่าตอบแทนพิเศษ
-        //บรรทัด 1
-        if($row['in_sc01'] <> 0 && $in1 == "" ){ 
-            $in1 ="ค่าตอบแทนพิเศษ";
-            $in_val1 = number_format($row['in_sc01'],2);
-        //บรรทัด 2
-        }else if($row['in_sc01'] != 0 && $in1 != "" && $in2 ==""){ 
-            $in2 ="ค่าตอบแทนพิเศษ";
-            $in_val2 =   number_format($row['in_sc01'],2);
-        //บรรทัด 3
-        }else if($row['in_sc01'] != 0 && $in2 != "" && $in3 ==""){
-            $in3 ="ค่าตอบแทนพิเศษ";
-            $in_val3 =  number_format($row['in_sc01'],2);
-        //บรรทัด 4
-        }else if($row['in_sc01'] != 0 && $in3 != "" && $in4 ==""){
-            $in4 ="ค่าตอบแทนพิเศษ";
-            $in_val4 =  number_format($row['in_sc01'],2);
-        }
+    
 //    
 
 // รายการหัก
@@ -266,25 +267,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $de4 ="เงินค้ำประกัน";
             $val4 =  number_format($row['de_de05'],2);
         }
-    // 3.หักอื่นๆ
-        //บรรทัด 1
-        if($row['de_de06'] <> 0 && $de1 == "" ){ 
-            $de1 ="หักอื่นๆ";
-            $val1 = number_format($row['de_de06'],2);
-        //บรรทัด 2
-        }else if($row['de_de06'] != 0 && $de1 != "" && $de2==""){ 
-            $de2 ="หักอื่นๆ";
-            $val2 =   number_format($row['de_de06'],2);
-        //บรรทัด 3
-        }else if($row['de_de06'] != 0 && $de2 != "" && $de3==""){
-            $de3 ="หักอื่นๆ";
-            $val3 =  number_format($row['de_de06'],2);
-        //บรรทัด 4
-        }else if($row['de_de06'] != 0 && $de3 != "" && $de4==""){
-            $de4 ="หักอื่นๆ";
-            $val4 =  number_format($row['de_de06'],2);
-        }
-    // 4.กยศ.
+    // 3.กยศ.
         //บรรทัด 1
         if($row['de_slf1'] <> 0 && $de1 == "" ){ 
             $de1 ="กยศ.";
@@ -301,6 +284,24 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         }else if($row['de_slf1'] != 0 && $de3 != "" && $de4==""){
             $de4 ="กยศ.";
             $val4 =  number_format($row['de_slf1'],2);
+        }
+    // 4.หักอื่นๆ
+        //บรรทัด 1
+        if($row['de_de06'] <> 0 && $de1 == "" ){ 
+            $de1 ="หักอื่นๆ";
+            $val1 = number_format($row['de_de06'],2);
+        //บรรทัด 2
+        }else if($row['de_de06'] != 0 && $de1 != "" && $de2==""){ 
+            $de2 ="หักอื่นๆ";
+            $val2 =   number_format($row['de_de06'],2);
+        //บรรทัด 3
+        }else if($row['de_de06'] != 0 && $de2 != "" && $de3==""){
+            $de3 ="หักอื่นๆ";
+            $val3 =  number_format($row['de_de06'],2);
+        //บรรทัด 4
+        }else if($row['de_de06'] != 0 && $de3 != "" && $de4==""){
+            $de4 ="หักอื่นๆ";
+            $val4 =  number_format($row['de_de06'],2);
         }
 // 
 
@@ -462,7 +463,7 @@ $mpdf->WriteHTML("
         </table>
         <table>
             <tr>
-                <th style='height: 50px; text-align:right;'>ได้รับเงินเรียบร้อยแล้ว&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ..................................ผู้รับเงิน</th>
+                <th style='height: 30px; text-align:right;'>ได้รับเงินเรียบร้อยแล้ว&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ..................................ผู้รับเงิน</th>
             </tr>
         </table>
     </body>");

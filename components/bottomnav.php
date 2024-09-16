@@ -2,11 +2,27 @@
     <!-- Navbar Brand-->
     <!-- <a class="navbar-brand ps-3" href="home.php">SQ : E-slip</a> -->
      <div class="d-flex w-100 justify-content-around">
-    <a class="navbar-brand ps-3" href="home.php"><i class="fa-solid fa-house  fa-lg text-white "></i></a>
-    <a class="navbar-brand ps-3" href="history_income.php"><i class="fa-solid fa-table  fa-lg text-white"></i></a>
-    <a class="navbar-brand ps-3" href="./eslip.php"><i class="fa-solid fa-receipt  fa-lg text-white"></i></a>
-    <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm text-white order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle-m" href="#!"><i id="collapse_icon" class="fas fa-user  fa-lg"></i></button>
+        <a class="navbar-brand ps-3 d-flex flex-column" href="home.php">
+            <i class="fa-solid fa-house  fa-lg text-white "></i>
+            <small class="text-white mt-1" style="font-size: 0.7rem;">หน้าหลัก</small>
+        </a>
+        <a class="navbar-brand ps-3 d-flex flex-column" href="records.php">
+            <i class="fa-solid fa-table  fa-lg text-white"></i>
+            <small class="text-white mt-1 text-center" style="font-size: 0.7rem;">รายการเงินเดือน<br>ย้อนหลัง</small>
+        </a>
+        <a class="navbar-brand ps-3 d-flex flex-column" href="./eslip.php">
+            <i class="fa-solid fa-receipt  fa-lg text-white"></i>
+            <small class="text-white mt-1" style="font-size: 0.7rem;">สลิป (PDF)</small>
+        </a>
+        <a class="navbar-brand ps-3 d-flex flex-column" href="profile.php" >
+        <i id="collapse_icon" class="fas fa-user  fa-lg text-white"></i>
+            <small class="text-white mt-1" style="font-size: 0.7rem;">ผู้ใช้</small>
+        </a>
+        <!-- Sidebar Toggle-->
+        <!-- <button class="btn btn-link btn-sm text-white order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle-m" href="#!">
+            <i id="collapse_icon" class="fas fa-user  fa-lg"></i>
+            <small class="text-white mt-1" style="font-size: 0.7rem;">หน้าหลัก</small>
+        </button> -->
     </div>
     <!-- <div class="ms-auto me-0 me-md-3 my-2 my-md-0"></div> -->
     <!-- Navbar-->

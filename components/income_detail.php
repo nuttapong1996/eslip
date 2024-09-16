@@ -1,9 +1,10 @@
 <?php
+    
     require_once('./includes/connect_db.php');
 
     $code_slip =$_GET['id'];
-    $empcode ='2630065';
-
+    $empcode =$_SESSION['empcode'];
+    // $empcode ='2630065';
     // $empcode = "2530151"; //ค่าไฟ พี่แซ็ก
     // $empcode = "2600217"; // test ค่าไฟ
     // $empcode = "2600051"; //กยศ
@@ -92,47 +93,7 @@
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
-                        // 1.ค่าชั่วโมง หากไม่มีจะไม่แสดง
-                            if($detail_row['in_hr01'] > 0){
-                            echo"<tr>";
-                                echo "<td colspan='2'>ค่าชั่วโมง</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['in_hr01'],2)."</td>";
-                                echo "<td>บาท</td>";
-                            echo"</tr>";
-                            }
-                        // 2.ค่าเที่ยว หากไม่มีจะไม่แสดง
-                            if($detail_row['in_tr01'] > 0){
-                            echo"<tr>";
-                                echo "<td colspan='2'>ค่าเที่ยว</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['in_tr01'],2)."</td>";
-                                echo "<td>บาท</td>";
-                            echo"</tr>";
-                            }
-                        // 3.ค่าเข้ากะเช้า หากไม่มีจะไม่แสดง
-                            if($detail_row['in_a01'] > 0){
-                            echo"<tr>";
-                                echo "<td colspan='2'>ค่าเข้ากะเช้า</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['in_a01'],2)."</td>";
-                                echo "<td>บาท</td>";
-                            echo"</tr>";
-                            }
-                        // 4.ค่าทำงานต่างประเทศ หากไม่มีจะไม่แสดง
-                            if($detail_row['in_al02'] > 0){
-                            echo"<tr>";
-                                echo "<td colspan='2'>ค่าทำงานต่างประเทศ</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['in_al02'],2)."</td>";
-                                echo "<td>บาท</td>";
-                            echo"</tr>";
-                            }
-                        // 5.รายได้อื่นๆ หากไม่มีจะไม่แสดง
-                            if($detail_row['in_al03'] > 0){
-                            echo"<tr>";
-                                echo "<td colspan='2'>รายได้อื่นๆ</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['in_al03'],2)."</td>";
-                                echo "<td>บาท</td>";
-                            echo"</tr>";
-                            }
-                        // 6.โบนัส หากไม่มีจะไม่แสดง
+                        // 1.โบนัส หากไม่มีจะไม่แสดง
                             if($detail_row['in_bo01'] > 0){
                             echo"<tr>";
                                 echo "<td colspan='2'>โบนัส</td>";
@@ -140,15 +101,31 @@
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
-                        // 7.ค่าตอบแทนตามผลงาน หากไม่มีจะไม่แสดง
-                            if($detail_row['in_in01'] > 0){
+                        // 2.ค่าเข้ากะเช้า หากไม่มีจะไม่แสดง
+                            if($detail_row['in_a01'] > 0){
+                                echo"<tr>";
+                                    echo "<td colspan='2'>ค่าเข้ากะเช้า</td>";
+                                    echo "<td class='text-end'>".number_format($detail_row['in_a01'],2)."</td>";
+                                    echo "<td>บาท</td>";
+                                echo"</tr>";
+                                }
+                        // 3.ค่าชั่วโมง หากไม่มีจะไม่แสดง
+                            if($detail_row['in_hr01'] > 0){
                             echo"<tr>";
-                                echo "<td colspan='2'>ค่าตอบแทน<br>ตามผลงาน</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['in_in01'],2)."</td>";
+                                echo "<td colspan='2'>ค่าชั่วโมง</td>";
+                                echo "<td class='text-end'>".number_format($detail_row['in_hr01'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
-                        // 8.ค่าตอบแทนพิเศษ หากไม่มีจะไม่แสดง
+                        // 4.ค่าเที่ยว หากไม่มีจะไม่แสดง
+                            if($detail_row['in_tr01'] > 0){
+                            echo"<tr>";
+                                echo "<td colspan='2'>ค่าเที่ยว</td>";
+                                echo "<td class='text-end'>".number_format($detail_row['in_tr01'],2)."</td>";
+                                echo "<td>บาท</td>";
+                            echo"</tr>";
+                            }
+                        // 5.ค่าตอบแทนพิเศษ หากไม่มีจะไม่แสดง
                             if($detail_row['in_sc01'] > 0){
                             echo"<tr>";
                                 echo "<td colspan='2'>ค่าตอบแทนพิเศษ</td>";
@@ -156,6 +133,33 @@
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
+                        // 6.ค่าตอบแทนตามผลงาน หากไม่มีจะไม่แสดง
+                            if($detail_row['in_in01'] > 0){
+                            echo"<tr>";
+                                echo "<td colspan='2'>ค่าตอบแทน<br>ตามผลงาน</td>";
+                                echo "<td class='text-end'>".number_format($detail_row['in_in01'],2)."</td>";
+                                echo "<td>บาท</td>";
+                            echo"</tr>";
+                            }
+                        // 7.ค่าทำงานต่างประเทศ หากไม่มีจะไม่แสดง
+                            if($detail_row['in_al02'] > 0){
+                            echo"<tr>";
+                                echo "<td colspan='2'>ค่าทำงานต่างประเทศ</td>";
+                                echo "<td class='text-end'>".number_format($detail_row['in_al02'],2)."</td>";
+                                echo "<td>บาท</td>";
+                            echo"</tr>";
+                            }
+                        // 8.รายได้อื่นๆ หากไม่มีจะไม่แสดง
+                            if($detail_row['in_al03'] > 0){
+                            echo"<tr>";
+                                echo "<td colspan='2'>รายได้อื่นๆ</td>";
+                                echo "<td class='text-end'>".number_format($detail_row['in_al03'],2)."</td>";
+                                echo "<td>บาท</td>";
+                            echo"</tr>";
+                            }
+                       
+                       
+                       
                     ?>
                     <tr class="text-success border-top">
                         <th colspan="2">รวมรายได้</th>
@@ -208,15 +212,7 @@
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
-                        // 3.หักอื่นๆ หากไม่มีจะไม่แสดง
-                            if($detail_row['de_de06'] > 0){
-                            echo"<tr>";
-                                echo "<td colspan='2'>หักอื่นๆ</td>";
-                                echo "<td class='text-end'>".number_format($detail_row['de_de06'],2)."</td>";
-                                echo "<td>บาท</td>";
-                            echo"</tr>";
-                            }
-                        // 4.กยศ. หากไม่มีจะไม่แสดง
+                        // 3.กยศ. หากไม่มีจะไม่แสดง
                             if($detail_row['de_slf1'] > 0){
                             echo"<tr>";
                                 echo "<td colspan='2'>กยศ.</td>";
@@ -224,6 +220,14 @@
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
+                        // 4.หักอื่นๆ หากไม่มีจะไม่แสดง
+                            if($detail_row['de_de06'] > 0){
+                                echo"<tr>";
+                                    echo "<td colspan='2'>หักอื่นๆ</td>";
+                                    echo "<td class='text-end'>".number_format($detail_row['de_de06'],2)."</td>";
+                                    echo "<td>บาท</td>";
+                                echo"</tr>";
+                                }
 
                     ?>
                     <tr class="text-danger border-top ">

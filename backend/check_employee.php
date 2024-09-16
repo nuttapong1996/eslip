@@ -1,0 +1,30 @@
+<?php
+ //เรียกใช้งานไฟล์ connect_db.php
+ require_once __DIR__ . '/../includes/connect_db.php';
+
+// รับค่าจาก AJAX
+if (isset($_POST['empcode'])) {
+
+    $empcode = $_POST['empcode'];
+
+    //Query  ยืนยันตัวตนในฐานข้อมูลก่อนทำการลงทะเบียน 
+    $user_active ="SELECT code_emp FROM tbl_emp WHERE code_emp =:empcode AND status_emp = 10";
+    $stmt_user_active = $conn->prepare($user_active);
+    $stmt_user_active->bindParam(':empcode', $empcode);
+    $stmt_user_active->execute();
+
+
+
+    // 1.ตรวจสอบรหัสพนักงานบนฐานข้อมูลพนักงาน tbl_emp
+    if ($stmt_user_active->rowCount() > 0) {
+        echo 'active'; // มีรหัสพนักงานในระบบ
+    } else {
+        echo 'none';  // ไม่พบรหัสพนักงานในฐานข้อมูล
+    }
+
+}else{
+    echo 'none';
+}
+
+$conn=null;
+?>

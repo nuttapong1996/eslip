@@ -1,5 +1,6 @@
 <?php 
-
+session_start();
+if(isset($_SESSION['empcode'])){
 $title = "สรุปรายการเงินเดือน";
 
 ?>
@@ -18,27 +19,15 @@ $title = "สรุปรายการเงินเดือน";
     <div id="layoutSidenav">
         <!-- sidenav -->
         <?php include 'components/sidenav.php'; ?>
-        <div class="mobilenav">
-        <?php include 'components/sidenav-m.php'; ?>
-        </div>
         <div id="layoutSidenav_content">
             <main class="mt-3 mb-3">
                 <div class="container-fluid px-4">
-                    <!-- Breadcrumb -->
-                     <?php //breadcrumb($title); ?>
                     <!-- Current income component -->
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <?php include 'components/current_income.php'; ?>
                         </div>
                     </div>
-
-                    <!-- current year income component -->
-                    <!-- <div class="row justify-content-center">
-                        <div class="col-xl-6 col-md-6">
-                        <?php //include 'components/current_year_income.php'; ?>
-                        </div>
-                    </div> -->
                 </div>
             </main>
             <div class="py-5"></div>
@@ -55,3 +44,7 @@ $title = "สรุปรายการเงินเดือน";
     </div>
 </body>
 </html>
+<?php }else{
+    header('location:login.php');
+}
+?>

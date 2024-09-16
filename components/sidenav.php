@@ -2,9 +2,10 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark bg-sq" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
+                
                 <div class="sb-sidenav-menu-heading">หน้าหลัก</div>
                 <a class="nav-link" href="home.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-home-alt"></i></div>
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-home-alt"></i></div>
                     สรุปรายการเงินเดือน
                 </a>
                 <!-- <div class="sb-sidenav-menu-heading">รายการสลิป</div>
@@ -51,19 +52,19 @@
                     </nav>
                 </div> -->
                 <div class="sb-sidenav-menu-heading">รายการสลิป</div>
-                <a class="nav-link" href="history_income.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                <a class="nav-link" href="records.php">
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-table"></i></div>
                     ตารางรายการย้อนหลัง
                 </a>
                 <a class="nav-link" href="./eslip.php">
-                    <div class="sb-nav-link-icon"><i class="fas fa-receipt"></i></div>
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-receipt"></i></div>
                     E-Slip (PDF)
                 </a>
             </div>
         </div>
         <div class="sb-sidenav-footer bg-sq-dark">
-            <div class="small">Logged in as:</div>
-            Start Bootstrap
+            <!-- <div class="small">Logged in as:</div>
+            Start Bootstrap -->
         </div>
     </nav>
 </div>

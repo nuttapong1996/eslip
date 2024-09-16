@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <?php include 'components/head.php'; ?>
+    <title>Login</title>
+</head>
+<body class="bg-gray ibm-plex-sans-thai-regular">
+<div id="layoutAuthentication">
+    <div id="layoutAuthentication_content ">
+        <main>
+            <div class="container">
+                <div class="mobilenav">
+                    <div class=" mt-5"></div>
+                </div>
+                <div class="row justify-content-center mt-3">
+                <div class="text-center"><img src="assets/images/logo.png" width="300px"></div>
+                    <div class="col-sm-5 mt-3">
+                        <form action="backend/login_proc.php" method="POST" class=" bg-white text-center p-3 rounded-2 shadow" autocomplete=off>
+                        <h5>เข้าสู่ระบบ</h5>
+                            <div class="form-floating mt-3 mb-3">
+                                <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" autocomplete=off>
+                                <label for="floatingInput">รหัสพนักงาน</label>
+                            </div>
+
+                            <div class="form-floating mt-3 mb-3">
+                                <input type="password" class="form-control" name="password" placeholder="รหัสผ่าน" autocomplete=off>
+                                <label for="floatingPassword">รหัสผ่าน</label>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep">
+                                    <label class="form-check-label" for="keep">จดจำรหัสพนักงาน</label>
+                                </div>
+                                <!-- <a href="#"><b>ลืมรหัสผ่าน</b></a> -->
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
+                            <hr>
+                            <a href="regis.php" class=""><b>สมัครสมาชิก</b"></a>
+                        </form>                
+                    </div>                    
+                    <div class="text-center mt-4">
+                        <small class="text-muted ibm-plex-sans-thai-light">
+                            Developed by IT Department (Maemoh)<br>
+                            &copy; 2024-<?php echo date('Y'); ?> Sahakol Equipment PCL.
+                        </small>
+                    </div>                
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>
+
+<?php
+    if(isset($_GET['wrong'])){
+    echo "<script>
+            Swal.fire({
+                title: 'รหัสผ่านไม่ถูกต้อง',
+                text: 'กรุณาตรวจสอบและเข้าสู่ระบบอีกครั้ง',
+                icon: 'error'
+            }).then(function(){ location.href = 'login.php';},20000);
+        </script>";    
+    }
+?> 
+<?php
+    if(isset($_GET['error'])){
+    echo "<script>
+            Swal.fire({
+                title: 'เกิดข้อผิดพลาด',
+                text: 'กรุณาตรวจสอบและเข้าสู่ระบบอีกครั้ง',
+                icon: 'error'
+            }).then(function(){ location.href = 'login.php';},20000);
+        </script>";    
+    }
+?> 
+   
+<?php if(isset($_GET['notfound'])){ ?>
+
+        <script>
+                Swal.fire({
+                    title: 'ไม่พบรหัสพนักงานในระบบ',
+                    text: 'กรุณาสมัครสมาชิกก่อนเข้าสู่ระบบ',
+                    icon: 'error',
+                    footer: '<a href="regis.php">สมัครสมาชิก</a>'
+                }).then(function(){ location.href = 'login.php';},20000);
+            </script>";    
+<?php  } ?>
+   

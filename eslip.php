@@ -1,4 +1,5 @@
 <?php 
+session_start();
 $title = "สลิปเงินเดือนอิเล็กทรอนิกส์(E-SLIP) แบบ Pdf";
 ?>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
                                     <div class="card-body">
                                         <!-- <form class="d-flex flex-column justify-content-center" method="POST" target="pdfFrame" '>                                            -->
                                         <form class="d-flex flex-column justify-content-center" method="POST" action='components/pdf.php'>                                           
-                                            <?php include 'components/year_select.php'; ?>
+                                            <?php include 'components/period_select.php'; ?>
                                             <button class="btn btn-sm btn-outline-success p-3" name='download'><i class="fas fa-download"></i> ดาวน์โหลด</button>
                                         </form>
                                     </div>

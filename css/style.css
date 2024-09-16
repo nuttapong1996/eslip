@@ -11103,7 +11103,7 @@ body {
 }
 .sb-sidenav-dark .sb-sidenav-menu .sb-sidenav-menu-heading {
   /* color: rgba(255, 255, 255, 0.25); */
-  color: #fd7e14;
+  color: #fdc500;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link {
   /* color: rgba(255, 255, 255, 0.5); */
@@ -11117,7 +11117,7 @@ body {
   /* color: rgba(255, 255, 255, 0.25); */
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #fd7e14;
+  color:#fdc500;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
   color: #fff;

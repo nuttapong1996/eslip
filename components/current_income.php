@@ -2,7 +2,8 @@
     require_once('./includes/connect_db.php');
 
     $year = date("Y");
-    $empcode = "2630065";
+    $empcode = $_SESSION['empcode'];
+    // $empcode = "2630065";
     // $empcode = "2530151"; //คพี่แซ็ก
     // $empcode = "2600217"; // test ค่าไฟ
     // $empcode = "2600051"; //กยศ
@@ -58,7 +59,7 @@
             echo"<td >". $row['period_payslip']."</td>";
             echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
             echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
-            echo"<td><a class='btn btn-sm text-secondary ' href='./detail.php?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
+            echo"<td><a class='btn btn-sm text-primary ' href='./detail.php?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
             echo"</tr>";        
         }  ?>
     </tbody>

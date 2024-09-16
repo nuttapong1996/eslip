@@ -4,7 +4,7 @@
     <!-- <a class="navbar-brand ps-3" href="home.php">SQ : E-slip</a> -->
     <a class="navbar-brand ps-3" href="home.php"><img src="assets/images/logo_white.png" width="100px" alt=""></a>
     <!-- Sidebar Toggle-->
-    <button class="btn btn-link btn-sm text-sq-orange order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    <!-- <button class="btn btn-link btn-sm text-sq-orange order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button> -->
     <!-- Navbar Search-->
     <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         <div class="input-group">
@@ -16,13 +16,13 @@
     <!-- Navbar-->
     <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-sq-orange" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> <?php echo $_SESSION['name']; ?></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#!">แก้ไขข้อมูลผู้ใช้งาน</a></li>
                 <li><a class="dropdown-item" href="#!">เปลี่ยนรหัสผ่าน</a></li>
                 <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item text-danger" href="index.php">ออกจากระบบ &nbsp<i class="fa-solid fa-right-from-bracket"></i></a></li>
+                <li><a class="dropdown-item text-danger" href="logout.php">ออกจากระบบ &nbsp<i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>
         </li>
     </ul>

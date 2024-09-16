@@ -1,8 +1,8 @@
 <footer class="py-4 bg-light mt-auto">
 <div class="container-fluid px-4">
     <div class="d-flex align-items-center justify-content-between small">
-        <div class="text-muted">Developed by IT Department (Maemoh)</div>
-        <div class="text-muted">Copyright &copy; Sahakol Equipment PCL. 2024 - <?php echo date('Y'); ?></div>
+        <small class="text-muted">Developed by IT Department (Maemoh)</small>
+        <small class="text-muted">Copyright &copy; Sahakol Equipment PCL. 2024 - <?php echo date('Y'); ?></small>
         <!-- <div>
             <a href="#">Privacy Policy</a>
             &middot;

@@ -1,6 +1,6 @@
 <?php 
 session_start();
-$title = "รายละเอียด";
+    $title = "ตารางรายการย้อนหลัง";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,16 +12,16 @@ $title = "รายละเอียด";
 </head>
 <body class="sb-nav-fixed bg-gray ibm-plex-sans-thai-regular">
     <!-- topnav -->
-     <?php include 'components/topnav.php'; ?>
+     <?php include 'components/topnav.php'; ?> 
     <div id="layoutSidenav">
         <!-- sidenav -->
         <?php include 'components/sidenav.php'; ?>
         <div id="layoutSidenav_content">
-            <main class="mt-3 mb-3">
+            <main  class="mt-3 mb-3">
                 <div class="container-fluid px-4">
                     <div class="row justify-content-center">
-                        <div class="col-md-6">
-                            <?php include 'components/income_detail.php'; ?>
+                        <div class="col-xl-6 col-md-6">
+                            <?php include 'components/income_records.php'; ?>
                         </div>
                     </div>
                 </div>
@@ -29,8 +29,8 @@ $title = "รายละเอียด";
             <div class="py-5"></div>
             <!-- footer -->
              <div class="desktop">
-                <?php include 'components/foot.php'; ?>  
-            </div>
+                <?php include 'components/foot.php'; ?>
+             </div>
         </div>
     </div>
     <div class="mobilenav">
@@ -38,3 +38,4 @@ $title = "รายละเอียด";
     </div>
 </body>
 </html>
+
