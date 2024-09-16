@@ -2,7 +2,7 @@
     <!-- Navbar Brand-->
     <!-- <a class="navbar-brand ps-3" href="home.php">SQ : E-slip</a> -->
      <div class="d-flex w-100 justify-content-around">
-        <a class="navbar-brand ps-3 d-flex flex-column" href="home.php">
+        <a class="navbar-brand ps-3 d-flex flex-column" href="index.php">
             <i class="fa-solid fa-house  fa-lg text-white "></i>
             <small class="text-white mt-1" style="font-size: 0.7rem;">หน้าหลัก</small>
         </a>
