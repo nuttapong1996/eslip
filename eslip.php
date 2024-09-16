@@ -24,9 +24,10 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
                                 <div class="card border-0 rounded-0 p-2 mb-4 shadow-sm">
                                         <h5 class="m-0 text-center text-muted">กรุณาเลือกปีและงวด</h5>
                                     <div class="card-body">
-                                        <form class="d-flex flex-column justify-content-center" action="components/pdf.php"  method="POST" target="pdfFrame">                                           
+                                        <!-- <form class="d-flex flex-column justify-content-center" method="POST" target="pdfFrame" '>                                            -->
+                                        <form class="d-flex flex-column justify-content-center" method="POST" action='components/pdf.php'>                                           
                                             <?php include 'components/year_select.php'; ?>
-                                            <button class="btn btn-sm btn-outline-success p-3"><i class="fas fa-download"></i> ดาวน์โหลด</button>
+                                            <button class="btn btn-sm btn-outline-success p-3" name='download'><i class="fas fa-download"></i> ดาวน์โหลด</button>
                                         </form>
                                     </div>
                                 </div>

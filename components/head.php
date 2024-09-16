@@ -5,7 +5,6 @@
 <script src="./js/simple-datatables.min.js"></script>
 <script src="./js/sweetalert2@11.js"></script>
 <script src="./js/fontawezome-6.3.0.js"></script>
-<script src="./js/pdfobject.js"></script>
 <!-- <script src="./js/history-data.js"></script> -->
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/style.css">

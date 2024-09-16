@@ -3,6 +3,11 @@
 
     $year = date("Y");
     $empcode = "2630065";
+    // $empcode = "2530151"; //คพี่แซ็ก
+    // $empcode = "2600217"; // test ค่าไฟ
+    // $empcode = "2600051"; //กยศ
+    // $empcode ="2620268"; //พี่ตูน
+    // $empcode ="2670087"; //พี่ท็อป
 
     $recurent_in ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year ORDER BY code_tbl_payslip DESC LIMIT 1";
     $recur_stmt = $conn->prepare($recurent_in);
@@ -19,6 +24,7 @@
  
 
 ?>
+<h5 class="fw-normal">เงินเดือนปัจจุบัน</h5>
 <div class="card rounded-0 mb-2 border-0 shadow-sm">
      <div class="card-body d-flex flex-column">
      <div class="text-start" style="font-size: 0.9rem;">
@@ -26,7 +32,7 @@
             <p><?php echo"งวดที่ : ".$recur_row['period_payslip'] ." "."วันที่ : ".date_format(date_create($recur_row['date_payslip']),"d/m/Y"); ?></p>
         </div>
         <div class="text-start">
-            <p class="mt-2 fs-5 mb-0 text-dark text-decoration-none">รายได้สุทธิ</p>
+            <p class="mt-2 mb-3 fs-5 mb-0 text-dark text-decoration-none">รายได้สุทธิ (NET INCOME)</p>
             <p class="m-0 fs-4 text-end text-sq-dark text-decoration-none"><?php echo number_format($recur_row['total_net_income_payslip'],2); ?> บาท</p><br>
         </div>
      </div>

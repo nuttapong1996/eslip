@@ -8,7 +8,7 @@ date_default_timezone_set('Asia/Bangkok');
 $year = isset($_POST['year']) ? $_POST['year'] : 'ไม่มีข้อมูล';
 $period1 = isset($_POST['period1']) ? $_POST['period1'] : 'ไม่มีข้อมูล';
 $period2 = isset($_POST['period2']) ? $_POST['period2'] : 'ไม่มีข้อมูล';
-$empcode = "2630065";
+// $empcode = "2630065";
 
 
 // $mpdf = new \Mpdf\Mpdf(['debug' => true]);
@@ -20,7 +20,7 @@ $mpdf->AddPage('L');
 // $year = '2024';
 // $period1 = '15';
 // $period2 = '16';
-// $empcode = "2630065";
+$empcode = "2630065";
 
 
 
@@ -230,7 +230,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         $val3="";
         $val4="";
     
-    // ค่าไฟ
+    // 1.ค่าไฟ
         //บรรทัด 1
         if($row['de_de02'] <> 0 && $de1 == "" ){ 
             $de1 ="ค่าไฟ";
@@ -248,7 +248,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $de4 ="ค่าไฟ";
             $val4 =  number_format($row['de_de02'],2);
         }
-    // เงินค้ำประกัน
+    // 2.เงินค้ำประกัน
         //บรรทัด 1
         if($row['de_de05'] <> 0 && $de1 == "" ){ 
             $de1 ="เงินค้ำประกัน";
@@ -266,7 +266,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $de4 ="เงินค้ำประกัน";
             $val4 =  number_format($row['de_de05'],2);
         }
-    // หักอื่นๆ
+    // 3.หักอื่นๆ
         //บรรทัด 1
         if($row['de_de06'] <> 0 && $de1 == "" ){ 
             $de1 ="หักอื่นๆ";
@@ -284,7 +284,7 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             $de4 ="หักอื่นๆ";
             $val4 =  number_format($row['de_de06'],2);
         }
-    // กยศ.
+    // 4.กยศ.
         //บรรทัด 1
         if($row['de_slf1'] <> 0 && $de1 == "" ){ 
             $de1 ="กยศ.";
