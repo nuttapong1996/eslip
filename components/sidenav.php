@@ -4,7 +4,7 @@
             <div class="nav">
                 
                 <div class="sb-sidenav-menu-heading">หน้าหลัก</div>
-                <a class="nav-link" href="home.php">
+                <a class="nav-link" href="index.php">
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-home-alt"></i></div>
                     สรุปรายการเงินเดือน
                 </a>
