@@ -52,7 +52,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             }
 
             // ไปยังหน้า Dashboard
-            header("location: ../home.php");
+            header("location: ../index.php");
             exit;
 
         } else {
