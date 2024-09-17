@@ -82,7 +82,6 @@
                 </div>
             </main>
         </div>
-        <?php// include('components/foot.php'); ?>
     </div>
 </body>
 </html>
