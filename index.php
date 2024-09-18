@@ -45,6 +45,6 @@ $title = "สรุปรายการเงินเดือน";
 </body>
 </html>
 <?php }else{
-    header('location:login.php');
+    header('location:login');
 }
 ?>

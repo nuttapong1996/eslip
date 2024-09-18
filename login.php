@@ -35,12 +35,12 @@
                                     <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep">
                                     <label class="form-check-label" for="keep">จดจำรหัสพนักงาน</label>
                                 </div>
-                                <!-- <a href="#"><b>ลืมรหัสผ่าน</b></a> -->
+                                <a href="#"><b>ลืมรหัสผ่าน</b></a>
                             </div>
                             
                             <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
                             <hr>
-                            <a href="regis.php" class=""><b>สมัครสมาชิก</b"></a>
+                            <a href="regis" class=""><b>สมัครสมาชิก</b"></a>
                         </form>                
                     </div>                    
                     <div class="text-center mt-4">
@@ -64,7 +64,7 @@
                 title: 'รหัสผ่านไม่ถูกต้อง',
                 text: 'กรุณาตรวจสอบและเข้าสู่ระบบอีกครั้ง',
                 icon: 'error'
-            }).then(function(){ location.href = 'login.php';},20000);
+            }).then(function(){ location.href = 'login';},20000);
         </script>";    
     }
 ?> 
@@ -75,7 +75,7 @@
                 title: 'เกิดข้อผิดพลาด',
                 text: 'กรุณาตรวจสอบและเข้าสู่ระบบอีกครั้ง',
                 icon: 'error'
-            }).then(function(){ location.href = 'login.php';},20000);
+            }).then(function(){ location.href = 'login';},20000);
         </script>";    
     }
 ?> 
@@ -87,8 +87,8 @@
                     title: 'ไม่พบรหัสพนักงานในระบบ',
                     text: 'กรุณาสมัครสมาชิกก่อนเข้าสู่ระบบ',
                     icon: 'error',
-                    footer: '<a href="regis.php">สมัครสมาชิก</a>'
-                }).then(function(){ location.href = 'login.php';},20000);
+                    footer: '<a href="regis">สมัครสมาชิก</a>'
+                }).then(function(){ location.href = 'login';},20000);
             </script>";    
 <?php  } ?>
    
