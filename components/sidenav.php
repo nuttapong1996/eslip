@@ -4,7 +4,7 @@
             <div class="nav">
                 
                 <div class="sb-sidenav-menu-heading">หน้าหลัก</div>
-                <a class="nav-link" href="index.php">
+                <a class="nav-link" href="index">
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-home-alt"></i></div>
                     สรุปรายการเงินเดือน
                 </a>
@@ -52,11 +52,11 @@
                     </nav>
                 </div> -->
                 <div class="sb-sidenav-menu-heading">รายการสลิป</div>
-                <a class="nav-link" href="records.php">
+                <a class="nav-link" href="records">
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-table"></i></div>
                     ตารางรายการย้อนหลัง
                 </a>
-                <a class="nav-link" href="./eslip.php">
+                <a class="nav-link" href="./eslip">
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-receipt"></i></div>
                     E-Slip (PDF)
                 </a>

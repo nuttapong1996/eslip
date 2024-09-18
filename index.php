@@ -25,7 +25,7 @@ $title = "สรุปรายการเงินเดือน";
                     <!-- Current income component -->
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <?php include 'components/current_income.php'; ?>
+                            <?php include 'components/income_current.php'; ?>
                         </div>
                     </div>
                 </div>

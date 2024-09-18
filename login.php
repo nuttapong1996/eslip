@@ -1,3 +1,15 @@
+<?php
+session_start();
+if(isset($_SESSION['empcode'])){
+
+    header('location:index');
+}else{
+   
+
+?>
+    
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,6 +68,7 @@
 </div>
 </body>
 </html>
+<?php } ?>
 
 <?php
     if(isset($_GET['wrong'])){

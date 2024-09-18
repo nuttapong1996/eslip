@@ -5,15 +5,14 @@ self.addEventListener('install', function(event) {
           'index.php',
           'home.php',
           'css/bootstrap.min.css',
-          'css/datatable-style.css',
-          'css/fonts.css',
-          'css/styles.css',
+          'css/*.css',
           'js/*.js',
           'assets/images/icon.png',
           'assets/images/icon-192x192.png',
           'assets/images/icon-512x512.png',
           'assets/images/logo.png',
           'assets/images/logo_white.png'
+
         ]);
       })
     );
