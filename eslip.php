@@ -1,5 +1,6 @@
 <?php 
 session_start();
+if(isset($_SESSION['empcode'])){
 $title = "สลิปเงินเดือนอิเล็กทรอนิกส์(E-SLIP) แบบ Pdf";
 ?>
 <!DOCTYPE html>
@@ -57,3 +58,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
     </div>
 </body>
 </html>
+<?php }else{
+    header('location:login');
+}
+?>

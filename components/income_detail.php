@@ -31,20 +31,9 @@
         </div>
         <div class="card-footer bg-white">
         </div>
-        <!-- <div class="card-footer bg-white">
-        <div class="text-start text-success">
-            <p class="mt-2 mb-0  text-decoration-none">รายได้รวม</p>
-            <p class="text-end mb-0"><?php //echo number_format($detail_row['total_income_payslip'],2); ?> บาท</p>
-        </div>
-        <div class="text-start text-danger">
-            <p class="mt-2 mb-0  text-decoration-none">รวมรายหัก</p>
-            <p class="text-end mb-0"><?php //echo number_format($detail_row['total_deductions_payslip'],2); ?> บาท</p>
-        </div>
-        </div> -->
      </div>
 </div>
-
-<h5  class="mt-4 fw-normal">รายละเอียดเพิ่มเติม</h5>
+    <h5  class="mt-4 fw-normal">รายละเอียดเพิ่มเติม</h5>
 <div class="table-responsive">
     <!-- รายการได้ (INCOME) -->   
         <table class="table table-borderless shadow-sm" style="background-color: #fff;">                              
@@ -66,33 +55,31 @@
                             echo "<td class='text-end'>".number_format($detail_row['in_co1'],2)."</td>";
                             echo "<td>บาท</td>";
                         echo"</tr>";
-                        // OT หากไม่มีจะไม่แสดง
-                            if($detail_row['ot1_hr_payslip'] > 0 || $detail_row['ot15_hr_payslip'] > 0 || $detail_row['ot2_hr_payslip'] > 0 || $detail_row['ot3_hr_payslip'] > 0){
+                        // OT 
                             echo"<tr>";
                                 echo "<td>OT 1</td>";
-                                echo "<td style='width:30px;'>".date('H:i',mktime($detail_row['ot1_hr_payslip'],0))."</td>";
+                                echo "<td style='width:30px;'>".sprintf('%02d:00',$detail_row['ot1_hr_payslip'])."</td>";
                                 echo "<td class='text-end'>".number_format($detail_row['ot1_baht_payslip'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             echo"<tr>";
                                 echo "<td>OT 1.5</td>";
-                                echo "<td>".date('H:i',mktime($detail_row['ot15_hr_payslip'],0))."</td>";
+                                echo "<td>".sprintf('%02d:00',$detail_row['ot15_hr_payslip'])."</td>";
                                 echo "<td class='text-end'>".number_format($detail_row['ot15_baht_payslip'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             echo"<tr>";
                                 echo "<td>OT 2</td>";
-                                echo "<td>".date('H:i',mktime($detail_row['ot2_hr_payslip'],0))."</td>";
+                                echo "<td>".sprintf('%02d:00',$detail_row['ot2_hr_payslip'])."</td>";
                                 echo "<td class='text-end'>".number_format($detail_row['ot2_baht_payslip'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             echo"<tr>";
                                 echo "<td>OT 3</td>";
-                                echo "<td>".date('H:i',mktime($detail_row['ot3_hr_payslip'],0))."</td>";
+                                echo "<td>".sprintf('%02d:00',$detail_row['ot3_hr_payslip'])."</td>";
                                 echo "<td class='text-end'>".number_format($detail_row['ot3_baht_payslip'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
-                            }
                         // 1.โบนัส หากไม่มีจะไม่แสดง
                             if($detail_row['in_bo01'] > 0){
                             echo"<tr>";
@@ -157,9 +144,6 @@
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                             }
-                       
-                       
-                       
                     ?>
                     <tr class="text-success border-top">
                         <th colspan="2">รวมรายได้</th>
@@ -243,29 +227,29 @@
         <table class="table table-borderless shadow-sm" style="background-color: #fff;">
             <tbody >
                 <tr>
-                    <th class="text-secondary" colspan="4" style="border-bottom: 1.5px solid gray;">
+                    <th class="text-dark" colspan="4" style="border-bottom: 1.5px solid gray;">
                        รายการสะสม
                     </th>
                 </tr>
                 <!-- รายละเอียดรายการสะสม -->
                     <?php
                         echo"<tr>";
-                            echo "<td colspan='2'>เงินได้สะสม</td>";
+                            echo "<th colspan='2'>เงินได้สะสม</th>";
                             echo "<td class='text-end' style='width:120px;'>".number_format($detail_row['salary_or_year'],2)."</td>";
                             echo "<td style='width:10px;'>บาท</td>";
                         echo"</tr>";
                         echo"<tr>";
-                            echo "<td colspan='2'>ภาษีสะสม</td>";
+                            echo "<th colspan='2'>ภาษีสะสม</th>";
                             echo "<td class='text-end'>".number_format($detail_row['tax_or_year'],2)."</td>";
                             echo "<td>บาท</td>";
                         echo"</tr>";
                         echo"<tr>";
-                            echo "<td colspan='2'>ประกันสังคมสะสม</td>";
+                            echo "<th colspan='2'>ประกันสังคมสะสม</th>";
                             echo "<td class='text-end'>".number_format($detail_row['sso_or_year'],2)."</td>";
                             echo "<td>บาท</td>";
                         echo"</tr>";
                         echo"<tr>";
-                            echo "<td colspan='2'>กองทุนสำรอง<br>เลี้ยงชีพสะสม</td>";
+                            echo "<th colspan='2'>กองทุนสำรอง<br>เลี้ยงชีพสะสม</th>";
                             echo "<td class='text-end'>".number_format($detail_row['pf_com_money_or_year'],2)."</td>";
                             echo "<td>บาท</td>";
                         echo"</tr>";

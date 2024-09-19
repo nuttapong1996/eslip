@@ -52,22 +52,22 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             }
 
             // ไปยังหน้า Dashboard
-            header("location: ../index.php");
+            header("location: ../index");
             exit;
 
         } else {
             // รหัสผ่านไม่ถูกต้อง
-            header("location: ../login.php?wrong");
+            header("location: ../login?wrong");
             exit;
         }
     } else {
         // รหัสพนักงานไม่ถูกต้อง
-        header("location: ../login.php?notfound");
+        header("location: ../login?notfound");
         exit;
     }
 } else {
     // กรอกข้อมูลไม่ครบ
-    header("location: ../login.php?error");
+    header("location: ../login?error");
     exit;
 }
 ?>

@@ -36,18 +36,19 @@
                                             </div>
                                         </div>                                    
                                         <div class="form-floating mb-3 ">
-                                            <input class="form-control" name="birhtday" id="birhtday" type="date"   required autocomplete="off"/>
+                                            <input class="form-control" name="birhtday" id="birhtday" type="date" onkeydown="return false"   required autocomplete="off"/>
                                             <label for="birhtday">ว-ด-ป เกิด</label>
                                             <div id="msg3" class="invalid-feedback"></div>
                                         </div>
                                         <div class="form-floating mb-3">
-                                            <input class="form-control" name="email" type="email"  placeholder="name@example.com" autocomplete="off" />
+                                            <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" autocomplete="off" />
                                             <label for="inputEmail">Email (ไม่บังคับ)</label>
+                                            <span id="error-message" style="color:red; display:none;">Please enter a valid email address</span>
                                         </div>
                                         <div class="row mb-3">                                            
                                             <div class="col-md-6">                                                
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control"  name="password" id="password" type="password"  onkeyup="checkPasswordMatch()"  placeholder="Create a password" required autocomplete="off" />
+                                                    <input class="form-control"  name="password" id="password" type="password"    placeholder="Create a password" required autocomplete="off" />
                                                     <label for="password">รหัสผ่าน</label>
                                                     <div id="message"></div>
                                                 </div>
@@ -55,7 +56,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="cfpassword" id="cfpassword" type="password"  onkeyup="checkPasswordMatch()" placeholder="Confirm password" required autocomplete="off" />
+                                                    <input class="form-control" name="cfpassword" id="cfpassword" type="password"   placeholder="Confirm password" required autocomplete="off" />
                                                     <label for="cfpassword">ยืนยันรหัสผ่าน</label>
                                                     <div id="messagecf"></div>
                                                 </div>
@@ -67,7 +68,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <div class="small"><a href="login.php">มีบัญชีอยู่แล้ว? ลงชื่อเข้าใช้</a></div>
+                                        <div class="small"><a href="login">มีบัญชีอยู่แล้ว? ลงชื่อเข้าใช้</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +94,7 @@
                     title: 'รหัสพนักงานนี้ถูกใช้สมัครไปแล้ว',
                     text: 'กรุณาติดต่อ จนท.ไอที เพื่อทำการแก้ไข',
                     icon: 'error'
-                }).then(function(){ location.href = 'regis.php';},20000);
+                }).then(function(){ location.href = 'regis';},20000);
             </script>";    
     }
     if(isset($_GET['iden_exist'])){
@@ -102,7 +103,7 @@
                     title: 'เลขบัตรประชาชนนี้ถูกใช้สมัครไปแล้ว',
                     text: 'กรุณาติดต่อ จนท.ไอที เพื่อทำการแก้ไข',
                     icon: 'error'
-                }).then(function(){ location.href = 'regis.php';},20000);
+                }).then(function(){ location.href = 'regis';},20000);
             </script>";    
     }
     if(isset($_GET['email_exist'])){
@@ -111,7 +112,7 @@
                     title: 'อีเมล์นี้ถูกใช้สมัครไปแล้ว',
                     text: 'กรุณาติดต่อ จนท.ไอที เพื่อทำการแก้ไข',
                     icon: 'error'
-                }).then(function(){ location.href = 'regis.php';},20000);
+                }).then(function(){ location.href = 'regis';},20000);
             </script>";    
     }
     if(isset($_GET['regis_success'])){
@@ -120,7 +121,7 @@
                     title: 'สมัครสมาชิกสําเร็จ',
                     text: 'สามารถใช้งานได้ทันที',
                     icon: 'success'
-                }).then(function(){ location.href = 'regis.php';},20000);
+                }).then(function(){ location.href = 'regis';},20000);
             </script>";    
     }
     if(isset($_GET['regis_fail'])){
@@ -129,7 +130,7 @@
                     title: 'เกิดข้อผิดพลาดในการสมัครสมาชิก',
                     text: 'กรุณาติดต่อ จนท.ไอที เพื่อทำการแก้ไข',
                     icon: 'error'
-                }).then(function(){ location.href = 'regis.php';},20000);
+                }).then(function(){ location.href = 'regis';},20000);
             </script>";    
     }
 ?>

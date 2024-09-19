@@ -1,7 +1,7 @@
 {
     "name": "SQ:Eslip",
     "short_name": "Eslip",
-    "start_url": "index.php",
+    "start_url": "index",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",

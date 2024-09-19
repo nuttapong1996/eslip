@@ -1,5 +1,6 @@
 <?php 
 session_start();
+if(isset($_SESSION['empcode'])){
 $title = "รายละเอียด";
 ?>
 <!DOCTYPE html>
@@ -38,3 +39,7 @@ $title = "รายละเอียด";
     </div>
 </body>
 </html>
+<?php }else{
+    header('location:login');
+}
+?>

@@ -1,5 +1,6 @@
 <?php 
 session_start();
+if(isset($_SESSION['empcode'])){
     $title = "ตารางรายการย้อนหลัง";
 ?>
 <!DOCTYPE html>
@@ -38,4 +39,8 @@ session_start();
     </div>
 </body>
 </html>
+<?php }else{
+    header('location:login');
+}
+?>
 

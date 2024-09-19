@@ -1,5 +1,6 @@
 <?php 
 session_start();
+if(isset($_SESSION['empcode'])){
 $title = "สรุปรายการเงินเดือน";
 
 ?>
@@ -56,3 +57,7 @@ $title = "สรุปรายการเงินเดือน";
     </div>
 </body>
 </html>
+<?php }else{
+    header('location:login');
+}
+?>

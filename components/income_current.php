@@ -38,7 +38,7 @@
         </div>
      </div>
      <div class="card-footer bg-white text-end">
-        <a class="btn text-secondary m-0 p-0" href="./detail.php?id=<?php echo $recur_row['code_tbl_payslip']; ?>">กดเพื่อดูรายละเอียดเพิ่มเติม</a>
+        <a class="btn text-secondary m-0 p-0" href="./detail?id=<?php echo $recur_row['code_tbl_payslip']; ?>">กดเพื่อดูรายละเอียดเพิ่มเติม</a>
      </div>
 </div>
 
@@ -59,7 +59,7 @@
             echo"<td >". $row['period_payslip']."</td>";
             echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
             echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
-            echo"<td><a class='btn btn-sm text-primary ' href='./detail.php?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
+            echo"<td><a class='btn btn-sm text-primary ' href='./detail?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
             echo"</tr>";        
         }  ?>
     </tbody>

@@ -80,6 +80,14 @@ $(document).ready(function(){
         }
     });
 
+
+
+
+
+
+
+
+
     $('#regisForm').on('submit', function(event) {
 
         if( $('#empcode').val() === ""){
@@ -129,40 +137,54 @@ $(document).ready(function(){
             event.preventDefault();
             event.stopPropagation();
         }
+
+        // เช็คประเภทอีเมล
+        var email = $('#email').val();
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        //ถ้าหากไม่ได้กรอกหรือกรอกเป็น - หรือกรอกไม่ตรงตามรูปแบบ ให้เปลี่ยนเป็น '' (ค่าว่าง) หรือไม่มี
+        if (!emailPattern.test(email) || email === "") {
+            $('#email').val('');
+        } 
     });
 
 
+
+     // เช็กรหัสผ่านทั้ง 2 ช่อง
+     $('#password, #cfpassword').on('input', function() {
+        // หากรหัสผ่านตรงกันและไม่เป็นค่าว่าง
+        if( $('#password').val() === $('#cfpassword').val() && $('#password').val() != "" && $('#cfpassword').val() != ""){
+            $('#password').removeClass('is-invalid').addClass('is-valid');
+            $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
+            $('#message').removeClass('invalid-feedback').addClass('valid-feedback');
+            $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');
+            $('#message').text('รหัสผ่านตรงกัน');
+            $('#messagecf').text('รหัสผ่านตรงกัน');
+            $('#submit').prop('disabled', false);
+        }else if( $('#password').val() != $('#cfpassword').val() && $('#password').val() != "" && $('#cfpassword').val() != ""){
+            $('#password').removeClass('is-valid').addClass('is-invalid');
+            $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
+            $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
+            $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback');
+            $('#message').text('รหัสผ่านไม่ตรงกัน');
+            $('#messagecf').text('รหัสผ่านไม่ตรงกัน');
+            $('#submit').prop('disabled', true);
+        }
+    });
+
+
+    // เช็คประเภทอีเมล
+    // $('#email').on('input',function() {
+    //     // var email = $(this).val();
+    //     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    //     if (!emailPattern.test( $('#email').val() )) {
+    //         $(this).val(''); // ล้างค่าถ้ารูปแบบไม่ถูกต้อง
+    //     }
+    // });
+
 });
 
-
-
-function checkPasswordMatch() {
-    var password =document.getElementById("password").value;
-    var confirmPassword = document.getElementById("cfpassword").value;
-    var submit = document.getElementById("submit");
-
-    if (password === confirmPassword) {
-        document.getElementById("password").className = "form-control is-valid";
-        document.getElementById("cfpassword").className = "form-control is-valid";
-        document.getElementById("message").innerHTML = "รหัสผ่านตรงกัน";
-        document.getElementById("messagecf").innerHTML = "รหัสผ่านตรงกัน";
-        submit.disabled = false;
-    }else{
-        document.getElementById("password").className = "form-control is-invalid";
-        document.getElementById("cfpassword").className = "form-control is-invalid";
-        document.getElementById("message").innerHTML = "รหัสผ่านไม่ตรงกัน";
-        document.getElementById("message").className = "invalid-feedback";
-        document.getElementById("messagecf").innerHTML = "รหัสผ่านไม่ตรงกัน";
-        document.getElementById("messagecf").className = "invalid-feedback";
-        submit.disabled = true;
-    }
-
-    if (password == "" || confirmPassword == "") {
-        document.getElementById("password").className = "form-control is-invalid";
-        document.getElementById("cfpassword").className = "form-control is-invalid";
-        submit.disabled = true;
-    }
-}
 
 
 

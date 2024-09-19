@@ -40,58 +40,58 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
         $stmt_email_exist->bindParam(':email', $email);
         $stmt_email_exist->execute();
 
+
+        // Query โค๊ด SQL สำหรับลงทะเบียนเพิ่มข้อมูลพนักงาน
+        $regis = "INSERT INTO tbl_regis (
+            emp_code,
+            password,
+            email,
+            iden_code,
+            birthdate )
+        VALUES (
+            :empcode , 
+            :password , 
+            :email ,
+            :idencode ,
+            :birhtday
+            );";
+    
+        $stmt_regis = $conn->prepare($regis);
+        $stmt_regis->bindParam(':empcode', $empcode);
+        $stmt_regis->bindParam(':password', $hashed_password);
+        $stmt_regis->bindParam(':email', $email);
+        $stmt_regis->bindParam(':idencode', $idencode);
+        $stmt_regis->bindParam(':birhtday', $birhtday);
+
         // 1.ตรวจสอบรหัสพนักงานซ้ำบนตาราง tbl_regis
         if($stmt_user_exist->rowCount() > 0){
-            header("location: ../regis.php?user_exist");
+            header("location: ../regis?user_exist");
         }else{
             // 2.ตรวจสอบเลขบัตรประชาชนซ้ำบนตาราง tbl_regis
             if($stmt_iden_exist->rowCount() > 0){
-                header("location: ../regis.php?iden_exist");
+                header("location: ../regis?iden_exist");
             }else{
-                // 3.ตรวจสอบอีเมลซ้ำบนตาราง tbl_regis
-                if($stmt_email_exist->rowCount() > 0){
-                    header("location: ../regis.php?email_exist");
-                }else{
-                    // 4.เพิ่มข้อมูลลงตาราง tbl_regis
-                    $email_exist ="SELECT email FROM tbl_regis WHERE email =:email;";
-                    $stmt_email_exist = $conn->prepare($email_exist);
-                    $stmt_email_exist->bindParam(':email', $email);
-                    $stmt_email_exist->execute();
-                    $email_exist_row = $stmt_email_exist->fetch(PDO::FETCH_ASSOC);
-                
-                    // Query โค๊ด SQL สำหรับลงทะเบียนเพิ่มข้อมูลพนักงาน
-                    $regis = "INSERT INTO tbl_regis (
-                                emp_code,
-                                password,
-                                email,
-                                iden_code,
-                                birthdate )
-                            VALUES (
-                                :empcode , 
-                                :password , 
-                                :email ,
-                                :idencode ,
-                                :birhtday
-                                );";
-                
-                    $stmt_regis = $conn->prepare($regis);
-                    $stmt_regis->bindParam(':empcode', $empcode);
-                    $stmt_regis->bindParam(':password', $hashed_password);
-                    $stmt_regis->bindParam(':email', $email);
-                    $stmt_regis->bindParam(':idencode', $idencode);
-                    $stmt_regis->bindParam(':birhtday', $birhtday);
-                    $stmt_regis->execute();
-
-                    if($stmt_regis){
-                        header("location: ../regis.php?regis_success");
-                    }else{
-                        header("location: ../regis.php?regis_fail");
+                //ตรวจสอบค่าว่าง หากผู้ใช้ใส่อีเมลมาก็อนุญาตให้ลงทะเบียน
+                if($email !==""){
+                    // 3.ตรวจสอบอีเมลซ้ำบนตาราง tbl_regis
+                    if($stmt_email_exist->rowCount() > 0){
+                        header("location: ../regis?email_exist");
+                    }else{                
+                        $stmt_regis->execute();
+                        //ตรวจสอบ Query ของการลงทะเบียน
+                        if($stmt_regis){
+                            header("location: ../regis?regis_success");
+                        }else{
+                            header("location: ../regis?regis_fail");
+                        }
                     }
-                    
-                }
+                }else{ //หากไม่ได้ใส่ก็อนุญาตใลงทะเบียน
+                    $stmt_regis->execute();
+                    header("location: ../regis?regis_success");
+                }      
             }
         }
 }else{
-    header("location: ../regis.php?regis_fail");
+    header("location: ../regis?regis_fail");
 }
 ?>
