@@ -47,7 +47,7 @@ if(isset($_SESSION['empcode'])){
                                     <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep">
                                     <label class="form-check-label" for="keep">จดจำรหัสพนักงาน</label>
                                 </div>
-                                <a href="#"><b>ลืมรหัสผ่าน</b></a>
+                                <a href="forgot"><b>ลืมรหัสผ่าน</b></a>
                             </div>
                             
                             <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
