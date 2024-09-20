@@ -58,38 +58,10 @@ $(document).ready(function(){
         }
     });
     
-    $('#password').on('input', function() {
-        if( $('#password').val() === ""){
-            $('#password').removeClass('is-valid').addClass('is-invalid');
-            $('#message').text('กรุณากรอกรหัสผ่าน').show();
-            $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
-        }else{
-            $('#password').removeClass('is-invalid').addClass('is-valid');
-            $('#message').removeClass('invalid-feedback').addClass('valid-feedback');
-        }
-    });
-
-    $('#cfpassword').on('input', function() {
-        if( $('#cfpassword').val() === ""){
-            $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
-            $('#messagecf').text('กรุณากรอกยืนยันรหัสผ่าน').show();
-            $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback');
-        }else{
-            $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
-            $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');
-        }
-    });
-
-
-
-
-
-
-
-
-
+      // เช็ค ค่า input เมื่อมีการกด submit
     $('#regisForm').on('submit', function(event) {
 
+        // เช็ค ค่า input ที่รับมา หากว่างให้แจ้งเตือน
         if( $('#empcode').val() === ""){
             $('#empcode').removeClass('is-valid').addClass('is-invalid');
             $('#msg1').text('กรุณากรอกรหัสพนักงาน').show();
@@ -107,16 +79,17 @@ $(document).ready(function(){
         }
         if( $('#password').val() === ""){
             $('#password').removeClass('is-valid').addClass('is-invalid');
-            $('#message').text('กรุณากรอกรหัสผ่าน').show();
+            $('#message').text('กรุณากรอกรหัสผ่านไม่น้อยหรือเกินว่า 8 ตัวอักษร').show();
             $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
         }
         if( $('#cfpassword').val() === ""){
             $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
-            $('#messagecf').text('กรุณากรอกยืนยันรหัสผ่าน').show();
+            $('#messagecf').text('กรุณากรอกรหัสผ่านไม่น้อยหรือเกินว่า 8 ตัวอักษร').show();
             $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback');
         }
 
 
+        // เช็คว่าฟอร์มว่ามี error หรือไม่ หากมีก็ไม่อนุญาตให้ submit
         if ($('#empcode').hasClass('is-invalid')) {
             event.preventDefault();
             event.stopPropagation();
@@ -148,41 +121,151 @@ $(document).ready(function(){
         } 
     });
 
+    // เช็กบัตรประชาชน 13 หลัก
+    $('#idencode').on('input ,change',function(){
+        if($('#idencode').val().length < 13){
+            $('#idencode').removeClass('is-valid').addClass('is-invalid');
+            $('#msg2').text('กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก').show();
+            $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
+        }else{
+            $('#idencode').removeClass('is-invalid').addClass('is-valid');
+            $('#msg2').text('เลขบัตรประชาชนครบ 13 หลัก').show();
+            $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
+        }
+    });
 
+     // เช็ก input รหัสผ่านช่องที่ 1 
+     $('#password').on('input', function() {
+        if($('#password').val() !== ""){
+            //เช็กรหัสผ่านช่องที่ 1 ห้ามไม่ให้น้อยและเกินกว่า 8 ตัว
+            if($('#password').val().length < 8){
+                $('#password').removeClass('is-valid').addClass('is-invalid');
+                $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
+                $('#message').text('กรุณากรอกรหัสผ่านไม่น้อยกว่า 8 ตัวอักษร');
+            // หากรหัสผ่านช่องที่ 1 ตรงกับเงื่อนไขคือไม่น้อยหรือเกินกว่า 8 ตัว ให้แสดงถูกตรง
+            }else if($('#password').val().length > 8){
+                $('#password').removeClass('is-valid').addClass('is-invalid');
+                $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
+                $('#message').text('รหัสผ่านเกิน 8 ตัวอักษร');
+            }else{
+                $('#password').removeClass('is-invalid').addClass('is-valid');
+                $('#message').removeClass('valid-feedback').addClass('valid-feedback');
+                $('#message').text('');
+            }
 
-     // เช็กรหัสผ่านทั้ง 2 ช่อง
-     $('#password, #cfpassword').on('input', function() {
-        // หากรหัสผ่านตรงกันและไม่เป็นค่าว่าง
-        if( $('#password').val() === $('#cfpassword').val() && $('#password').val() != "" && $('#cfpassword').val() != ""){
-            $('#password').removeClass('is-invalid').addClass('is-valid');
-            $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
-            $('#message').removeClass('invalid-feedback').addClass('valid-feedback');
-            $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');
-            $('#message').text('รหัสผ่านตรงกัน');
-            $('#messagecf').text('รหัสผ่านตรงกัน');
-            $('#submit').prop('disabled', false);
-        }else if( $('#password').val() != $('#cfpassword').val() && $('#password').val() != "" && $('#cfpassword').val() != ""){
+        }else{
             $('#password').removeClass('is-valid').addClass('is-invalid');
-            $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
+            $('#message').text('กรุณากรอกรหัสผ่าน').show();
             $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
+        }
+
+    });
+    // เช็ก input รหัสผ่านช่องยืนยัน
+    $('#cfpassword').on('input',function(){
+        if($('#cfpassword').val() !== ""){
+            //เช็กรหัสผ่านช่องที่ 1 ห้ามไม่ให้น้อยและเกินกว่า 8 ตัว
+            if($('#cfpassword').val().length < 8){
+                $('#cfpassword').removeClass('is-valid').addClass('is-invalid ');
+                $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback order-last');
+                $('#messagecf').text('กรุณากรอกรหัสผ่านไม่น้อยกว่า 8 ตัวอักษร');
+            // หากรหัสผ่านช่องที่ 1 ตรงกับเงื่อนไขคือไม่น้อยหรือเกินกว่า 8 ตัว ให้แสดงถูกตรง
+            }else if($('#cfpassword').val().length > 8){
+                $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
+                $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback');
+                $('#messagecf').text('รหัสผ่านเกิน 8 ตัวอักษร');
+            }else{
+                $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
+                $('#messagecf').removeClass('valid-feedback').addClass('valid-feedback');
+                $('#messagecf').text('');
+            }
+
+        }else{
+            $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
+            $('#messagecf').text('กรุณากรอกรหัสผ่าน').show();
+            $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback order-last');
+        }
+    });
+
+    // ตรวจสอบรหัสผ่านตรงกันหรือไม่
+    $('#cfpassword').on('change',function(){
+        if($('#cfpassword').val() === $('#password').val()){
+            $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
+            $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');
+            $('#messagecf').text('รหัสผ่านตรงกัน')
+            $('#submit').prop('disabled', false);
+            // หากไม่ตรงให้แจ้งเตือนและปิดการใช้งานปุ่ม submit
+        }else if($('#password').val() !== $('#cfpassword').val()){
+            $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
             $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback');
-            $('#message').text('รหัสผ่านไม่ตรงกัน');
             $('#messagecf').text('รหัสผ่านไม่ตรงกัน');
             $('#submit').prop('disabled', true);
         }
     });
 
 
-    // เช็คประเภทอีเมล
-    // $('#email').on('input',function() {
-    //     // var email = $(this).val();
-    //     var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    // When the user clicks on the password field, show the message box
+    $('#password').on('focus', function(){
+        $('#pwrule').css("display", "block");
+    });
+    // When the user clicks outside of the password field, hide the message box
+    $('#password').on('blur', function(){
+        $('#pwrule').css("display", "none");
+    });
 
-    //     if (!emailPattern.test( $('#email').val() )) {
-    //         $(this).val(''); // ล้างค่าถ้ารูปแบบไม่ถูกต้อง
-    //     }
-    // });
-
+    // When the user starts to type something inside the password field
+    $('#password').on('keyup',function(){
+        var lowerCaseLetters = /[a-z]/g;
+        var upperCaseLetters = /[A-Z]/g;
+        var numbers = /[0-9]/g;
+        // เช็กตัวอักษรพิมพ์เล็ก
+        if($('#password').val().match(lowerCaseLetters)){
+            $('#sym1').removeClass('fa fa-xmark');
+            $('#sym1').addClass('fa fa-check');
+            $('#letter').removeClass('invalid');
+            $('#letter').addClass('valid');
+        }else{
+            $('#sym1').removeClass('fa fa-check');
+            $('#sym1').addClass('fa fa-xmark');
+            $('#letter').removeClass('valid');
+            $('#letter').addClass('invalid');
+        }
+        // เช็กตัวอักษรพิมพ์ใหญ่
+        if($('#password').val().match(upperCaseLetters)){
+            $('#sym2').removeClass('fa fa-xmark');
+            $('#sym2').addClass('fa fa-check');
+            $('#capital').removeClass('invalid');
+            $('#capital').addClass('valid');
+        }else{
+            $('#sym2').removeClass('fa fa-check');
+            $('#sym2').addClass('fa fa-xmark');
+            $('#capital').removeClass('valid');
+            $('#capital').addClass('invalid');
+        }
+        // เช็กตัวเลข
+        if($('#password').val().match(numbers)){
+            $('#sym3').removeClass('fa fa-xmark');
+            $('#sym3').addClass('fa fa-check');
+            $('#number').removeClass('invalid');
+            $('#number').addClass('valid');
+        }else{
+            $('#sym3').removeClass('fa fa-check');
+            $('#sym3').addClass('fa fa-xmark');
+            $('#number').removeClass('valid');
+            $('#number').addClass('invalid');
+        }
+        // เช็กตัวเลข
+        if($('#password').val().length >=8 ){
+            $('#sym4').removeClass('fa fa-xmark');
+            $('#sym4').addClass('fa fa-check');
+            $('#length').removeClass('invalid');
+            $('#length').addClass('valid');
+        }else{
+            $('#sym4').removeClass('fa fa-check');
+            $('#sym4').addClass('fa fa-xmark');
+            $('#length').removeClass('valid');
+            $('#length').addClass('invalid');
+        }
+    });
 });
 
 

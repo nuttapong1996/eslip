@@ -10,7 +10,7 @@
     <div id="layoutAuthentication">
         <div id="layoutAuthentication_content ">
             <main>
-                <div class="container">
+                <div class="container-xl">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
                         <div class="text-center mb-3 mt-3"><img src="assets/images/logo.png" width="200px"></div>
@@ -22,14 +22,14 @@
                                         <div class="row mb-3">
                                             <div class="col-sm-6">
                                                 <div class="form-floating mb-3 mb-sm-0">
-                                                    <input class="form-control " name="empcode" id="empcode" type="text" onkeydown="return /[a-zA-Z0-9]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="รหัสพนักงาน" required autocomplete="off"/>
+                                                    <input class="form-control " name="empcode" id="empcode" type="text" onkeydown="return /[a-zA-Z0-9]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="รหัสพนักงาน" required autocomplete="off" maxlength="7"/>
                                                     <label for="empcode">รหัสพนักงาน</label>
                                                         <div id="msg1" ></div>                                            
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-floating mb-3 mb-sm-0">
-                                                    <input class="form-control" name="idencode" id="idencode" type="text"    onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="เลขบัตรประชาชน" required autocomplete="off" />
+                                                    <input class="form-control" name="idencode" id="idencode" type="text"    onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="เลขบัตรประชาชน" required autocomplete="off" maxlength="13" />
                                                     <label for="idencode">เลขบัตรประชาชน</label>
                                                     <div id="msg2"></div>
                                                 </div>
@@ -37,31 +37,41 @@
                                         </div>                                    
                                         <div class="form-floating mb-3 ">
                                             <input class="form-control" name="birhtday" id="birhtday" type="date" onkeydown="return false"   required autocomplete="off"/>
-                                            <label for="birhtday">ว-ด-ป เกิด</label>
+                                            <label for="birhtday">เลือก ว-ด-ป เกิด</label>
                                             <div id="msg3" class="invalid-feedback"></div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" autocomplete="off" />
-                                            <label for="inputEmail">Email (ไม่บังคับ)</label>
+                                            <label for="inputEmail">e-mail (ไม่บังคับ)</label>
                                             <span id="error-message" style="color:red; display:none;">Please enter a valid email address</span>
                                         </div>
                                         <div class="row mb-3">                                            
-                                            <div class="col-md-6">                                                
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control"  name="password" id="password" type="password"    placeholder="Create a password" required autocomplete="off" />
-                                                    <label for="password">รหัสผ่าน</label>
-                                                    <div id="message"></div>
-                                                </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group mb-3">                                              
+                                                    <div class="form-floating">
+                                                        <input class="form-control" name="password" id="password" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="Create a password" required autocomplete="off" maxlength="8" />
+                                                        <label for="password">รหัสผ่าน</label>
+                                                        <div id="message" class=""></div>
+                                                    </div>
+                                                    <div class="input-group-text "><i class="fa fa-eye"></i></div>
+                                                </div>  
                                             </div>
 
                                             <div class="col-md-6">
-                                                <div class="form-floating mb-3 mb-md-0">
-                                                    <input class="form-control" name="cfpassword" id="cfpassword" type="password"   placeholder="Confirm password" required autocomplete="off" />
+                                                <div class="form-floating">
+                                                    <input class="form-control" name="cfpassword" id="cfpassword" type="password" onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="Confirm password" required autocomplete="off" maxlength="8" />
                                                     <label for="cfpassword">ยืนยันรหัสผ่าน</label>
                                                     <div id="messagecf"></div>
                                                 </div>
                                             </div>
                                         </div>
+                                            <!-- <div id="pwrule">
+                                                <h6>รหัสผ่านต้องประกอบด้วยสิ่งต่อไปนี้:</h6>
+                                                <p id="letter" class="invalid"><i class="fa fa-xmark" id="sym1"></i> อังกฤษ<b>พิมพ์เล็ก</b></p>
+                                                <p id="capital" class="invalid"><i class="fa fa-xmark" id="sym2"></i> อังกฤษ<b>พิมพ์ใหญ่</b></p>
+                                                <p id="number" class="invalid"><i class="fa fa-xmark" id="sym3"></i> ตัวเลข</p>
+                                                <p id="length" class="invalid"><i class="fa fa-xmark" id="sym4"></i> อย่างน้อย<b> 8 ตัวอักษร</b></p>
+                                            </div> -->
                                         <div class="mt-4 mb-0">
                                             <div class="d-grid"><button class="btn btn-primary btn-block" id="submit" >สมัครสมาชิก</button></div>
                                         </div>
