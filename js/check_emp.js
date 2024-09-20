@@ -140,7 +140,7 @@ $(document).ready(function(){
             //เช็กรหัสผ่านช่องที่ 1 ห้ามไม่ให้น้อยและเกินกว่า 8 ตัว
             if($('#password').val().length < 8){
                 $('#password').removeClass('is-valid').addClass('is-invalid');
-                $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
+                $('#message').removeClass('valid-feedback').addClass('invalid-feedback order-last');
                 $('#message').text('กรุณากรอกรหัสผ่านไม่น้อยกว่า 8 ตัวอักษร');
             // หากรหัสผ่านช่องที่ 1 ตรงกับเงื่อนไขคือไม่น้อยหรือเกินกว่า 8 ตัว ให้แสดงถูกตรง
             }else if($('#password').val().length > 8){
@@ -156,7 +156,7 @@ $(document).ready(function(){
         }else{
             $('#password').removeClass('is-valid').addClass('is-invalid');
             $('#message').text('กรุณากรอกรหัสผ่าน').show();
-            $('#message').removeClass('valid-feedback').addClass('invalid-feedback');
+            $('#message').removeClass('valid-feedback').addClass('invalid-feedback order-last');
         }
 
     });

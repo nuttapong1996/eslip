@@ -51,7 +51,7 @@
                                                     <div class="form-floating">
                                                         <input class="form-control" name="password" id="password" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="Create a password" required autocomplete="off" maxlength="8" />
                                                         <label for="password">รหัสผ่าน</label>
-                                                        <div id="message" class=""></div>
+                                                        <div id="message" class="invalid-feedback order-0">test</div>
                                                     </div>
                                                     <div class="input-group-text "><i class="fa fa-eye"></i></div>
                                                 </div>  
