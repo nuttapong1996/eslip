@@ -21,7 +21,6 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
     //ทำการเข้ารหัสผ่าน
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-
         //Query สำหรับตรวจสอบรหัสพนักงานซ้ำบนตาราง tbl_regis
         $user_exist ="SELECT emp_code FROM tbl_regis WHERE emp_code =:empcode";
         $stmt_user_exist = $conn->prepare($user_exist);
@@ -80,14 +79,14 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
                         $stmt_regis->execute();
                         //ตรวจสอบ Query ของการลงทะเบียน
                         if($stmt_regis){
-                            header("location: ../regis?regis_success");
+                            header("location: ../login?regis_success");
                         }else{
                             header("location: ../regis?regis_fail");
                         }
                     }
                 }else{ //หากไม่ได้ใส่ก็อนุญาตใลงทะเบียน
                     $stmt_regis->execute();
-                    header("location: ../regis?regis_success");
+                    header("location: ../login?regis_success");
                 }      
             }
         }

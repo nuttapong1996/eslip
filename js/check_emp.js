@@ -152,7 +152,6 @@ $(document).ready(function(){
                 $('#message').removeClass('valid-feedback').addClass('valid-feedback');
                 $('#message').text('');
             }
-
         }else{
             $('#password').removeClass('is-valid').addClass('is-invalid');
             $('#message').text('กรุณากรอกรหัสผ่าน').show();
@@ -178,7 +177,6 @@ $(document).ready(function(){
                 $('#messagecf').removeClass('valid-feedback').addClass('valid-feedback');
                 $('#messagecf').text('');
             }
-
         }else{
             $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
             $('#messagecf').text('กรุณากรอกรหัสผ่าน').show();
@@ -202,70 +200,92 @@ $(document).ready(function(){
         }
     });
 
+    // ปุ่มแสดง password 1
+    $('#passpeek1').on('click',function(){
+        if($('#password').attr('type') == 'password'){
+            $('#password').attr('type', 'text');
+            $('#togglebtn1').addClass('fa fa-eye').removeClass('fa fa-eye-slash');
+        }else{
+            $('#password').attr('type', 'password');
+            $('#togglebtn1').addClass('fa fa-eye-slash').removeClass('fa fa-eye');
+        }
+        
+    });
+    // ปุ่มแสดง password 1
+    $('#passpeek2').on('click',function(){
+        if($('#cfpassword').attr('type') == 'password'){
+            $('#cfpassword').attr('type', 'text');
+            $('#togglebtn2').addClass('fa fa-eye').removeClass('fa fa-eye-slash');
+        }else{
+            $('#cfpassword').attr('type', 'password');
+            $('#togglebtn2').addClass('fa fa-eye-slash').removeClass('fa fa-eye');
+        }
+        
+    });
 
-    // When the user clicks on the password field, show the message box
-    $('#password').on('focus', function(){
-        $('#pwrule').css("display", "block");
-    });
-    // When the user clicks outside of the password field, hide the message box
-    $('#password').on('blur', function(){
-        $('#pwrule').css("display", "none");
-    });
+    // // When the user clicks on the password field, show the message box
+    // $('#password').on('focus', function(){
+    //     $('#pwrule').css("display", "block");
+    // });
+    // // When the user clicks outside of the password field, hide the message box
+    // $('#password').on('blur', function(){
+    //     $('#pwrule').css("display", "none");
+    // });
 
     // When the user starts to type something inside the password field
-    $('#password').on('keyup',function(){
-        var lowerCaseLetters = /[a-z]/g;
-        var upperCaseLetters = /[A-Z]/g;
-        var numbers = /[0-9]/g;
-        // เช็กตัวอักษรพิมพ์เล็ก
-        if($('#password').val().match(lowerCaseLetters)){
-            $('#sym1').removeClass('fa fa-xmark');
-            $('#sym1').addClass('fa fa-check');
-            $('#letter').removeClass('invalid');
-            $('#letter').addClass('valid');
-        }else{
-            $('#sym1').removeClass('fa fa-check');
-            $('#sym1').addClass('fa fa-xmark');
-            $('#letter').removeClass('valid');
-            $('#letter').addClass('invalid');
-        }
-        // เช็กตัวอักษรพิมพ์ใหญ่
-        if($('#password').val().match(upperCaseLetters)){
-            $('#sym2').removeClass('fa fa-xmark');
-            $('#sym2').addClass('fa fa-check');
-            $('#capital').removeClass('invalid');
-            $('#capital').addClass('valid');
-        }else{
-            $('#sym2').removeClass('fa fa-check');
-            $('#sym2').addClass('fa fa-xmark');
-            $('#capital').removeClass('valid');
-            $('#capital').addClass('invalid');
-        }
-        // เช็กตัวเลข
-        if($('#password').val().match(numbers)){
-            $('#sym3').removeClass('fa fa-xmark');
-            $('#sym3').addClass('fa fa-check');
-            $('#number').removeClass('invalid');
-            $('#number').addClass('valid');
-        }else{
-            $('#sym3').removeClass('fa fa-check');
-            $('#sym3').addClass('fa fa-xmark');
-            $('#number').removeClass('valid');
-            $('#number').addClass('invalid');
-        }
-        // เช็กตัวเลข
-        if($('#password').val().length >=8 ){
-            $('#sym4').removeClass('fa fa-xmark');
-            $('#sym4').addClass('fa fa-check');
-            $('#length').removeClass('invalid');
-            $('#length').addClass('valid');
-        }else{
-            $('#sym4').removeClass('fa fa-check');
-            $('#sym4').addClass('fa fa-xmark');
-            $('#length').removeClass('valid');
-            $('#length').addClass('invalid');
-        }
-    });
+    // $('#password').on('keyup',function(){
+    //     var lowerCaseLetters = /[a-z]/g;
+    //     var upperCaseLetters = /[A-Z]/g;
+    //     var numbers = /[0-9]/g;
+    //     // เช็กตัวอักษรพิมพ์เล็ก
+    //     if($('#password').val().match(lowerCaseLetters)){
+    //         $('#sym1').removeClass('fa fa-xmark');
+    //         $('#sym1').addClass('fa fa-check');
+    //         $('#letter').removeClass('invalid');
+    //         $('#letter').addClass('valid');
+    //     }else{
+    //         $('#sym1').removeClass('fa fa-check');
+    //         $('#sym1').addClass('fa fa-xmark');
+    //         $('#letter').removeClass('valid');
+    //         $('#letter').addClass('invalid');
+    //     }
+    //     // เช็กตัวอักษรพิมพ์ใหญ่
+    //     if($('#password').val().match(upperCaseLetters)){
+    //         $('#sym2').removeClass('fa fa-xmark');
+    //         $('#sym2').addClass('fa fa-check');
+    //         $('#capital').removeClass('invalid');
+    //         $('#capital').addClass('valid');
+    //     }else{
+    //         $('#sym2').removeClass('fa fa-check');
+    //         $('#sym2').addClass('fa fa-xmark');
+    //         $('#capital').removeClass('valid');
+    //         $('#capital').addClass('invalid');
+    //     }
+    //     // เช็กตัวเลข
+    //     if($('#password').val().match(numbers)){
+    //         $('#sym3').removeClass('fa fa-xmark');
+    //         $('#sym3').addClass('fa fa-check');
+    //         $('#number').removeClass('invalid');
+    //         $('#number').addClass('valid');
+    //     }else{
+    //         $('#sym3').removeClass('fa fa-check');
+    //         $('#sym3').addClass('fa fa-xmark');
+    //         $('#number').removeClass('valid');
+    //         $('#number').addClass('invalid');
+    //     }
+    //     // เช็กตัวเลข
+    //     if($('#password').val().length >=8 ){
+    //         $('#sym4').removeClass('fa fa-xmark');
+    //         $('#sym4').addClass('fa fa-check');
+    //         $('#length').removeClass('invalid');
+    //         $('#length').addClass('valid');
+    //     }else{
+    //         $('#sym4').removeClass('fa fa-check');
+    //         $('#sym4').addClass('fa fa-xmark');
+    //         $('#length').removeClass('valid');
+    //         $('#length').addClass('invalid');
+    //     }
+    // });
 });
 
 

@@ -80,8 +80,7 @@ if(isset($_SESSION['empcode'])){
             }).then(function(){ location.href = 'login';},20000);
         </script>";    
     }
-?> 
-<?php
+
     if(isset($_GET['error'])){
     echo "<script>
             Swal.fire({
@@ -91,7 +90,26 @@ if(isset($_SESSION['empcode'])){
             }).then(function(){ location.href = 'login';},20000);
         </script>";    
     }
+    if(isset($_GET['regis_success'])){
+        echo "<script>
+                Swal.fire({
+                    title: 'สมัครสมาชิกสําเร็จ',
+                    text: 'สามารถใช้งานได้ทันที',
+                    icon: 'success'
+                }).then(function(){ location.href = 'login';},20000);
+            </script>";    
+    }
+    if(isset($_GET['reset_success'])){
+        echo "<script>
+                Swal.fire({
+                    title: 'แก้ไขรหัสผ่านสําเร็จ',
+                    text: 'สามารถใช้งานได้ทันที',
+                    icon: 'success'
+                }).then(function(){ location.href = 'login';},20000);
+            </script>";    
+    }
 ?> 
+
    
 <?php if(isset($_GET['notfound'])){ ?>
 
