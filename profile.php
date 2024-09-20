@@ -23,14 +23,15 @@ $title = "สรุปรายการเงินเดือน";
                     <div class="nav">
                         <div class="user_profile text-sq">
                         <div class="sb-sidenav-menu-heading text-center">ข้อมูลผู้ใช้งาน</div>
-                        <h6 class="fw-normal fs-5"><?php echo $_SESSION['empcode']; ?> </h6>
+                       
                             <i class="fas fa-user-circle fa-4x"></i>
                             <h6 class="mt-3 fs-5"><?php echo $_SESSION['name']; ?> </h6>
-                            <h6 class="mt-3 fs-6">แผนก/ฝ่าย : <?php echo $_SESSION['dept_emp']; ?> </h6>
+                            <h6 class="fw-normal fs-6 mb-0"><?php echo $_SESSION['empcode']; ?> </h6>
+                            <h6 class="mt-1 fs-6">แผนก/ฝ่าย : <?php echo $_SESSION['dept_emp']; ?> </h6>
                             <h6 class="fw-normal fs-6">ตำแหน่ง : <?php echo $_SESSION['position']; ?> </h6>
                         </div>
                         <div class="menu_section bg-white">
-                            <div class="sb-sidenav-menu-heading p-2 fs-6 bg-sq-dark text-white">การจัดการ</div>
+                            <!-- <div class="sb-sidenav-menu-heading p-2 fs-6 bg-sq-dark text-white">การจัดการ</div>
                             <a class="nav-link text-sq p-3 fs-5 border-bottom" href="manage/user.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 ข้อมูลผู้ใช้งาน
@@ -38,7 +39,7 @@ $title = "สรุปรายการเงินเดือน";
                             <a class="nav-link text-sq p-3 fs-5" href="manage/password.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-unlock-alt"></i></div>
                                 เปลี่ยนรหัสผ่าน
-                            </a>
+                            </a> -->
                             <a class="nav-link text-white bg-danger" href="logout.php">
                                 <div class="sb-nav-link-icon ">ออกจากระบบ &nbsp;<i class="fas fa-right-from-bracket"></i></div>
                             </a>

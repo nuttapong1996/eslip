@@ -18,9 +18,8 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i> <?php echo $_SESSION['name']; ?></a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">แก้ไขข้อมูลผู้ใช้งาน</a></li>
-                <li><a class="dropdown-item" href="#!">เปลี่ยนรหัสผ่าน</a></li>
-                <!-- <li><a class="dropdown-item" href="#!">Activity Log</a></li> -->
+                <!-- <li><a class="dropdown-item" href="#!">แก้ไขข้อมูลผู้ใช้งาน</a></li>
+                <li><a class="dropdown-item" href="#!">เปลี่ยนรหัสผ่าน</a></li> -->
                 <li><hr class="dropdown-divider" /></li>
                 <li><a class="dropdown-item text-danger" href="logout">ออกจากระบบ &nbsp<i class="fa-solid fa-right-from-bracket"></i></a></li>
             </ul>

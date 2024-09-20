@@ -1,15 +1,10 @@
 <?php
 session_start();
 if(isset($_SESSION['empcode'])){
-
     header('location:index');
 }else{
-   
-
 ?>
     
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +18,7 @@ if(isset($_SESSION['empcode'])){
 <div id="layoutAuthentication">
     <div id="layoutAuthentication_content ">
         <main>
-            <div class="container">
+            <div class="container mt-5">
                 <div class="mobilenav">
                     <div class=" mt-5"></div>
                 </div>
@@ -33,7 +28,7 @@ if(isset($_SESSION['empcode'])){
                         <form action="backend/login_proc.php" method="POST" class=" bg-white text-center p-3 rounded-2 shadow" autocomplete=off>
                         <h5>เข้าสู่ระบบ</h5>
                             <div class="form-floating mt-3 mb-3">
-                                <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" autocomplete=off>
+                                <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" value="<?php if( isset($_COOKIE['empcode'])){ echo $_COOKIE['empcode']; } ?>" autocomplete=off>
                                 <label for="floatingInput">รหัสพนักงาน</label>
                             </div>
 
@@ -44,7 +39,7 @@ if(isset($_SESSION['empcode'])){
 
                             <div class="d-flex justify-content-between mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep">
+                                    <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep" checked>
                                     <label class="form-check-label" for="keep">จดจำรหัสพนักงาน</label>
                                 </div>
                                 <a href="forgot"><b>ลืมรหัสผ่าน</b></a>

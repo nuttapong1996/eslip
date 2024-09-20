@@ -9,6 +9,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 
     $keep = isset($_POST['keep']) ? $_POST['keep'] : '';
 
+
+    // Set cookie to expire in 1 year (365 days)
+    $expireTime = time() + (365 * 24 * 60 * 60); // 1 year from now
+
     // คำสั่ง SQL ตรวจสอบการเข้าสู่ระบบ
     $login = "SELECT 
                 table_emp.code_emp, 
@@ -46,9 +50,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             $_SESSION['birthdate'] = $row['birthdate'];
             $_SESSION['email'] = $row['email'];
 
+
             // 4. เก็บ Cookie รหัสพนักงาน
             if($keep == "on"){
-                setcookie('empcode', $row['code_emp'], time() + (86400 * 30), "/");
+                setcookie('empcode', $row['code_emp'], $expireTime, "/");
             }
 
             // ไปยังหน้า Dashboard

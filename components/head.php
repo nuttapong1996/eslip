@@ -25,6 +25,18 @@
 <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
 
 <?php 
+
+// ตั้ง session timeout
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {
+    // ถ้านานเกิน 30 นาที ล้าง session
+    session_unset();     
+    session_destroy();  
+}
+
+
+
+
+
 //  <h1 class='mt-4'>$title</h1>
 // function breadcrumb($title){
 //            echo 

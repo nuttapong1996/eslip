@@ -1,7 +1,9 @@
 self.addEventListener('install', function(event) {
     event.waitUntil(
-      caches.open('my-cache').then(function(cache) {
+      caches.open('eslip-cache').then(function(cache) {
         return cache.addAll([
+          'manifest.json',
+          'login.php',
           'index.php',
           'home.php',
           'css/bootstrap.min.css',
