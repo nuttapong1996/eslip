@@ -28,13 +28,16 @@ if(isset($_SESSION['empcode'])){
                         <form action="backend/login_proc.php" method="POST" class=" bg-white text-center p-3 rounded-2 shadow" autocomplete=off>
                         <h5>เข้าสู่ระบบ</h5>
                             <div class="form-floating mt-3 mb-3">
-                                <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" value="<?php if( isset($_COOKIE['empcode'])){ echo $_COOKIE['empcode']; } ?>" autocomplete=off>
+                                <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" value="<?php if( isset($_COOKIE['empcode'])){ echo $_COOKIE['empcode']; } ?>" autocomplete=off maxlength="7">
                                 <label for="floatingInput">รหัสพนักงาน</label>
                             </div>
-
-                            <div class="form-floating mt-3 mb-3">
-                                <input type="password" class="form-control" name="password" placeholder="รหัสผ่าน" autocomplete=off>
-                                <label for="floatingPassword">รหัสผ่าน</label>
+                            <!-- <label for="floatingPassword">รหัสผ่าน</label> -->
+                            <div class="input-group mt-3 mb-3">
+                                <input type="password" class="form-control" name="password" id="loginpassword" placeholder="รหัสผ่าน" autocomplete=off <?php if( isset($_COOKIE['empcode'])){ echo 'autofocus'; }  ?> maxlength="8">
+                                <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek">
+                                    <i class="fa fa-eye-slash" id="togglebtnlogin"></i>
+                                </button>
+                                <div id="message"></div>                                
                             </div>
 
                             <div class="d-flex justify-content-between mb-3">

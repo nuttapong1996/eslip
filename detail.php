@@ -1,5 +1,5 @@
 <?php 
-session_start();
+require_once 'backend/session.php';
 if(isset($_SESSION['empcode'])){
 $title = "รายละเอียด";
 ?>

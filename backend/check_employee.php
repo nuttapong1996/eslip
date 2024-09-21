@@ -1,9 +1,10 @@
 <?php
- //เรียกใช้งานไฟล์ connect_db.php
- require_once __DIR__ . '/../includes/connect_db.php';
 
 // รับค่าจาก AJAX
 if (isset($_POST['empcode'])) {
+     //เรียกใช้งานไฟล์ connect_db.php
+ require_once __DIR__ . '/../includes/connect_db.php';
+
 
     $empcode = $_POST['empcode'];
 

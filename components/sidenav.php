@@ -60,9 +60,11 @@
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-receipt"></i></div>
                     E-Slip (PDF)
                 </a>
+               
             </div>
         </div>
         <div class="sb-sidenav-footer bg-sq-dark">
+        <div class="small"><span id="gcMaxLifetime"></span></div>
             <!-- <div class="small">Logged in as:</div>
             Start Bootstrap -->
         </div>

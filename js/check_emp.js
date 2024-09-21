@@ -200,6 +200,18 @@ $(document).ready(function(){
         }
     });
 
+    // ปุ่มแสดง password หน้า login
+    $('#passpeek').on('click',function(){
+        if($('#loginpassword').attr('type') == 'password'){
+            $('#loginpassword').attr('type', 'text');
+            $('#togglebtnlogin').addClass('fa fa-eye').removeClass('fa fa-eye-slash');
+        }else{
+            $('#loginpassword').attr('type', 'password');
+            $('#togglebtnlogin').addClass('fa fa-eye-slash').removeClass('fa fa-eye');
+        }
+        
+    });
+
     // ปุ่มแสดง password 1
     $('#passpeek1').on('click',function(){
         if($('#password').attr('type') == 'password'){

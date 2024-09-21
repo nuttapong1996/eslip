@@ -10,7 +10,7 @@ $year = isset($_POST['year']) ? $_POST['year'] : 'ไม่มีข้อมู
 $period1 = isset($_POST['period1']) ? $_POST['period1'] : 'ไม่มีข้อมูล';
 $period2 = isset($_POST['period2']) ? $_POST['period2'] : 'ไม่มีข้อมูล';
 $empcode =$_SESSION['empcode'];
-// $empcode = "2630065";
+
 
 
 // $mpdf = new \Mpdf\Mpdf(['debug' => true]);
@@ -19,22 +19,6 @@ $mpdf = new \Mpdf\Mpdf();
 $mpdf->AddPage('L'); 
 
 
-// $year = '2024';
-// $period1 = '15';
-// $period2 = '16';
-// $empcode = "2630065";
-
-
-// $empcode ="2570095";
-// $empcode = "2530151"; //ค่าไฟ พี่แซ็ก
-// $empcode = "2600217"; // test ค่าไฟ
-// $empcode = "2600051"; //กยศ
-// $empcode ="2620268"; //พี่ตูน
-// $empcode ="2670087"; //พี่ท็อป
-
-// echo $year."<br>";
-// echo $period1."<br>";
-// echo $period2."<br>";
 
 
 $sql = "SELECT * FROM tbl_payslip WHERE code_emp_payslip =:empcode 
@@ -469,7 +453,7 @@ $mpdf->WriteHTML("
     </body>");
 
 }
-// $mpdf->SetProtection(array(),'12032539');
+$mpdf->SetProtection(array(),$row['']);
 $slipname ="SQMM_ESL_".$empcode."_".$year."_PP".$period1."-".$period2.".pdf";
 // $mpdf->Output($slipname,'S');
 // $mpdf->Output($slipname , \Mpdf\Output\Destination::INLINE);// แสดง PDF ในบราวเซอร์
