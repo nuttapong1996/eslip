@@ -1,6 +1,6 @@
 <?php 
     // รับค่าจาก AJAX
-    // if (isset($_POST['oldpassword'])) {
+    if (isset($_POST['oldpassword'])) {
         // เรียกใช้งานไฟล์ connect_db.php
         require_once __DIR__ . '/../includes/connect_db.php';
 
@@ -20,12 +20,14 @@
         $row_newpassword = $stmt_newpassword->fetch(PDO::FETCH_ASSOC);
         
 
-        
-        if(password_verify($oldpassword, trim($row_newpassword['password']))){
+        if(password_verify(trim($oldpassword), trim($row_newpassword['password']))){
             echo 'true';
         }else{
             echo 'false';
         }
-    // }
+    }else{
+        echo 'false';
+    }
+    
 
 ?>

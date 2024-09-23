@@ -1,8 +1,8 @@
 <?php 
-// require_once 'backend/session.php';
-// if(isset($_SESSION['empcode'])){
-// $title = "แก้ไขรหัสผ่าน";
-session_start();
+require_once 'backend/session.php';
+if(isset($_SESSION['empcode'])){
+$title = "การจัดการ";
+// session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include  './components/head.php'; ?>
-    <title>ตั้งรหัสผ่านใหม่</title>
+    <!-- <title><?php //echo $title ?></title> -->
 </head>
 <body class="sb-nav-fixed bg-gray ibm-plex-sans-thai-regular">
     <!-- topnav -->
@@ -20,8 +20,8 @@ session_start();
             <?php include 'components/sidenav.php'; ?>
             <div id="layoutSidenav_content">
                 <?php
-                    switch ($_GET['p']) {
-                        case 'password':
+                    switch ($_GET['manage']) {
+                        case 'password':                
                             include './manage/newpass.php';
                             break;
                         case 'user':
@@ -45,7 +45,7 @@ session_start();
 </body>
 </html>
 <?php 
-// }else{
-//     header('location:login');
-// }
+}else{
+    header('location:login');
+}
 ?>

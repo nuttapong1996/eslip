@@ -28,15 +28,15 @@ $title = "ข้อมูลผู้ใช้งาน";
                             <h6 class="fw-normal fs-6 mb-0"><?php echo $_SESSION['empcode']; ?> </h6>
                             <h6 class="mt-1 fs-6">แผนก/ฝ่าย : <?php echo $_SESSION['dept_emp']; ?> </h6>
                             <h6 class="fw-normal fs-6">ตำแหน่ง : <?php echo $_SESSION['position']; ?> </h6>
-                            <div class="small text-danger"><span id="gcMaxLifetime"></span></div>
+                            <div class="small text-danger"><span id="session-time">Loading...</span></div>
                         </div>
                         <div class="menu_section bg-white">
                             <div class="sb-sidenav-menu-heading p-2 fs-6 bg-sq-dark text-white">การจัดการ</div>
-                            <a class="nav-link text-sq p-3 fs-5 border-bottom" href="manage/user.php">
+                            <a class="nav-link text-sq p-3 fs-5 border-bottom" href="user?p=user">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
                                 ข้อมูลผู้ใช้งาน
                             </a>
-                            <a class="nav-link text-sq p-3 fs-5" href="manage/password.php">
+                            <a class="nav-link text-sq p-3 fs-5" href="user?p=password">
                                 <div class="sb-nav-link-icon"><i class="fas fa-unlock-alt"></i></div>
                                 เปลี่ยนรหัสผ่าน
                             </a>

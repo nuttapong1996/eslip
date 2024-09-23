@@ -1,9 +1,8 @@
 <?php 
-// session_start();
-// if(isset($_SESSION['empcode'])){
-$title = "แก้ไขรหัสผ่าน";
-
+if(isset($_SESSION['empcode'])){
+    $title = "เปลี่ยนรหัสผ่าน";
 ?>
+<title><?php echo $title ?></title>
 <main>
     <div class="container px-4">
         <div class="row justify-content-center mt-5">
@@ -64,7 +63,7 @@ $title = "แก้ไขรหัสผ่าน";
 </main>
          
 <?php 
-// }else{
-//     header('location:../login');
-// }
+}else{
+    header('location:../login');
+}
 ?>

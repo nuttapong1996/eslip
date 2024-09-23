@@ -64,7 +64,7 @@
             </div>
         </div>
         <div class="sb-sidenav-footer bg-sq-dark">
-        <div class="small"><span id="gcMaxLifetime"></span></div>
+        <div class="small"><span id="session-time">Loading...</span></div>
             <!-- <div class="small">Logged in as:</div>
             Start Bootstrap -->
         </div>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     //ตรวจสอบรหัสผ่านเก่า
-    $('#oldpassword').on('change', function() {
+    $('#oldpassword').on('input', function() {
         var oldPass = $(this).val();
         
         // ตรวจสอบว่า input ไม่ว่างเปล่า
@@ -10,16 +10,14 @@ $(document).ready(function(){
                 method: 'POST',
                 data: { oldpassword: oldPass },
                 success: function(response) {
-                    if (response == 'true') {
-                        $('#oldpassword').removeClass('is-valid').addClass('is-invalid');
-                        $('#oldpassmessage').text('รหัสผ่านนี้ตั้งไปแล้ว').show();
-                        $('#oldpassmessage').removeClass('valid-feedback').addClass('invalid-feedback');
-                    } else {
+                    if (response === 'true') {
                         $('#oldpassword').removeClass('is-invalid').addClass('is-valid');
-                        $('#oldpassmessage').text('รหัสผ่านนี้ใช้ได้').show();
+                        $('#oldpassmessage').text('รหัสผ่านถูกต้อง').show();
                         $('#oldpassmessage').removeClass('invalid-feedback').addClass('valid-feedback');
-
-                       
+                    } else {
+                        $('#oldpassword').removeClass('is-valid').addClass('is-invalid');
+                        $('#oldpassmessage').text('รหัสผ่านไม่ถูกต้อง').show();
+                        $('#oldpassmessage').removeClass('valid-feedback').addClass('invalid-feedback');                      
                     }
                 }
             });
