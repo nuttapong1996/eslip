@@ -1,0 +1,30 @@
+<?php
+    session_start();
+    if(isset($_POST['newpassword']) && isset($_SESSION['empcode'])){
+        //เรียกใช้งานไฟล์ connect_db.php
+        require_once __DIR__ . '/../includes/connect_db.php';
+
+        $newpassword = $_POST['newpassword'];
+        $empcode = $_SESSION['empcode'];
+
+        $newhash = password_hash($newpassword, PASSWORD_DEFAULT);
+
+        //Query reset new password and clear token
+        $newpass = 'UPDATE tbl_regis SET password = :newpassword WHERE emp_code = :empcode';
+        $stmt_newpass = $conn->prepare($newpass);
+        $stmt_newpass->bindParam(':newpassword', $newhash);
+        $stmt_newpass->bindParam(':empcode', $empcode);
+       
+        if($stmt_newpass->execute()){
+            header("location: ../login?reset_success");
+        }else{
+            header("location: ../user?manage=password&pass_error");
+        
+        }
+        $conn = null;
+    }else{
+        header("location: ../user?manage=password&pass_error");
+    }
+
+
+?>

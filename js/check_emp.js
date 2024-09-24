@@ -185,7 +185,7 @@ $(document).ready(function(){
     });
 
     // ตรวจสอบรหัสผ่านตรงกันหรือไม่
-    $('#cfpassword').on('change',function(){
+    $('#cfpassword').on('input',function(){
         if($('#cfpassword').val() === $('#password').val()){
             $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
             $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');

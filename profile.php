@@ -33,7 +33,7 @@ $title = "ข้อมูลผู้ใช้งาน";
                         <div class="menu_section bg-white">
                             <div class="sb-sidenav-menu-heading p-2 fs-6 bg-sq-dark text-white">การจัดการ</div>
                             <a class="nav-link text-sq p-3 fs-5 border-bottom" href="user?p=user">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user-cog"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-pen"></i></div>
                                 ข้อมูลผู้ใช้งาน
                             </a>
                             <a class="nav-link text-sq p-3 fs-5" href="user?p=password">

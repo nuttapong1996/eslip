@@ -1,4 +1,5 @@
 <?php 
+session_start();
     // รับค่าจาก AJAX
     if (isset($_POST['oldpassword'])) {
         // เรียกใช้งานไฟล์ connect_db.php
@@ -22,11 +23,14 @@
 
         if(password_verify(trim($oldpassword), trim($row_newpassword['password']))){
             echo 'true';
+            // echo $empcode;
         }else{
             echo 'false';
+            // echo $empcode;
         }
     }else{
         echo 'false';
+        // echo $_SESSION['empcode'];
     }
     
 

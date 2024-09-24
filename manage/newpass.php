@@ -10,10 +10,10 @@ if(isset($_SESSION['empcode'])){
                 <div class="card p-3 rounded-0 border-0 shadow-lg ">
                     <h4 class="text-center fw-normal">ตั้งรหัสผ่านใหม่</h4>
                     <div class="card-body">
-                        <form method="POST" id="regisForm" class="needs-validation mb-0" novalidate  action="backend/reset_proc.php" autocomplete=off>
+                        <form method="POST" id="regisForm" class="needs-validation mb-0" novalidate  action="backend/change_pass_proc.php" autocomplete=off>
                             <div class="row mb-3">
                                 <div class="col-md-12">                                  
-                                    <label for="password">รหัสผ่านเก่า</label>
+                                    <label for="password">รหัสผ่านปัจจุบัน</label>
                                     <div class="input-group">
                                         <input class="form-control rounded-0 rounded-start" name="oldpassword" id="oldpassword" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight','Enter'].includes(event.key)"  placeholder="รหัสผ่าน" required autocomplete="off" maxlength="8" />
                                         <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="oldpasspeek">
@@ -23,7 +23,7 @@ if(isset($_SESSION['empcode'])){
                                     </div>
                                 </div>                                        
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-3" id="newpass">
                                 <div class="col-md-12">                                  
                                     <label for="password">รหัสผ่านใหม่</label>
                                     <div class="input-group">
@@ -35,7 +35,7 @@ if(isset($_SESSION['empcode'])){
                                     </div>
                                 </div>                                        
                             </div>
-                            <div class="row mb-3">
+                            <div class="row mb-3" id="newpasscf">
                                 <div class="col-md-12">                                          
                                     <label for="cfpassword">ยืนยันรหัสผ่านใหม่</label>
                                         <div class="input-group">

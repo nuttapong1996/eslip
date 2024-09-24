@@ -48,4 +48,15 @@ $title = "การจัดการ";
 }else{
     header('location:login');
 }
+
+
+if(isset($_GET['pass_error'])){
+    echo "<script>
+            Swal.fire({
+                title: 'เกิดข้อผิดพลาด',
+                text: 'กรุณาตรวจสอบและทำรายการอีกครั้ง',
+                icon: 'error'
+            }).then(function(){ location.href = 'user?manage=password';},20000);
+        </script>";    
+    }
 ?>
