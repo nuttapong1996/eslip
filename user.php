@@ -24,11 +24,11 @@ $title = "การจัดการ";
                         case 'password':                
                             include './manage/newpass.php';
                             break;
-                        case 'user':
-                            include './manage/user.php';
+                        case 'user_detail':
+                            include './manage/user_detail.php';
                             break;
                         default:
-                            include './manage/user.php';
+                            include './manage/user_detail.php';
                             break;
                     }
                 ?>

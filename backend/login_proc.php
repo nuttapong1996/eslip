@@ -75,4 +75,6 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     header("location: ../login?error");
     exit;
 }
+
+$conn = null;
 ?>

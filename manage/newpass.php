@@ -10,7 +10,7 @@ if(isset($_SESSION['empcode'])){
                 <div class="card p-3 rounded-0 border-0 shadow-lg ">
                     <h4 class="text-center fw-normal">ตั้งรหัสผ่านใหม่</h4>
                     <div class="card-body">
-                        <form method="POST" id="regisForm" class="needs-validation mb-0" novalidate  action="backend/change_pass_proc.php" autocomplete=off>
+                        <form method="POST"  class="needs-validation mb-0" novalidate  action="backend/change_pass_proc.php" autocomplete=off>
                             <div class="row mb-3">
                                 <div class="col-md-12">                                  
                                     <label for="password">รหัสผ่านปัจจุบัน</label>
@@ -27,9 +27,9 @@ if(isset($_SESSION['empcode'])){
                                 <div class="col-md-12">                                  
                                     <label for="password">รหัสผ่านใหม่</label>
                                     <div class="input-group">
-                                        <input class="form-control rounded-0 rounded-start" name="newpassword" id="password" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight','Enter'].includes(event.key)"  placeholder="รหัสผ่าน" required autocomplete="off" maxlength="8" />
+                                        <input class="form-control rounded-0 rounded-start" name="newpassword" id="newpassword" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight','Enter'].includes(event.key)"  placeholder="รหัสผ่าน" required autocomplete="off" maxlength="8" />
                                         <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek1">
-                                            <i class="fa fa-eye-slash" id="togglebtn1"></i>
+                                            <i class="fa fa-eye-slash" id="newpasswordtogglebtn"></i>
                                         </button>                                                    
                                         <div id="message"></div>
                                     </div>
@@ -39,7 +39,7 @@ if(isset($_SESSION['empcode'])){
                                 <div class="col-md-12">                                          
                                     <label for="cfpassword">ยืนยันรหัสผ่านใหม่</label>
                                         <div class="input-group">
-                                        <input class="form-control rounded-0 rounded-start" name="cfnewpassword" id="cfpassword" type="password" onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight','Enter'].includes(event.key)"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="off" maxlength="8" />
+                                        <input class="form-control rounded-0 rounded-start" name="cfnewpassword" id="cfnewpassword" type="password" onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight','Enter'].includes(event.key)"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="off" maxlength="8" />
                                         <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek2">
                                             <i class="fa fa-eye-slash" id="togglebtn2"></i>
                                         </button>
