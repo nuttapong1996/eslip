@@ -13,7 +13,12 @@ if(isset($_SESSION['empcode'])){
                         <form action="#" method="POST" class="needs-validation" novalidate>
                             <div class="row mb-3">
                                 <div class="col-md-12">
-
+                                <!-- 
+                                 -Email
+                                 -Birthday
+                                 -identity card
+                                 -picture profile
+                                  -->
                                 </div>                                   
                             </div>                            
                         </form>
