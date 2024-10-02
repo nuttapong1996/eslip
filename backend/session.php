@@ -2,8 +2,8 @@
 session_start();
 
 // กำหนดเวลาหมดอายุของ session (ในวินาที)
-$session_lifetime = 1800; // 30 นาที
-// $session_lifetime = 300; // 5 นาที
+// $session_lifetime = 1800; // 30 นาที
+$session_lifetime = 300; // 5 นาที
 // $session_lifetime = 10; // 5 นาที
 
 // ตรวจสอบว่า session ยังมีอยู่หรือไม่
@@ -59,7 +59,7 @@ $_SESSION['LAST_ACTIVITY'] = time();
         document.addEventListener('click', updateSession);
 
         // เพิ่ม event listener สำหรับการเลื่อนเมาส์
-        document.addEventListener('mousemove', updateSession);
+        // document.addEventListener('mousemove', updateSession);
 
         // เพิ่ม event listener สำหรับการพิมพ์แป้นพิมพ์
         document.addEventListener('keydown', updateSession);

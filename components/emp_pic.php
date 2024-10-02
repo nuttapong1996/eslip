@@ -27,7 +27,7 @@ if(isset($_SESSION['empcode'])){
     $detail_row = $detail_stmt->fetch(PDO::FETCH_ASSOC);
 
  ?>                                          
-<img  class="rounded-circle border border-primary border-3" style="clip-path: circle(); width: 100px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic'];}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
+<img  class="rounded-circle border border-primary border-3" style="clip-path: circle(); width: 100px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic'];}else{echo 'assets/images/noimage.png';}?>"    width="100px" alt="">
 <?php
 }else{
     header("location: ../login");
