@@ -61,10 +61,10 @@ if(isset($_SESSION['empcode'])){
                                     </div>
                                 </div>                                 
                             </div> 
-                            <div class="row mb-3">
+                            <!-- <div class="row mb-3">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="idencode" placeholder="เลขบัตรประชาชน" required value="<?php if(trim($detail_row['iden_code'])!=""){ echo trim($detail_row['iden_code']);}else{echo '-';} ?>">
+                                        <input type="text" class="form-control" id="idencode" placeholder="เลขบัตรประชาชน" required value="<?php //if(trim($detail_row['iden_code'])!=""){ echo trim($detail_row['iden_code']);}else{echo '-';} ?>">
                                         <label for="idencode">เลขบัตรประชาชน</label>
                                     </div>
                                 </div>
@@ -72,11 +72,11 @@ if(isset($_SESSION['empcode'])){
                             <div class="row mb-3">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input type="date" class="form-control" id="birhtday" placeholder="วันเกิด" required value="<?php echo date('Y-m-d',strtotime($detail_row["birthdate"])); ?>">
+                                        <input type="date" class="form-control" id="birhtday" placeholder="วันเกิด" required value="<?php //echo date('Y-m-d',strtotime($detail_row["birthdate"])); ?>">
                                         <label for="idencode">วันเดือนปีเกิด</label>
                                     </div>
                                 </div>
-                            </div>                             
+                            </div>                              -->
                         </form>
                     </div>
                 </div>
