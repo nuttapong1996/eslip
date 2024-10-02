@@ -2,7 +2,12 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark bg-sq" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                
+                <div class="sb-sidenav-menu-heading text-center"> CODE : <?php echo $_SESSION['empcode']; ?></div>
+                <div class="text-center">
+                    <?php include 'components/emp_pic.php'; ?>
+                </div>
+                <h6 class="mt-3 mb-0 fs-5 text-center text-white"><?php echo $_SESSION['name']; ?> </h6>
+                <small class="mt-0 text-center text-white"><b>ตำแหน่ง :</b> <?php echo $_SESSION['position']; ?> <br><b> แผนก/ฝ่าย :</b> <?php echo $_SESSION['dept_emp']; ?> </small>                
                 <div class="sb-sidenav-menu-heading">หน้าหลัก</div>
                 <a class="nav-link" href="index">
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-home-alt"></i></div>

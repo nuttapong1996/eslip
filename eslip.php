@@ -30,20 +30,16 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
                                         <form class="d-flex flex-column justify-content-center" method="POST" action='components/pdf.php'>                                           
                                             <?php include 'components/period_select.php'; ?>
                                             <button class="btn btn-sm btn-outline-success p-3" name='download'><i class="fas fa-download"></i> ดาวน์โหลด</button>
-                                        </form>
+                                        </form>                                        
                                     </div>
                                 </div>
                             </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-sm-12">
-                            <!-- <h3>PDF ที่สร้าง:</h3> -->
-                            <!-- <iframe name="pdfFrame" src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://192.168.100.105/www/eslip/components/pdf.php" style="width:100%; height:1000px;" frameborder="0"></iframe> -->
-                            <!-- <iframe name="pdfFrame" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://de8a-115-84-77-13.ngrok-free.app/www/eslip/components/pdf.php" style="width:100%; height:1000px;" frameborder="0"></iframe> -->
-                            <!-- <iframe name="pdfFrame" src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://app.sqmm.myds.me:8443/pdf/SQMM_ESL_2630065_2024_PP1-16.pdf" style="width:100%; height:1000px;" frameborder="0"></iframe> -->
-                            <!-- <iframe id="theFrame" name="pdfFrame" src="https://docs.google.com/viewerng/viewer?url="http://192.168.100.105/www/eslip/SQMM_ESL_2600217_2024_PP16-16.pdf'&embedded=true" width="100%" height="800" type="application/pdf"></iframe> -->
-                        </div>
-                    </div>
+                        <div class="col-sm-4 text-center bg-danger p-2">
+                            <small class="text-white"><b>หมายเหตุ : รหัสผ่านสำหรับเปิด PDF คือ วัน-เดือน-ปี. เกิดของท่าน</b> <br> *ตัวอย่าง วันที่ 1 เดือน 1 พศ. 2533 รหัสผ่านสำหรับเปิด PDF คือ 01012533*</small>
+                        </div>              
+                    </div>                   
                 </div>
             </main>
             <div class="py-5"></div>

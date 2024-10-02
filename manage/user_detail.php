@@ -1,7 +1,7 @@
 <?php
 if(isset($_SESSION['empcode'])){
     $title = "รายละเอียดผู้ใช้งาน";
-    require_once 'includes/connect_db.php';
+    require_once __DIR__ . '/../includes/connect_db.php';
 
     $empcode = $_SESSION['empcode'];
 
@@ -13,7 +13,8 @@ if(isset($_SESSION['empcode'])){
                     table_regis.iden_code,
                     table_regis.birthdate,
                     table_regis.email,
-                    table_regis.password
+                    table_regis.password,
+                    table_regis.emp_pic
                 FROM
                     tbl_regis    AS table_regis
                 JOIN tbl_emp      AS table_emp ON table_regis.emp_code  = table_emp.code_emp
@@ -34,49 +35,46 @@ if(isset($_SESSION['empcode'])){
                 <div class="card p-3 rounded-0 border-0 shadow-lg">
                     <h4 class="text-center fw-normal">รายละเอียดผู้ใช้งาน</h4>
                     <div class="card-body">
-                        <form action="#" method="POST" class="needs-validation" novalidate>
-                            <div class="row mb-3">
+                        <form action="./backend/personal_update.php" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-center mb-3">
-                                        <img src="assets/images/test.png" class="rounded-circle" width="100px" alt="">
-                                    </div>
-                                    <div class="d-flex justify-content-center">                                        
-                                        <input type="file" class="form-control form-control-sm w-50" id="Profilepic" placeholder="Profilepic">                                        
+                                        <img class="rounded-circle border border-primary border-3" style="clip-path: circle(); width: 150px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic'];}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
+                                        
+                                    </div>                                   
+                                </div>                                 
+                            </div>
+                            <div class="row text-center">
+                                <i id="imgname"></i>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                <div class="d-flex justify-content-center"> 
+                                        <input type="file" class="form-control form-control-sm" name="emppic" id="emppic" accept=".jpg" capture="camera" style="display:none" >                                
+                                        <label class="btn btn-outline-primary btn-sm rounded" for="emppic"><i class="fas fa-camera"></i> &nbsp;&nbsp;อัพโหลดรูปภาพ</label>                                      
+                                </div>
+                                </div>
+                            </div> 
+                            <div class="row mb-3">
+                                <div class="col-md-12 text-center">
+                                  <p class="fw-normal p-0 m-1"><b>ชื่อ - นามสกุล :</b> <?php echo $detail_row['name_thai_emp']."<b>รหัสพนักงาน :</b>". $detail_row['code_emp']; ?></p>                                                                
+                                  <p class="fw-normal p-0 m-1"><b>ตำแหน่ง :</b><?php echo $detail_row['position_emp']."<b>แผนก/ฝ่าย :</b>".$detail_row['name_deptemp']; ?></p>                               
+                                                             
+                                </div>                                 
+                            </div>                           
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="form-floating form-floating-sm">
+                                        <input type="text" class="form-control form-control-sm" id="email" name="email" placeholder="email" required value="<?php if(trim($detail_row['email'])!=""){ echo trim($detail_row['email']);}else{echo '-';} ?>">
+                                        <label for="name">Email</label>
                                     </div>
                                 </div>                                 
                             </div>
                             <div class="row mb-3">
-                                <div class="col-md-12 ">
-                                  <p class="fw-normal p-0 m-1">ชื่อ - นามสกุล : <?php echo $detail_row['name_thai_emp']; ?></p>                                
-                                  <p class="fw-normal p-0 m-1">รหัสผู้ใช้งาน : <?php echo $detail_row['code_emp']; ?></p>                                
-                                  <p class="fw-normal p-0 m-1">ตำแหน่ง : <?php echo $detail_row['position_emp']; ?></p>                                
-                                  <p class="fw-normal p-0 m-1">แผนก/ฝ่าย : <?php echo $detail_row['name_deptemp']; ?> </p>                                
-                                </div>                                 
-                            </div> 
-                            <div class="row mb-3">
                                 <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="email" placeholder="email" required value="<?php if(trim($detail_row['email'])!=""){ echo trim($detail_row['email']);}else{echo '-';} ?>">
-                                        <label for="name">Email</label>
-                                    </div>
-                                </div>                                 
-                            </div> 
-                            <!-- <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="idencode" placeholder="เลขบัตรประชาชน" required value="<?php //if(trim($detail_row['iden_code'])!=""){ echo trim($detail_row['iden_code']);}else{echo '-';} ?>">
-                                        <label for="idencode">เลขบัตรประชาชน</label>
-                                    </div>
+                                <button class="btn btn-primary w-100" type="submit">บันทึก</button>
                                 </div>
-                            </div>                             
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input type="date" class="form-control" id="birhtday" placeholder="วันเกิด" required value="<?php //echo date('Y-m-d',strtotime($detail_row["birthdate"])); ?>">
-                                        <label for="idencode">วันเดือนปีเกิด</label>
-                                    </div>
-                                </div>
-                            </div>                              -->
+                            </div>
                         </form>
                     </div>
                 </div>

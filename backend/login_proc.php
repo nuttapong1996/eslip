@@ -22,7 +22,8 @@ if(isset($_POST['username']) && isset($_POST['password'])){
                 table_regis.iden_code,
                 table_regis.birthdate,
                 table_regis.email,
-                table_regis.password
+                table_regis.password,
+                table_regis.emp_pic
               FROM
                 tbl_regis AS table_regis
               JOIN tbl_emp AS table_emp ON table_regis.emp_code = table_emp.code_emp
@@ -49,6 +50,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             $_SESSION['iden_code'] = $row['iden_code'];
             $_SESSION['birthdate'] = $row['birthdate'];
             $_SESSION['email'] = $row['email'];
+            $_SESSION['emppic'] = $row['emp_pic'];
 
 
             // 4. เก็บ Cookie รหัสพนักงาน

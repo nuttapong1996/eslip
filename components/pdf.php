@@ -15,8 +15,10 @@ $empcode =$_SESSION['empcode'];
 
 // $mpdf = new \Mpdf\Mpdf(['debug' => true]);
 $mpdf = new \Mpdf\Mpdf();
-// $mpdf->SetDisplayMode('fullpage'); 
+$mpdf->SetDisplayMode('fullpage'); 
 $mpdf->AddPage('L'); 
+$mpdf->setFooter('ออกเมื่อวันที่ {DATE d/m/Y H:i:s} | สำหรับดูเท่านั้น | หน้าที่ {PAGENO} / {PAGENO}');
+
 
 
 
@@ -32,6 +34,22 @@ $stmt->bindParam(':year', $year);
 $stmt->bindParam(':period1', $period1);
 $stmt->bindParam(':period2', $period2);
 $stmt->execute();
+
+// Query Password อิงจากวันเดือนปีเกิด
+$bd ="SELECT birthdate FROM tbl_regis WHERE emp_code =:empcode";
+$bd_stmt = $conn->prepare($bd);
+$bd_stmt->bindParam(':empcode', $empcode);
+$bd_stmt->execute();
+$bd_row = $bd_stmt->fetch(PDO::FETCH_ASSOC);
+
+
+$dateobj = new DateTime($bd_row['birthdate']);
+$day_bd = $dateobj->format('d');
+$month_bd = $dateobj->format('m');
+$yb = $dateobj->format('Y') + 543;
+
+//ตัวแปร Password อิงจากวันเดือนปีเกิด
+$pass = $day_bd.$month_bd.$yb;
 
 
 while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -445,19 +463,15 @@ $mpdf->WriteHTML("
                 </tr>
             </tbody>
         </table>
-        <table>
-            <tr>
-                <th style='height: 30px; text-align:right;'>ได้รับเงินเรียบร้อยแล้ว&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ลงชื่อ..................................ผู้รับเงิน</th>
-            </tr>
-        </table>
+        <br>
     </body>");
 
 }
-$mpdf->SetProtection(array(),$row['']);
+$mpdf->SetProtection(array('copy','print'),$pass);
 $slipname ="SQMM_ESL_".$empcode."_".$year."_PP".$period1."-".$period2.".pdf";
 // $mpdf->Output($slipname,'S');
 // $mpdf->Output($slipname , \Mpdf\Output\Destination::INLINE);// แสดง PDF ในบราวเซอร์
-$pdfContent = $mpdf->Output('' ,'S');// แสดง PDF ในบราวเซอร์
+$pdfContent = $mpdf->Output('' ,'S');// แสดง PDF ในบราวเซอร์12032539
 
 
 // ส่ง PDF ไปยังหน้าที่ต้องการในรูปแบบที่ดาวน์โหลดได้

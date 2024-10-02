@@ -11363,7 +11363,7 @@ body {
 } */
 
 /* The message box is shown when the user clicks on the password field */
-#pwrule {
+/* #pwrule {
   display:none;
   background: #ffff;
   color: #000;
@@ -11377,7 +11377,7 @@ body {
   font-size: 1rem;
 }
 
-/* Add a green text color and a checkmark when the requirements are right */
+
 .valid {
   color: green;
 }
@@ -11388,7 +11388,7 @@ body {
   content: "&#10004;";
 }
 
-/* Add a red text color and an "x" icon when the requirements are wrong */
+
 .invalid {
   color: red;
 }
@@ -11397,4 +11397,9 @@ body {
   position: relative;
   left: -35px;
   content: "&#10006;";
-}
+} */
+
+  /* ซ่อนปุ่ม Browse */
+  /* #emppic {
+    display: none;
+} */

@@ -11,6 +11,7 @@
 <script src="./js/period_select.js"></script>
 <script src="./js/check_emp.js"></script>
 <script src="./js/pass_edit.js"></script>
+<script src="./js/emp_edit.js"></script>
 
 
 <link rel="manifest" href="./manifest.json">
