@@ -17,9 +17,9 @@ if(isset($_SESSION['empcode'])){
         $stmt->bindParam(':empcode', $empcode);
 
         if ($stmt->execute()) {
-            echo "อัพเดตและบันทึกข้อมูลสำเร็จ";
+          $updateEmail = true;
         } else {
-            echo "เกิดข้อผิดพลาดในการบันทึกข้อมูลลงฐานข้อมูล";
+            $updateEmail = false;
         }
 
        // ตรวจสอบการอัพโหลดไฟล์ภาพ
@@ -76,21 +76,22 @@ if(isset($_SESSION['empcode'])){
                 imagedestroy($dstImage);
 
                     // อัพเดตฐานข้อมูลด้วยเส้นทางไฟล์ของรูปภาพ
-                    $sql = "UPDATE tbl_regis SET emp_pic = :profile_image WHERE emp_code  = :empcode";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bindParam(':profile_image', $imageName);
-                    $stmt->bindParam(':empcode', $empcode);
+                    $img_sql = "UPDATE tbl_regis SET emp_pic = :profile_image WHERE emp_code  = :empcode";
+                    $img_stmt = $conn->prepare($img_sql);
+                    $img_stmt->bindParam(':profile_image', $imageName);
+                    $img_stmt->bindParam(':empcode', $empcode);
 
-                    if ($stmt->execute()) {
-                        echo "อัพโหลดและบันทึกข้อมูลสำเร็จ";
+                    if ($img_stmt->execute()) {
+                        // echo "อัพโหลดและบันทึกข้อมูลสำเร็จ";
+                        header('location: ../user?manage=user_detail&update=success');
                     } else {
-                        echo "เกิดข้อผิดพลาดในการบันทึกข้อมูลลงฐานข้อมูล";
+                        header('location: ../user?manage=user_detail&update=fail');
                     }
                 } else {
                     echo "เกิดข้อผิดพลาดในการย้ายไฟล์";
                 }
         } else {
-            echo "ไฟล์ที่อัพโหลดไม่ใช่รูปภาพที่อนุญาต";
+            header('location: ../user?manage=user_detail&update=fail');
         }
     }else{
         header('location: ../user?manage=user_detail');

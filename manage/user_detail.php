@@ -85,4 +85,22 @@ if(isset($_SESSION['empcode'])){
 <?php }else{
     header('location:../login');
 }
+
+if(isset($_GET['update'])=='success'){
+    echo "<script>
+            Swal.fire({
+                title: 'อัพเดทข้อมูลสําเร็จ',
+                icon: 'success'
+            }).then(function(){ location.href = 'user?manage';},20000);
+        </script>";    
+}
+if(isset($_GET['update'])=='fail'){
+    echo "<script>
+            Swal.fire({
+                title: 'fail',
+                icon: 'error'
+            }).then(function(){ location.href = 'user?managel';},50000);
+        </script>";    
+}
 ?>
+
