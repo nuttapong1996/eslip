@@ -45,6 +45,7 @@ $title = "สรุปรายการเงินเดือน";
 </body>
 </html>
 <?php }else{
-    header('location:login');
+    echo "<script>window.location.href = 'login';</script>";
+    // header('location:login');
 }
 ?>

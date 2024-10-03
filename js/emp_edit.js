@@ -13,6 +13,5 @@
         reader.readAsDataURL(event.target.files[0]);
         $('#imgname').text(event.target.files[0].name);
         
-
     });
   });

@@ -1,35 +1,32 @@
 <?php
 session_start();
 if(isset($_SESSION['empcode'])){
-    
-    if(isset($_POST['email']) || isset($_FILES['emppic'])){
+    require_once __DIR__ . '/../includes/connect_db.php';
 
-        require_once __DIR__ . '/../includes/connect_db.php';
+    if(isset($_POST['update'])){
+        if(isset($_POST['email'])){
+            $user_update = "UPDATE tbl_regis SET email = :email WHERE emp_code = :empcode";
+            $stmt = $conn->prepare($user_update);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':empcode', $empcode);
+            $stmt->execute();
+            header('location: ../user?manage=user_detail&update=success');
 
-        $email = $_POST['email'];
-        $empcode = $_SESSION['empcode'];
-        $image = $_FILES['emppic'];
-
-        // อัพเดตอีเมลในฐานข้อมูล
-        $up_email = "UPDATE tbl_regis SET email = :email WHERE emp_code  = :empcode";
-        $stmt = $conn->prepare($up_email);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':empcode', $empcode);
-
-        if ($stmt->execute()) {
-          $updateEmail = true;
-        } else {
-            $updateEmail = false;
+        }else{
+            header('location: ../user?manage=user_detail&update=fail');
         }
+    }
 
-       // ตรวจสอบการอัพโหลดไฟล์ภาพ
-       if ($image['error'] === UPLOAD_ERR_OK && strtolower(pathinfo($image['name'], PATHINFO_EXTENSION)) === 'jpg'){ 
+
+    if(isset($_POST['uppic'])){
+        // ตรวจสอบการอัพโหลดไฟล์ภาพ
+        if ($image['error'] === UPLOAD_ERR_OK && strtolower(pathinfo($image['name'], PATHINFO_EXTENSION)) === 'jpg'){ 
             $uploadDir = '../uploads/emp_pic/';
             $imageName = $empcode . '.jpg'; // ใช้รหัสพนักงานเป็นชื่อไฟล์
             $uploadPath = $uploadDir . $imageName;
             
-             // ย้ายไฟล์ไปยังตำแหน่งชั่วคราวก่อนครอป
-             if (move_uploaded_file($image['tmp_name'], $uploadPath)) {
+            // ย้ายไฟล์ไปยังตำแหน่งชั่วคราวก่อนครอป
+            if (move_uploaded_file($image['tmp_name'], $uploadPath)) {
 
                 // เริ่มการครอปรูปภาพ
                 $srcImage = imagecreatefromjpeg($uploadPath);
@@ -78,6 +75,7 @@ if(isset($_SESSION['empcode'])){
                     // อัพเดตฐานข้อมูลด้วยเส้นทางไฟล์ของรูปภาพ
                     $img_sql = "UPDATE tbl_regis SET emp_pic = :profile_image WHERE emp_code  = :empcode";
                     $img_stmt = $conn->prepare($img_sql);
+                    
                     $img_stmt->bindParam(':profile_image', $imageName);
                     $img_stmt->bindParam(':empcode', $empcode);
 
@@ -93,12 +91,31 @@ if(isset($_SESSION['empcode'])){
         } else {
             header('location: ../user?manage=user_detail&update=fail');
         }
-    }else{
-        header('location: ../user?manage=user_detail');
     }
+
+
 }else{
     header('location: ../user?manage=user_detail');
 }
+
+    // if(isset($_POST['email']) || isset($_FILES['emppic'])){
+
+    //     require_once __DIR__ . '/../includes/connect_db.php';
+
+    //     $email = $_POST['email'];
+    //     $empcode = $_SESSION['empcode'];
+    //     $image = $_FILES['emppic'];
+
+        // // อัพเดตอีเมลในฐานข้อมูล
+
+
+       
+//     }else{
+//         header('location: ../user?manage=user_detail');
+//     }
+// }else{
+//     header('location: ../user?manage=user_detail');
+// }
 
 
 ?>
