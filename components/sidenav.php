@@ -13,19 +13,37 @@
                     <div class="sb-nav-link-icon text-white"><i class="fas fa-home-alt"></i></div>
                     สรุปรายการเงินเดือน
                 </a>
-                <!-- <div class="sb-sidenav-menu-heading">รายการสลิป</div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                    <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                    Layouts
+                <div class="sb-sidenav-menu-heading">รายการสลิป</div>
+                <a class="nav-link" href="records">
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-table"></i></div>
+                    ตารางรายการย้อนหลัง
+                </a>
+                <a class="nav-link" href="./eslip">
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-receipt"></i></div>
+                    E-Slip (PDF)
+                </a>
+               
+               <?php if(trim($_SESSION['role']) == "am"){?>
+                <div class="sb-sidenav-menu-heading bg-warning p-2 text-sq-dark">ส่วนของ Admin</div>
+                <a class="nav-link" href="./eslip">
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-users"></i></div>
+                    การจัดการผู้ใช้งาน
+                </a>
+                <?php } ?>
+                
+                <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                    <div class="sb-nav-link-icon text-white"><i class="fas fa-columns"></i></div>การจัดการระบบ
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
+
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                        <a class="nav-link" href="layout-static.html">การจัดการผู้ใช้งาน</a>
                         <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
                     </nav>
-                </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                </div> -->
+
+                <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                     <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                     Pages
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -56,16 +74,7 @@
                         </div>
                     </nav>
                 </div> -->
-                <div class="sb-sidenav-menu-heading">รายการสลิป</div>
-                <a class="nav-link" href="records">
-                    <div class="sb-nav-link-icon text-white"><i class="fas fa-table"></i></div>
-                    ตารางรายการย้อนหลัง
-                </a>
-                <a class="nav-link" href="./eslip">
-                    <div class="sb-nav-link-icon text-white"><i class="fas fa-receipt"></i></div>
-                    E-Slip (PDF)
-                </a>
-               
+
             </div>
         </div>
         <div class="sb-sidenav-footer bg-sq-dark">

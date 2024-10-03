@@ -46,14 +46,15 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
             password,
             email,
             iden_code,
-            birthdate )
+            birthdate,
+            role )
         VALUES (
             :empcode , 
             :password , 
             :email ,
             :idencode ,
-            :birhtday
-            );";
+            :birhtday,
+            'u');";
     
         $stmt_regis = $conn->prepare($regis);
         $stmt_regis->bindParam(':empcode', $empcode);

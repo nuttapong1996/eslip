@@ -39,7 +39,15 @@ $title = "ข้อมูลผู้ใช้งาน";
                                 <div class="sb-nav-link-icon"><i class="fas fa-unlock-alt"></i></div>
                                 เปลี่ยนรหัสผ่าน
                             </a>
-                           
+                            
+                            <?php if(trim($_SESSION['role']) == "am"){?>
+                            <div class="sb-sidenav-menu-heading p-2 fs-6 bg-warning text-sq-dark">ส่วนของ Admin</div>
+                            <a class="nav-link text-sq p-3 fs-5 border-bottom" href="user?manage=user_detail">
+                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                                การจัดการผู้ใช้งาน
+                            </a>                           
+                           <?php } ?>
+
                             <a class="nav-link text-white bg-danger " href="logout.php">
                                 <div class="sb-nav-link-icon">ออกจากระบบ &nbsp;<i class="fas fa-right-from-bracket"></i></div>
                             </a>

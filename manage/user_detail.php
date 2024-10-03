@@ -35,38 +35,40 @@ if(isset($_SESSION['empcode'])){
                 <div class="card p-3 rounded-0 border-0 shadow-lg">
                     <h4 class="text-center fw-normal">รายละเอียดผู้ใช้งาน</h4>
                     <div class="card-body">
-                        <!-- <form action="./backend/personal_update.php" method="POST" class="needs-validation" enctype="multipart/form-data" novalidate> -->
-                        <form action="#emppic" method="GET" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+                        <form action="./backend/upload_pic.php" method="POST" enctype="multipart/form-data" >
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-center mb-3">
-                                        <img class="rounded-circle border border-primary border-3" style="clip-path: circle(); width: 150px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic'];}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
-
+                                        <img class="rounded-circle " style="clip-path: circle(); width: 150px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic'];}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
                                     </div>                                   
                                 </div>                                 
                             </div>
+
                             <div class="row text-center">
                                 <i id="imgname"></i>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col-md-12">
-                                <div class="d-flex justify-content-center"> 
-                                        <input type="file" class="form-control form-control-sm" name="emppic" id="emppic" accept=".jpg" capture="camera" style="display:none" >                                
-                                        <label class="btn btn-outline-primary btn-sm rounded" for="emppic" ><i class="fas fa-camera"></i> &nbsp;&nbsp;อัพโหลดรูปภาพ</label>
-                                        <button class="btn btn-outline-primary btn-sm rounded" type="submit" name = "uppic"> อัพโหลด</button>                                  
+                                <div class="d-flex flex-column align-items-center"> 
+                                        <input type="file" class="form-control form-control-sm" name="emppic" id="emppic" accept=".jpg" capture="camera" style="display: none;">                                
+                                        <label class="btn btn-outline-secondary btn-sm rounded  mb-2" for="emppic" ><i class="fas fa-camera"></i> &nbsp;เลือกรูปภาพ</label>
+                                        <button class="btn btn-primary btn-sm rounded w-25" type="submit" id="upbtn"><i class="fas fa-cloud-upload-alt"></i> อัพโหลด</button>                                  
                                 </div>
                                 </div>
-                            </div> 
+                            </div>
+
                             <div class="row mb-3">
                                 <div class="col-md-12 text-center">
-                                  <p class="fw-normal p-0 m-1"><b>ชื่อ - นามสกุล :</b> <?php echo $detail_row['name_thai_emp']."<b>รหัสพนักงาน :</b>". $detail_row['code_emp']; ?></p>                                                                
+                                  <p class="fw-normal p-0 m-1"><b>ชื่อ - นามสกุล :</b> <?php echo $detail_row['name_thai_emp']."<br><b>รหัสพนักงาน :</b>". $detail_row['code_emp']; ?></p>                                                                
                                   <p class="fw-normal p-0 m-1"><b>ตำแหน่ง :</b><?php echo $detail_row['position_emp']."<b>แผนก/ฝ่าย :</b>".$detail_row['name_deptemp']; ?></p>                               
                                                              
                                 </div>                                 
                             </div>
                         </form>
 
-                        <form action="user?manage=user_detail&email" method="GET" class="needs-validation" novalidate>                           
+                        <form action="./backend/personal_update.php" method="POST" class="needs-validation" novalidate>                           
                             <div class="row mb-3">
                                 <div class="col-md-12">
                                     <div class="form-floating form-floating-sm">
@@ -91,21 +93,54 @@ if(isset($_SESSION['empcode'])){
     header('location:../login');
 }
 
-// if(isset($_GET['update'])=='success'){
-//     echo "<script>
-//             Swal.fire({
-//                 title: 'อัพเดทข้อมูลสําเร็จ',
-//                 icon: 'success'
-//             }).then(function(){ location.href = 'user?manage';},20000);
-//         </script>";    
-// }
-// if(isset($_GET['update'])=='fail'){
-//     echo "<script>
-//             Swal.fire({
-//                 title: 'fail',
-//                 icon: 'error'
-//             }).then(function(){ location.href = 'user?managel';},50000);
-//         </script>";    
-// }
+
+
+if(isset($_GET['update_success'])){
+    echo "<script>
+            Swal.fire({
+                title: 'อัพเดทข้อมูลสําเร็จ',
+                icon: 'success',
+                showConfirmButton: true,
+            }).then(function() {
+                window.location ='user?manage=user_detail';
+            })
+        </script>";    
+}
+if(isset($_GET['update_fail'])){
+    echo "<script>
+            Swal.fire({
+                title: 'อัพเดทข้อมูลไม่สําเร็จ',
+                text: 'กรุณาตรวจสอบและทำรายการอีกครั้ง',
+                icon: 'error',
+                showConfirmButton: true,
+            }).then(function() {
+                window.location ='user?manage=user_detail';
+            })
+        </script>";    
+}
+if(isset($_GET['upload_success'])){
+    echo "<script>
+            Swal.fire({
+                title: 'อัพโหลดรูปภาพสําเร็จ',
+                icon: 'success',
+                showConfirmButton: true,
+            }).then(function() {
+                window.location ='user?manage=user_detail';
+            })
+        </script>";    
+}
+if(isset($_GET['upload_fail'])){
+    echo "<script>
+            Swal.fire({
+                title: 'อัพโหลดรูปภาพไม่สําเร็จ',
+                text: 'กรุณาตรวจสอบและทำรายการอีกครั้ง',
+                icon: 'error',
+                showConfirmButton: true,
+            }).then(function() {
+                window.location ='user?manage=user_detail';
+            })
+        </script>";    
+}
+
 ?>
 
