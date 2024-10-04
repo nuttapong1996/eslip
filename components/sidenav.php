@@ -25,8 +25,8 @@
                
                <?php if(trim($_SESSION['role']) == "am"){?>
                 <div class="sb-sidenav-menu-heading bg-warning p-2 text-sq-dark">ส่วนของ Admin</div>
-                <a class="nav-link" href="./eslip">
-                    <div class="sb-nav-link-icon text-white"><i class="fas fa-users"></i></div>
+                <a class="nav-link" href="./admin?manage=users">
+                    <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-users-gear"></i></div>
                     การจัดการผู้ใช้งาน
                 </a>
                 <?php } ?>

@@ -23,13 +23,13 @@ $title = "การจัดการ";
                     switch ($_GET['manage']) {
                         case 'password':                
                             include './manage/newpass.php';
-                            break;
+                        break;
                         case 'user_detail':
                             include './manage/user_detail.php';
-                            break;
+                        break;
                         default:
                             include './manage/user_detail.php';
-                            break;
+                        break;
                     }
                 ?>
                 <div class="py-5"></div>

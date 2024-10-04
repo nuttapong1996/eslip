@@ -41,15 +41,46 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
     // DataTable
+    //ตารางรายการเงินเดือนย้อนหลัง
     const datatablesSimple = document.getElementById('datatablesSimple');
+    const usersDataTable = document.getElementById('usersDataTable');
 
     if (datatablesSimple) {
         let options = {
             searchable: false,
             perPageSelect: false,
-            perPage: 10,           
+            perPage: 10,
+            labels: {
+                noRows: 'ไม่พบข้อมูล',
+                noResults: "ไม่พบข้อมูลที่ต้องการ",
+                info: "แสดงรายการที่ {start}  ถึง {end} จากทั้งหมด {rows} รายการ",
+            }             
         };
         new simpleDatatables.DataTable(datatablesSimple ,options);
+    }
+
+    if (usersDataTable) {
+        let options = {
+            searchable: true,
+            perPageSelect: false,
+            perPage: 20, 
+            fixedColumns: true,
+            columns: [
+                {select: 0 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
+                {select: 1 , cellClass: 'text-center',headerClass: 'bg-primary text-white'},
+                {select: 2 ,headerClass: 'bg-primary text-white',searchable: false},
+                {select: 3 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
+                {select: 4 , cellClass: 'text-center',headerClass: 'bg-warning',searchable: false},
+                {select: 5 , cellClass: 'text-center',headerClass: 'bg-danger text-white',searchable: false},
+            ],
+            labels: {
+                placeholder: 'ค้นหาจากรหัสพนักงาน',
+                noRows: 'ไม่พบข้อมูล',
+                noResults: "ไม่พบข้อมูลที่ต้องการ",
+                info: "แสดงรายการที่ {start}  ถึง {end} จากทั้งหมด {rows} รายการ",
+            }         
+        };
+        new simpleDatatables.DataTable(usersDataTable ,options);
     }
 });
 
