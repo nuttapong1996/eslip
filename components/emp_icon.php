@@ -28,7 +28,7 @@ if(isset($_SESSION['empcode'])){
  ?>
  
  
-<img  class="rounded-circle  "style="clip-path: circle(); width: 100px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}?>"  alt="">
+<img  class="rounded-circle"style="clip-path: circle(); width: 40px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}?>"  alt="">
 
 <?php
 }else{
