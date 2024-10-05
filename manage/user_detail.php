@@ -40,7 +40,7 @@ if(isset($_SESSION['empcode'])){
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="text-center mb-3">
-                                        <img class="rounded-circle " style="clip-path: circle(); width: 150px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic'];}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
+                                        <img class="rounded-circle " style="clip-path: circle(); width: 150px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
                                     </div>                                   
                                 </div>                                 
                             </div>
