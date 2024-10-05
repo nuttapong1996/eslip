@@ -32,43 +32,49 @@
     <div class="container px-4">
         <div class="row justify-content-center mt-5">
             <div class="col-sm-5">
-            <h5 class="mb-4 text-center">แก้ไขผู้ใช้งานรหัสพนักงาน : <?php echo $id ?></h5>
+            <h5 class="mb-4 text-center">แก้ไขรายละเอียดผู้ใช้งาน</h5>
                 <div class="card border-0 rounded-0 p-2 mb-4 shadow-sm">                    
                     <div class="card-body">
-                        <form method="POST" action="manage/update_user.php" enctype="multipart/form-data">
+                        <form method="POST" action="manage/update_user_proc.php"  class="needs-validation">
                             <input type="hidden" name="empcode" value="<?php echo $detail_row['code_emp'] ?>">
-                            <div class="form-floating mb-3">                            
-                                <input type="text" class="form-control" id="name" name="name" value="<?php echo trim($detail_row['name_thai_emp']) ?>">
-                                <label for="name">ชื่อ</label>
+
+                            <div class="mb-3">                            
+                                <label for="name"><b>ชื่อ : </b> <?php echo trim($detail_row['name_thai_emp']) ?> <b>รหัส : </b> <?php echo trim($detail_row['code_emp']) ?></label>
                             </div>
+
                             <div class="form-floating mb-3 ">
-                                <input class="form-control" name="birhtday" id="birhtday" type="date" onkeydown="return false"   required autocomplete="off" value="<?php echo trim($detail_row['birthdate']) ?>"/>
+                                <input class="form-control" name="edit_birhtday" id="edit_birhtday" type="date" onkeydown="return false"   required autocomplete="off" value="<?php echo trim($detail_row['birthdate']) ?>"/>
                                 <label for="birhtday">เลือก ว-ด-ป เกิด</label>
                                 <div id="msg3" class="invalid-feedback"></div>
-                            </div>                           
+                            </div>
+
                             <div class="form-floating mb-3">                                
-                                <input type="text" class="form-control" id="iden_code" name="iden_code" value="<?php echo trim($detail_row['iden_code']) ?>">
+                                <input type="text" class="form-control" name="edit_iden_code" id="edit_iden_code" value="<?php echo trim($detail_row['iden_code']) ?>">
                                 <label for="iden_code">รหัสบัตรประชาชน</label>
                             </div>
+
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="iden_code" name="iden_code" value="<?php echo trim($detail_row['email']) ?>">
+                                <input type="text" class="form-control"  name="edit_email" id="edit_email"  value="<?php echo trim($detail_row['email']) ?>">
                                 <label for="iden_code" class="form-label">Email</label>
                             </div>
+
                             <div class="form-floating mb-3">                                
                             <label for="password">รหัสผ่าน</label>
                                 <div class="input-group">
-                                    <input class="form-control rounded-0 rounded-start" name="password" id="password" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="รหัสผ่าน" required autocomplete="off" maxlength="8"  />
+                                    <input class="form-control rounded-0 rounded-start" name="edit_password" id="password" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="รหัสผ่าน" required autocomplete="off" maxlength="8"  />
                                     <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek1">
                                         <i class="fa fa-eye-slash" id="togglebtn1"></i>
                                     </button>                                                    
                                     <div id="message"></div>
                                 </div>
                             </div>
+
                             <div class="mt-4 mb-0">
                                 <div class="d-grid">
                                     <button class="btn btn-primary btn-block">บันทึกข้อมูล</button>
                                 </div>
                             </div>
+
                     </form>
                     </div>
                 </div>
@@ -77,7 +83,23 @@
     </div>
 </main>
 <?php
-    }else{
-        header("location: ../login");
-    }
+    $conn = null;
+}else{
+    header("location: ../login");
+}
+
+
+if(isset($_GET['edit_fail'])){
+    echo "<script>
+            Swal.fire({
+                title: 'เกิดข้อผิดพลาด',
+                text: 'กรุณาตรวจสอบและทำรายการอีกครั้ง',
+                icon: 'error',
+                showConfirmButton: true,
+            }).then(function() {
+                 window.location ='./admin?manage=edit&id=".$id."';
+            })
+        </script>";    
+}
+
 ?>

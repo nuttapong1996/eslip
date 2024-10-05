@@ -44,7 +44,6 @@ try{
     //ตั้งค่าโหมดการแจ้งเตือนข้อผิดพลาด
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // echo "Connected successfully";
-
 }catch(Exception $e){
     echo "Connection failed: " . $e->getMessage();
 }

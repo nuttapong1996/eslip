@@ -60,8 +60,22 @@ if(isset($_GET['pass_error'])){
             Swal.fire({
                 title: 'เกิดข้อผิดพลาด',
                 text: 'กรุณาตรวจสอบและทำรายการอีกครั้ง',
-                icon: 'error'
-            }).then(function(){ location.href = 'user?manage=password';},20000);
+                icon: 'error',
+                showConfirmButton: true,
+            }).then(function() {
+                window.location ='user?manage=password';
+            })
         </script>";    
-    }
+}
+if(isset($_GET['reset_success'])){
+    echo "<script>
+            Swal.fire({
+                title: 'เปลี่ยนรหัสผ่านสําเร็จ',
+                icon: 'success',
+                showConfirmButton: true,
+            }).then(function() {
+                window.location ='user?manage=password';
+            })
+        </script>";    
+}
 ?>

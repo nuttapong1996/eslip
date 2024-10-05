@@ -16,7 +16,7 @@
         $stmt_newpass->bindParam(':empcode', $empcode);
        
         if($stmt_newpass->execute()){
-            header("location: ../login?reset_success");
+            header("location: ../user?manage=password&reset_success");
         }else{
             header("location: ../user?manage=password&pass_error");
         

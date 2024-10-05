@@ -89,11 +89,11 @@ if(isset($_SESSION['empcode'])){
         </div>
     </div>
 </main>
-<?php }else{
+<?php
+    $conn = null;
+ }else{
     header('location:../login');
 }
-
-
 
 if(isset($_GET['update_success'])){
     echo "<script>

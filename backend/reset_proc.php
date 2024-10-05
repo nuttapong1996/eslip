@@ -9,7 +9,7 @@
         $newhash = password_hash($newpassword, PASSWORD_DEFAULT);
 
         //Query reset new password and clear token
-        $newpass = 'UPDATE tbl_regis SET password = :newpassword WHERE reset_token = :token';
+        $newpass = 'UPDATE tbl_regis SET password = :newpassword ,updated_at = NOW() WHERE reset_token = :token';
         $stmt_newpass = $conn->prepare($newpass);
         $stmt_newpass->bindParam(':newpassword', $newhash);
         $stmt_newpass->bindParam(':token', $token);
