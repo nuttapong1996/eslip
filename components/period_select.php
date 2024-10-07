@@ -13,7 +13,10 @@
     <option value="">เลือกปี</option>
         <?php foreach($year_row as $year){ ?>
             <option value="<?php echo $year['year_payslip']; ?>"><?php echo $year['year_payslip']; ?></option>
-        <?php }?>
+        <?php 
+            }
+            $conn = null;
+        ?>
     </select>
 </div>
 

@@ -11,24 +11,27 @@
         $stmt_token_check->execute();
         $row_token = $stmt_token_check->fetch(PDO::FETCH_ASSOC);
 
-        // Query clear token
-        // $clear_token = 'UPDATE tbl_regis SET reset_token = NULL, reset_token_expire_date = NULL WHERE reset_token = :token';
-        // $stmt_clear_token = $conn->prepare($clear_token);
-        // $stmt_clear_token->bindParam(':token', $token);
+
+        // Query pull token
+        $pull_token = "SELECT reset_token_expire_date FROM tbl_regis WHERE reset_token = :token";
 
         // หาจํานวนเวลาที่เหลือ
         $currentTimestamp = time();
         $remainingTime = strtotime($row_token['reset_token_expire_date']) - $currentTimestamp;
 
 
+
+
         // เวลาหมดอายุของ token
-        if ($remainingTime < 0) {
+        if ($remainingTime < 0 ) {
             $remainingTime = 0;
             // Query clear token
             $clear_token = 'UPDATE tbl_regis SET reset_token = NULL, reset_token_expire_date = NULL WHERE reset_token = :token';
             $stmt_clear_token = $conn->prepare($clear_token);
             $stmt_clear_token->bindParam(':token', $token);
-            $stmt_clear_token->execute();          
+            $stmt_clear_token->execute();       
+
+            header('location: ./forgot?expired');
         }
 
 
@@ -142,10 +145,13 @@
 </html>
 <?php 
     }else{
-        header('location:forgot?expired');
+        header('location: ./forgot?expired');
     }
+    $conn=null;
 }else{
-    header('location:forgot?expired');
+    header('location: ./forgot?error');
 }
+
+
 ?>
 

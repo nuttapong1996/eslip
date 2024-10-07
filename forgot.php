@@ -61,13 +61,16 @@
 </html>
 
 <?php 
-     if(isset($_GET['expired'])){
+    if(isset($_GET['expired'])){
         echo "<script>
                 Swal.fire({
                     title: 'โทเค็นหมดอายุ',
                     text: 'กรุณาทำรายการอีกครั้ง',
-                    icon: 'error'
-                }).then(function(){ location.href = 'forgot';},20000);
+                    icon: 'error',
+                    showConfirmButton: true,
+            }).then(function(){ 
+                    window.location = 'forgot';
+                });
             </script>";    
     }
     if(isset($_GET['notfound'])){
@@ -75,8 +78,11 @@
                 Swal.fire({
                     title: 'รหัสพนักงานหรือเลขบัตรประชาชนไม่ถูกต้อง',
                     text: 'กรุณาตรวจสอบและทำรายการอีกครั้ง',
-                    icon: 'error'
-                }).then(function(){ location.href = 'forgot';},20000);
+                    icon: 'error',
+                    showConfirmButton: true,
+                }).then(function(){ 
+                    window.location = 'forgot';
+                });
             </script>";    
     }
     if(isset($_GET['error'])){
@@ -84,8 +90,11 @@
                 Swal.fire({
                     title: 'เกิดข้อผิดพลาด',
                     text: 'กรณาทำรายการอีกครั้ง',
-                    icon: 'error'
-                }).then(function(){ location.href = 'forgot';},20000);
+                    icon: 'error',
+                    showConfirmButton: true,
+                    }).then(function(){ 
+                        window.location = 'forgot';
+                    });
             </script>";    
     }
 ?>

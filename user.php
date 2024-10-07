@@ -54,7 +54,6 @@ $title = "การจัดการ";
     header('location:login');
 }
 
-
 if(isset($_GET['pass_error'])){
     echo "<script>
             Swal.fire({
