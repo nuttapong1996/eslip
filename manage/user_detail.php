@@ -79,6 +79,14 @@ if(isset($_SESSION['empcode'])){
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-12">
+                                    <div class="form-floating form-floating-sm">
+                                        <input type="date" class="form-control form-control-sm" name="birhtday" id="birhtday"  onkeydown="return false" required value="<?php echo trim($detail_row['birthdate']) ?>">
+                                        <label for="name">วัน-เดือน-ปี เกิด</label>
+                                    </div>
+                                </div>                                 
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
                                 <button class="btn btn-primary w-100" type="submit" name = "update">บันทึก</button>
                                 </div>
                             </div>

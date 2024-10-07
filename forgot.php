@@ -37,7 +37,7 @@
                                         </div>
                                     </div>
                                     <div class="d-grid ">
-                                        <button class="btn btn-sm btn-primary"  id="submit" type="submit">ตกลง</button>
+                                        <button class="btn btn-sm btn-primary" type="submit">ตกลง</button>
                                     </div>
                                 </form>
                                 <hr>

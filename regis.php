@@ -35,11 +35,13 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-floating mb-3 ">
-                                            <input class="form-control" name="birhtday" id="birhtday" type="date" onkeydown="return false"   required autocomplete="off"/>
-                                            <label for="birhtday">เลือก ว-ด-ป เกิด</label>
-                                            <div id="msg3" class="invalid-feedback"></div>
+                                        <div class="mb-3">
+                                            <small class=""><b class="text-danger">กรุณากรอกวันเดือนปีเกิดให้ถูกต้อง เนื่องจากจะมีผลต่อการใช้งานในส่วนของ Eslip(PDF) </b>  <br>  <p class="text-bg-warning px-2 rounded-pill text-center">*ตัวอย่าง : หากท่านเกิดวันที่ 5 มกราคม พศ. 2530 &nbsp;ให้กรอกเป็น 05/01/1987 </p></small>
+                                            <div class="form-floating">                                            
+                                                <input class="form-control" name="birhtday" id="birhtday" type="date" onkeydown="return false"   required autocomplete="off"/>
+                                                <label for="birhtday">เลือก ว-ด-ป เกิด</label>
+                                                <div id="msg3" class="invalid-feedback"></div>                                            
+                                            </div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" autocomplete="off" />

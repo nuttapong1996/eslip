@@ -223,8 +223,25 @@ $(document).ready(function(){
         }
     });
 
+
+    $('#password').on('change',function(){
+        if($('#password').val() !== ""){
+            if($('#password').val()!== $('#cfpassword').val()){
+                $('#cfpassword').removeClass('is-valid').addClass('is-invalid');
+                $('#messagecf').removeClass('valid-feedback').addClass('invalid-feedback');
+                $('#messagecf').text('รหัสผ่านไม่ตรงกัน');
+                $('#submit').prop('disabled', true);
+            }else{
+                $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
+                $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');
+                $('#messagecf').text('รหัสผ่านตรงกัน');
+                $('#submit').prop('disabled', false);
+            }
+        }
+    });
+
     // ตรวจสอบรหัสผ่านตรงกันหรือไม่
-    $('#cfpassword').on('input',function(){
+    $('#cfpassword').on('change',function(){
         if($('#cfpassword').val() === $('#password').val()){
             $('#cfpassword').removeClass('is-invalid').addClass('is-valid');
             $('#messagecf').removeClass('invalid-feedback').addClass('valid-feedback');
