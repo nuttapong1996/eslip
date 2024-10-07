@@ -14,18 +14,17 @@ if (isset($_POST['empcode'])) {
     $stmt_user_active->bindParam(':empcode', $empcode);
     $stmt_user_active->execute();
 
-
-
     // 1.ตรวจสอบรหัสพนักงานบนฐานข้อมูลพนักงาน tbl_emp
     if ($stmt_user_active->rowCount() > 0) {
         echo 'active'; // มีรหัสพนักงานในระบบ
     } else {
         echo 'none';  // ไม่พบรหัสพนักงานในฐานข้อมูล
     }
-
+$conn=null;
 }else{
-    echo 'none';
+    header('location: ../login');
 }
 
-$conn=null;
+
+
 ?>

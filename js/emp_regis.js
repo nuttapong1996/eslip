@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // ตรวจสอบรหัสพนักงานทุกครั้งที่มีการพิมพ์
-    $('#empcode').on('input', function() {
+    $('#empcode').on('change', function() {
         var employeeId = $(this).val();
         
         // ตรวจสอบว่า input ไม่ว่างเปล่า
@@ -11,13 +11,18 @@ $(document).ready(function(){
                 data: { empcode: employeeId },
                 success: function(response) {
                     if (response === 'active') {
+
                         $('#empcode').removeClass('is-invalid').addClass('is-valid');
                         $('#msg1').text('พบรหัสพนักงานในระบบ').show();
                         $('#msg1').removeClass('invalid-feedback').addClass('valid-feedback');
                     } else {
+                        $('#idencode').val('');
                         $('#empcode').removeClass('is-valid').addClass('is-invalid');
                         $('#msg1').text('ไม่พบรหัสพนักงานในระบบ').show();
                         $('#msg1').removeClass('valid-feedback').addClass('invalid-feedback');
+                        $('#idencode').removeClass('is-valid').addClass('is-invalid');
+                        $('#msg2').text('').show();
+                        $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
                     }
                 }
             });
@@ -27,6 +32,51 @@ $(document).ready(function(){
             $('#msg1').text('').hide();
         }
     });
+
+    // ตรวจสอบหมายเลขบัตรประชาชนทุกครั้งที่มีการพิมพ์
+    $('#idencode').on('input', function() {
+        var idencodeId = $(this).val();
+        var employeeId = $('#empcode').val();
+
+        // ตรวจสอบว่า input ไม่ว่างเปล่า    
+        if (idencodeId !== '') {
+            $.ajax({
+                url: './backend/check_idencode.php',
+                // url: './backend/check_employee.php',
+                method: 'POST',
+                data: { idencode: idencodeId , empcode: employeeId },
+                success: function (response) {
+                    if (response === 'found'){
+                        $('#idencode').removeClass('is-invalid').addClass('is-valid');
+                        $('#msg2').text('พบหมายเลขบัตรประชาชนในระบบ').show();
+                        $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
+                    }else{
+                        $('#idencode').removeClass('is-valid').addClass('is-invalid');
+                        $('#msg2').text('ไม่พบหมายเลขบัตรประชาชนในระบบ').show();
+                        $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
+                    }
+                }
+            });
+        }else{
+            // หาก input ว่าง ให้ลบคลาสการตรวจสอบออก
+            $('#idencode').removeClass('is-valid is-invalid');
+            $('#msg2').text('').hide();
+        }
+    });
+
+
+    // เช็กบัตรประชาชน 13 หลัก
+    // $('#idencode').on('input',function(){
+    //     if($('#idencode').val().length < 13){
+    //         $('#idencode').removeClass('is-valid').addClass('is-invalid');
+    //         $('#msg2').text('กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก').show();
+    //         $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
+    //     }else{
+    //         $('#idencode').removeClass('is-invalid').addClass('is-valid');
+    //         $('#msg2').text('เลขบัตรประชาชนครบ 13 หลัก').show();
+    //         $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
+    //     }
+    // });
 
     // เช็ค ค่า input ที่รับมา หากว่างให้แจ้งเตือน
     $('#empcode').on('input', function() {
@@ -121,18 +171,7 @@ $(document).ready(function(){
         } 
     });
 
-    // เช็กบัตรประชาชน 13 หลัก
-    $('#idencode').on('input ,change',function(){
-        if($('#idencode').val().length < 13){
-            $('#idencode').removeClass('is-valid').addClass('is-invalid');
-            $('#msg2').text('กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก').show();
-            $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
-        }else{
-            $('#idencode').removeClass('is-invalid').addClass('is-valid');
-            $('#msg2').text('เลขบัตรประชาชนครบ 13 หลัก').show();
-            $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
-        }
-    });
+
 
      // เช็ก input รหัสผ่านช่องที่ 1 
      $('#password').on('input', function() {

@@ -9,8 +9,8 @@
 <!-- Ajax Script -->
 <script src="./js/scripts.js"></script>
 <script src="./js/period_select.js"></script>
+<script src="./js/emp_edit.js"></script>
 <script src="./js/emp_regis.js"></script>
-<script src="./js/pass_edit.js"></script>
 <script src="./js/emp_pass_edit.js"></script>
 
 

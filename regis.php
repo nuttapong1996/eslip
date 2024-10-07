@@ -28,6 +28,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-floating mb-3 mb-sm-0">
+                                                    <input type="hidden" name="empcode2" id="empcode2">
                                                     <input class="form-control" name="idencode" id="idencode" type="text"    onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="เลขบัตรประชาชน" required autocomplete="off" maxlength="13" />
                                                     <label for="idencode">เลขบัตรประชาชน</label>
                                                     <div id="msg2"></div>
