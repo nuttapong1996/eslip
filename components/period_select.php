@@ -1,4 +1,5 @@
 <?php
+if(isset($_SESSION['empcode'])){
     require_once('./includes/connect_db.php');
 
     $yearlist= "SELECT year_payslip FROM tbl_payslip GROUP BY year_payslip ORDER BY year_payslip DESC";
@@ -15,7 +16,7 @@
             <option value="<?php echo $year['year_payslip']; ?>"><?php echo $year['year_payslip']; ?></option>
         <?php 
             }
-            $conn = null;
+            
         ?>
     </select>
 </div>
@@ -33,3 +34,10 @@
         <option value="">เลือกงวด</option>
     </select>
 </div>
+
+<?php
+    $conn = null;
+}else{
+    header('location: login');
+}
+?>

@@ -14,7 +14,6 @@ self.addEventListener('install', function(event) {
           'assets/images/icon-512x512.png',
           'assets/images/logo.png',
           'assets/images/logo_white.png'
-
         ]);
       })
     );
