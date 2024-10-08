@@ -1,15 +1,15 @@
 <?php
+if(isset($_SESSION['empcode'])){
+    
+    //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once('./includes/connect_db.php');
 
+    //ตัวแปรปีปัจจุบัน
     $year = date("Y");
+    //ตัวแปรรหัสพนักงาน
     $empcode = $_SESSION['empcode'];
-    // $empcode = "2630065";
-    // $empcode = "2530151"; //คพี่แซ็ก
-    // $empcode = "2600217"; // test ค่าไฟ
-    // $empcode = "2600051"; //กยศ
-    // $empcode ="2620268"; //พี่ตูน
-    // $empcode ="2670087"; //พี่ท็อป
 
+    //Query เงินเดือนปัจจุบัน
     $recurent_in ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year ORDER BY code_tbl_payslip DESC LIMIT 1";
     $recur_stmt = $conn->prepare($recurent_in);
     $recur_stmt->bindParam(':empcode', $empcode);
@@ -17,13 +17,12 @@
     $recur_stmt->execute();
     $recur_row = $recur_stmt->fetch(PDO::FETCH_ASSOC);
 
+    //Query เงินของปีปัจจุบัน
     $curent_year_in = "SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year ORDER BY period_payslip DESC";
     $cur_year_stmt = $conn->prepare($curent_year_in);
     $cur_year_stmt->bindParam(':empcode', $empcode);
     $cur_year_stmt->bindParam(':year', $year);
     $cur_year_stmt->execute();
- 
-
 ?>
 <h5 class="fw-normal">เงินเดือนปัจจุบัน</h5>
 <div class="card rounded-0 mb-2 border-0 shadow-sm">
@@ -64,7 +63,13 @@
         }  ?>
     </tbody>
 </table>
-
+<?php 
+    //ปิดการเชื่อมต่อฐานข้อมูล
+    $conn = null;
+}else{
+    header('location: ../login');
+}
+?>
 
 
 

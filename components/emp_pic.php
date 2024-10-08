@@ -1,37 +1,21 @@
 <?php
 if(isset($_SESSION['empcode'])){
+    // เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
+    // ตัวแปรรหัสพนักงาน
     $empcode = $_SESSION['empcode'];
 
-    $detail_sql= "SELECT 
-                    table_emp.code_emp , 
-                    table_emp.name_thai_emp , 
-                    table_emp.position_emp , 
-                    table_dept.name_deptemp,
-                    table_regis.iden_code,
-                    table_regis.birthdate,
-                    table_regis.email,
-                    table_regis.password,
-                    table_regis.emp_pic
-                FROM
-                    tbl_regis    AS table_regis
-                JOIN tbl_emp      AS table_emp ON table_regis.emp_code  = table_emp.code_emp
-                JOIN tbl_dept_emp AS table_dept ON table_emp.dept_emp = table_dept.code_tbl_deptemp
-                WHERE
-                table_regis.emp_code  = :empcode";
-
-    $detail_stmt = $conn->prepare($detail_sql);
-    $detail_stmt->bindParam(':empcode', $empcode);
-    $detail_stmt->execute();
-    $detail_row = $detail_stmt->fetch(PDO::FETCH_ASSOC);
+    $pic_sql= "SELECT emp_pic FROM tbl_regis  WHERE emp_code  = :empcode";
+    $pic_stmt = $conn->prepare($pic_sql);
+    $pic_stmt->bindParam(':empcode', $empcode);
+    $pic_stmt->execute();
+    $pic_row = $pic_stmt->fetch(PDO::FETCH_ASSOC);
  ?>
- 
- 
-<img  class="rounded-circle  "style="clip-path: circle(); width: 100px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}?>"  alt="">
-
+<img  class="rounded-circle" style="clip-path: circle(); width: 100px; object-fit: cover" src="<?php if($pic_row['emp_pic'] != ""){echo "uploads/emp_pic/".$pic_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage_w.png';}?>"  alt="">
 <?php
 }else{
     header("location: ../login");
 }
+
 ?>

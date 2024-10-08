@@ -1,24 +1,27 @@
 self.addEventListener('install', function(event) {
     event.waitUntil(
-      caches.open('eslip-cache').then(function(cache) {
+      caches.open('e-slip-cache').then(function(cache) {
         return cache.addAll([
-          'manifest.json',
-          'login.php',
-          'index.php',
-          'home.php',
-          'css/bootstrap.min.css',
-          'css/*.css',
-          'js/*.js',
-          'assets/images/icon.png',
-          'assets/images/icon-192x192.png',
-          'assets/images/icon-512x512.png',
-          'assets/images/logo.png',
-          'assets/images/logo_white.png'
+          './manifest.json',
+          './login.php',
+          './index.php',
+          './css/bootstrap.min.css',
+          './css/*.css',
+          './js/*.js',
+          './assets/favicon.ico',
+          './assets/images/icon.jpg',
+          './assets/images/icon-152x152.jpg',
+          './assets/images/icon-167x167.jpg',
+          './assets/images/icon-180x180.jpg',
+          './assets/images/icon-192x192.jpg',
+          './assets/images/icon-512x512.jpg',
+          './assets/images/logo.png',
+          './assets/images/logo_white.png'
         ]);
       })
     );
   });
-  
+
   self.addEventListener('fetch', function(event) {
     event.respondWith(
       caches.match(event.request).then(function(response) {

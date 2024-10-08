@@ -2,6 +2,7 @@
 session_start();
 if(isset($_SESSION['empcode']) && isset($_POST['email']) && isset($_POST['birhtday'])){
 
+    //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
     $empcode = $_SESSION['empcode'];
@@ -22,6 +23,7 @@ if(isset($_SESSION['empcode']) && isset($_POST['email']) && isset($_POST['birhtd
             header('location: ../user?manage=user_detail&update_fail');
         }
     }
+    //ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
 }else{
     header('location: ../login');

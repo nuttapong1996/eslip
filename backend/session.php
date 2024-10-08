@@ -1,10 +1,7 @@
 <?php
 session_start();
-
 // กำหนดเวลาหมดอายุของ session (ในวินาที)
-// $session_lifetime = 1800; // 30 นาที
 $session_lifetime = 300; // 5 นาที
-// $session_lifetime = 10; // 5 นาที
 
 // ตรวจสอบว่า session ยังมีอยู่หรือไม่
 if (isset($_SESSION['LAST_ACTIVITY'])) {
@@ -53,7 +50,6 @@ $_SESSION['LAST_ACTIVITY'] = time();
 
         // รีเฟรช session ทุก ๆ 5 นาที
         setInterval(updateSession, 300000);
-
 
         // เพิ่ม event listener สำหรับการคลิก
         document.addEventListener('click', updateSession);

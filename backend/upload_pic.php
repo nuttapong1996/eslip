@@ -6,7 +6,6 @@ if(isset($_SESSION['empcode']) && isset($_FILES['emppic'])){
     $empcode = $_SESSION['empcode'];
     $image = $_FILES['emppic'];
 
-    // if(isset($_POST['uppic'])){
         // ตรวจสอบการอัพโหลดไฟล์ภาพ
         if ($image['error'] === UPLOAD_ERR_OK && strtolower(pathinfo($image['name'], PATHINFO_EXTENSION)) === 'jpg'){ 
             $uploadDir = '../uploads/emp_pic/';
@@ -68,7 +67,6 @@ if(isset($_SESSION['empcode']) && isset($_FILES['emppic'])){
                     $img_stmt->bindParam(':empcode', $empcode);
 
                     if ($img_stmt->execute()) {
-                        // echo "อัพโหลดและบันทึกข้อมูลสำเร็จ";
                         header('location: ../user?manage=user_detail&upload_success');
                     } else {
                         header('location: ../user?manage=user_detail&upload_fail');
@@ -77,7 +75,6 @@ if(isset($_SESSION['empcode']) && isset($_FILES['emppic'])){
                     echo "เกิดข้อผิดพลาดในการย้ายไฟล์";
                 }
         } else {
-            // echo "เกิดข้อผิดพลาดในการอัพโหลดไฟล์";
             header('location: ../user?manage=user_detail&upload_fail');
         }
 }else{

@@ -1,15 +1,8 @@
 <?php 
-// ตรวจสอบว่ามีการ post มาหรือไม่
 if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password'])&&isset($_POST['birhtday'])){
     
-    //เรียกใช้งานไฟล์ connect_db.php
+    //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
-
-
-    /** Checklist */
-    // 2.เช็ครหัสบัตรประชาชนว่ามีอยู่มั้ย
-    // 3.เช็คอีเมลว่ามีอยู่มั้ย
-    // 4.ทำการเข้ารหัสผ่านก่อน insert
 
     $empcode =$_POST['empcode'];
     $idencode =$_POST['idencode'];
@@ -91,6 +84,8 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
                 }      
             }
         }
+    // ปิดการเชื่อมต่อฐานข้อมูล
+    $conn = null;
 }else{
     header("location: ../regis?regis_fail");
 }

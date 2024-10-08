@@ -1,7 +1,7 @@
 <?php
     if(isset($_POST['emp_re']) && isset($_POST['iden_re'])){
 
-    //เรียกใช้งานไฟล์ connect_db.php
+    //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
     date_default_timezone_set('Asia/Bangkok');
@@ -9,16 +9,12 @@
     $empcode =$_POST['emp_re'];
     $idencode =$_POST['iden_re'];
     
-
     // Query เช็กว่ามีรหัสพนักงานและรหัสบัตรประชาชนในฐานข้อมูล
     $forgot = 'SELECT emp_code FROM tbl_regis WHERE emp_code = :empcode AND iden_code =:idencode';
     $stmt_forgot = $conn->prepare($forgot);
     $stmt_forgot->bindParam(':empcode', $empcode);
     $stmt_forgot->bindParam(':idencode', $idencode);
     $stmt_forgot->execute();
-
-
-
 
     if($stmt_forgot->rowCount() > 0){        
         $resetToken = generateToken();
@@ -39,6 +35,8 @@
     }
 
     $conn=null;
+    }else{
+        header("location: ../forgot?error");
     }
 
     function generateToken($length = 32) {

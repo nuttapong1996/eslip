@@ -1,8 +1,10 @@
 <?php 
     if(isset($_POST['newpassword'])&& isset($_POST['token'])){
-        //เรียกใช้งานไฟล์ connect_db.php
+
+        //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
         require_once __DIR__ . '/../includes/connect_db.php';
 
+        //รับค่าจากฟอร์ม
         $newpassword = $_POST['newpassword'];
         $token = $_POST['token'];
 
@@ -23,9 +25,9 @@
             header("location: ../login?reset_success");
         }else{
             header("location: ../forgot?error");
-        
-        $conn = null;
         }
+        // ปิดการเชื่อมต่อฐานข้อมูล
+        $conn = null;
     }else{
         header("location: ../forgot?error");
     }

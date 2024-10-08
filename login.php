@@ -3,69 +3,68 @@ session_start();
 if(isset($_SESSION['empcode'])){
     header('location:index');
 }else{
-?>
-    
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <?php include 'components/head.php'; ?>
-    <title>Login</title>
-</head>
-<body class="bg-gray ibm-plex-sans-thai-regular">
-<div id="layoutAuthentication">
-    <div id="layoutAuthentication_content ">
-        <main>
-            <div class="container mt-5">
-                <div class="mobilenav">
-                    <div class=" mt-5"></div>
-                </div>
-                <div class="row justify-content-center mt-3">
-                <div class="text-center"><img src="assets/images/logo.png" width="300px"></div>
-                    <div class="col-sm-5 mt-3">
-                        <form action="backend/login_proc.php" method="POST" class=" bg-white text-center p-3 rounded-2 shadow" autocomplete=off>
-                        <h5>เข้าสู่ระบบ</h5>
-                            <div class="form-floating mt-3 mb-3">
-                                <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" value="<?php if( isset($_COOKIE['empcode'])){ echo $_COOKIE['empcode']; } ?>" autocomplete=off maxlength="7">
-                                <label for="floatingInput">รหัสพนักงาน</label>
-                            </div>
-                            <!-- <label for="floatingPassword">รหัสผ่าน</label> -->
-                            <div class="input-group mt-3 mb-3">
-                                <input type="password" class="form-control" name="password" id="loginpassword" placeholder="รหัสผ่าน" autocomplete=off <?php if( isset($_COOKIE['empcode'])){ echo 'autofocus'; }  ?> maxlength="8">
-                                <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek">
-                                    <i class="fa fa-eye-slash" id="togglebtnlogin"></i>
-                                </button>
-                                <div id="message"></div>                                
-                            </div>
+?>   
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="manifest" href="manifest.json">
+            <?php include 'components/head.php'; ?>
+            <title>Login</title>
+        </head>
+        <body class="bg-gray ibm-plex-sans-thai-regular">
+        <div id="layoutAuthentication">
+            <div id="layoutAuthentication_content ">
+                <main>
+                    <div class="container mt-5">
+                        <div class="mobilenav">
+                            <div class=" mt-5"></div>
+                        </div>
+                        <div class="row justify-content-center mt-3">
+                        <div class="text-center"><img src="assets/images/logo.png" width="300px"></div>
+                            <div class="col-sm-5 mt-3">
+                                <form action="backend/login_proc.php" method="POST" class=" bg-white text-center p-3 rounded-2 shadow" autocomplete=off>
+                                <h5>เข้าสู่ระบบ</h5>
+                                    <div class="form-floating mt-3 mb-3">
+                                        <input type="text" class="form-control" name="username" placeholder="รหัสพนักงาน" value="<?php if( isset($_COOKIE['empcode'])){ echo $_COOKIE['empcode']; } ?>" autocomplete=off maxlength="7">
+                                        <label for="floatingInput">รหัสพนักงาน</label>
+                                    </div>
+                                    <!-- <label for="floatingPassword">รหัสผ่าน</label> -->
+                                    <div class="input-group mt-3 mb-3">
+                                        <input type="password" class="form-control" name="password" id="loginpassword" placeholder="รหัสผ่าน" autocomplete=off <?php if( isset($_COOKIE['empcode'])){ echo 'autofocus'; }  ?> maxlength="8">
+                                        <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek">
+                                            <i class="fa fa-eye-slash" id="togglebtnlogin"></i>
+                                        </button>
+                                        <div id="message"></div>                                
+                                    </div>
 
-                            <div class="d-flex justify-content-between mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep" checked>
-                                    <label class="form-check-label" for="keep">จดจำรหัสพนักงาน</label>
-                                </div>
-                                <a href="forgot"><b>ลืมรหัสผ่าน</b></a>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
-                            <hr>
-                            <a href="regis" class=""><b>สมัครสมาชิก</b"></a>
-                        </form>                
-                    </div>                    
-                    <div class="text-center mt-4">
-                        <small class="text-muted ibm-plex-sans-thai-light">
-                            Developed by IT Department (Maemoh)<br>
-                            &copy; 2024-<?php echo date('Y'); ?> Sahakol Equipment PCL.
-                        </small>
-                    </div>                
-                </div>
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="on" name="keep" id="keep" checked>
+                                            <label class="form-check-label" for="keep">จดจำรหัสพนักงาน</label>
+                                        </div>
+                                        <a href="forgot"><b>ลืมรหัสผ่าน</b></a>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
+                                    <hr>
+                                    <a href="regis" class=""><b>สมัครสมาชิก</b"></a>
+                                </form>                
+                            </div>                    
+                            <div class="text-center mt-4">
+                                <small class="text-muted ibm-plex-sans-thai-light">
+                                    Developed by IT Department (Maemoh)<br>
+                                    &copy; 2024-<?php echo date('Y'); ?> Sahakol Equipment PCL.
+                                </small>
+                            </div>                
+                        </div>
+                    </div>
+                </main>
             </div>
-        </main>
-    </div>
-</div>
-</body>
-</html>
+        </div>
+        </body>
+    </html>
 <?php } ?>
 
 <?php
