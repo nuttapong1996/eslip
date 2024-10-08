@@ -9,6 +9,7 @@ if(isset($_SESSION['empcode'])){
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- PWA  -->
             <link rel="manifest" href="manifest.json">
             <?php include 'components/head.php'; ?>
             <title>Login</title>
