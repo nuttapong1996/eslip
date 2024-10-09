@@ -1,7 +1,7 @@
 <?php 
 require_once 'backend/session.php';
 if(isset($_SESSION['empcode'])){
-$title = "สลิปเงินเดือนอิเล็กทรอนิกส์(E-SLIP) แบบ Pdf";
+$title = "สลิปเงินเดือน (PDF)";
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -20,7 +20,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
                 <div id="layoutSidenav_content">
                     <main>
                         <div class="container-fluid px-4">
-                            <h3 class="mt-5 mb-4 text-center">ดาวน์โหลด Eslip (PDF)</h3>
+                            <h3 class="mt-5 mb-4 text-center"><?php echo $title ?></h3>
                             <div class="row justify-content-center">
                                     <div class="col-sm-5">
                                         <div class="card border-0 rounded-0 p-2 mb-4 shadow-sm">
@@ -29,7 +29,7 @@ $title = "สลิปเงินเดือนอิเล็กทรอน�
                                                 <!-- <form class="d-flex flex-column justify-content-center" method="POST" target="pdfFrame" '>                                            -->
                                                 <form class="d-flex flex-column justify-content-center" method="POST" action='components/pdf.php'>                                           
                                                     <?php include 'components/period_select.php'; ?>
-                                                    <button class="btn btn-sm btn-outline-success p-3" name='download'><i class="fas fa-download"></i> ดาวน์โหลด</button>
+                                                    <button class="btn btn-sm btn-outline-success p-3" name='download'>ตกลง</button>
                                                 </form>                                        
                                             </div>
                                         </div>
