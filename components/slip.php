@@ -467,13 +467,13 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
     //ตั้งชื่อให้กับ PDF
     $slipname ="SQMM_ESL_".$empcode."_".$year."_PP".$period1."-".$period2.".pdf";
     //แสดง PDF
-    $mpdf->Output($slipname ,'I');
+    // $mpdf->Output($slipname ,'I');
 
     // ส่ง PDF ไปยังหน้าที่ต้องการในรูปแบบที่ดาวน์โหลดได้
-        // $pdfContent = $mpdf->Output('' ,'S');
-        // header('Content-Type: application/pdf');
-        // header('Content-Disposition: attachment; filename="'.$slipname.'"');
-        // echo $pdfContent;
+        $pdfContent = $mpdf->Output('' ,'S');
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment; filename="'.$slipname.'"');
+        echo $pdfContent;
         
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
