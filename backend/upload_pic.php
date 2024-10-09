@@ -53,7 +53,7 @@ if(isset($_SESSION['empcode']) && isset($_FILES['emppic'])){
                 imagecopyresampled($dstImage, $srcImage, 0, 0, $cropX, $cropY, 500, 500, $cropSize, $cropSize);
 
                 // บันทึกภาพที่ครอปแล้วทับไฟล์เดิม
-                imagejpeg($dstImage, $uploadPath ,90);
+                imagejpeg($dstImage, $uploadPath , 90);
 
                 // ทำความสะอาดหน่วยความจำ
                 imagedestroy($srcImage);
