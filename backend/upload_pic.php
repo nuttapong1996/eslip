@@ -15,49 +15,52 @@ if(isset($_SESSION['empcode']) && isset($_FILES['emppic'])){
             // ย้ายไฟล์ไปยังตำแหน่งชั่วคราวก่อนครอป
             if (move_uploaded_file($image['tmp_name'], $uploadPath)) {
 
-                // เริ่มการครอปรูปภาพ
-                $srcImage = imagecreatefromjpeg($uploadPath);
+                // // เริ่มการครอปรูปภาพ
+                // $srcImage = imagecreatefromjpeg($uploadPath);
 
-                // อ่านข้อมูล EXIF เพื่อตรวจสอบการหมุนของกล้อง
-                if (function_exists('exif_read_data')) {
-                    $exif = exif_read_data($uploadPath);
-                    if (isset($exif['Orientation'])) {
-                        $orientation = $exif['Orientation'];
+                // // อ่านข้อมูล EXIF เพื่อตรวจสอบการหมุนของกล้อง
+                // if (function_exists('exif_read_data')) {
+                //     $exif = exif_read_data($uploadPath);
+                //     if (isset($exif['Orientation'])) {
+                //         $orientation = $exif['Orientation'];
 
-                        // หมุนรูปภาพตามข้อมูล EXIF
-                        switch ($orientation) {
-                            case 3:
-                                $srcImage = imagerotate($srcImage, 180, 0);
-                                break;
-                            case 6:
-                                $srcImage = imagerotate($srcImage, -90, 0);
-                                break;
-                            case 8:
-                                $srcImage = imagerotate($srcImage, 90, 0);
-                                break;
-                        }
-                    }
-                }
+                //         // หมุนรูปภาพตามข้อมูล EXIF
+                //         switch ($orientation) {
+                //             case 3:
+                //                 $srcImage = imagerotate($srcImage, 180, 0);
+                //                 break;
+                //             case 6:
+                //                 $srcImage = imagerotate($srcImage, -90, 0);
+                //                 break;
+                //             case 8:
+                //                 $srcImage = imagerotate($srcImage, 90, 0);
+                //                 break;
+                //             default:
+                //                 $srcImage = imagerotate($srcImage, 0, 0);
+                //                 break;
+                //         }
+                //     }
+                // }
 
-                // ขนาดต้นฉบับของรูป
-                $originalWidth = imagesx($srcImage);
-                $originalHeight = imagesy($srcImage);
+                // // ขนาดต้นฉบับของรูป
+                // $originalWidth = imagesx($srcImage);
+                // $originalHeight = imagesy($srcImage);
 
-                // กำหนดขนาดครอป 500x500 พิกเซล
-                $cropSize = min($originalWidth, $originalHeight);
-                $cropX = ($originalWidth - $cropSize) / 2;
-                $cropY = ($originalHeight - $cropSize) / 2;
+                // // กำหนดขนาดครอป 500x500 พิกเซล
+                // $cropSize = min($originalWidth, $originalHeight);
+                // $cropX = ($originalWidth - $cropSize) / 2;
+                // $cropY = ($originalHeight - $cropSize) / 2;
 
-                // สร้างภาพใหม่ขนาด 500x500 พิกเซล
-                $dstImage = imagecreatetruecolor(500, 500);
-                imagecopyresampled($dstImage, $srcImage, 0, 0, $cropX, $cropY, 500, 500, $cropSize, $cropSize);
+                // // สร้างภาพใหม่ขนาด 500x500 พิกเซล
+                // $dstImage = imagecreatetruecolor(500, 500);
+                // imagecopyresampled($dstImage, $srcImage, 0, 0, $cropX, $cropY, 500, 500, $cropSize, $cropSize);
 
-                // บันทึกภาพที่ครอปแล้วทับไฟล์เดิม
-                imagejpeg($dstImage, $uploadPath , 90);
+                // // บันทึกภาพที่ครอปแล้วทับไฟล์เดิม
+                // imagejpeg($dstImage, $uploadPath , 90);
 
-                // ทำความสะอาดหน่วยความจำ
-                imagedestroy($srcImage);
-                imagedestroy($dstImage);
+                // // ทำความสะอาดหน่วยความจำ
+                // imagedestroy($srcImage);
+                // imagedestroy($dstImage);
 
                     // อัพเดตฐานข้อมูลด้วยเส้นทางไฟล์ของรูปภาพ
                     $img_sql = "UPDATE tbl_regis SET emp_pic = :profile_image WHERE emp_code  = :empcode";
