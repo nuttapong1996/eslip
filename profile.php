@@ -12,11 +12,19 @@ $title = "ข้อมูลผู้ใช้งาน";
         <title><?php echo $title; ?></title>
         </head>
         <script>
-                window.onload = function() {
-                    if (window.innerWidth >= 1024) {
-                        window.location.href = "login"; // ลิงก์ไปยังหน้าที่ต้องการ redirect
+                // ฟังก์ชันตรวจสอบขนาดหน้าจอและเปลี่ยนไปหน้าหลัก
+                function checkScreenSize() {
+                    var width = window.innerWidth;
+                    
+                    // สมมติว่าขนาดจอเดสก์ท็อปมีความกว้างมากกว่า 1024px
+                    if (width >= 1024) {
+                        window.location.href = 'login';
                     }
-                };
+                }
+                // ตรวจสอบเมื่อทำการรีไซส์หน้าต่าง
+                window.addEventListener('resize', checkScreenSize);
+                // ตรวจสอบขนาดหน้าจอเมื่อหน้าโหลดครั้งแรก
+                window.addEventListener('load', checkScreenSize);
         </script>
         <body class="sb-nav-fixed bg-light ibm-plex-sans-thai-regular">
             <!-- topnav -->
@@ -27,9 +35,9 @@ $title = "ข้อมูลผู้ใช้งาน";
                         <div class="sb-sidenav-menu bg-light">
                             <div class="nav">
                                 <div class="user_profile text-sq mb-2">
-                                <div class="sb-sidenav-menu-heading text-center fs-6 pt-0">Code :<?php echo $_SESSION['empcode']; ?> </div>
+                                <div class="sb-sidenav-menu-heading text-center fs-6 pt-0">รหัสพนักงาน :<?php echo $_SESSION['empcode']; ?> </div>
                                     <div class="user-pic">
-                                        <?php include 'components/emp_pic.php'; ?>
+                                        <?php include 'components/emp_pic_b.php'; ?>
                                     </div>
                                     <h6 class="mt-3 mb-0 fs-5"><?php echo $_SESSION['name']; ?> </h6>
                                     <small class="mt-0"><b>ตำแหน่ง :</b> <?php echo $_SESSION['position']; ?> <br><b> แผนก/ฝ่าย :</b> <?php echo $_SESSION['dept_emp']; ?> </small>

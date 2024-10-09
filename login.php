@@ -10,29 +10,29 @@ if(isset($_SESSION['empcode'])){
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <!-- PWA  -->
-            <link rel="manifest" href="manifest.json">
-            <meta name="apple-mobile-web-app-capable" content="yes">
-            <meta name="apple-mobile-web-app-status-bar-style" content="black">
-            <meta name="apple-mobile-web-app-title" content="E-Slip:SQMM">
+                <!-- <link rel="manifest" href="manifest.json">
+                <meta name="apple-mobile-web-app-capable" content="yes">
+                <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                <meta name="apple-mobile-web-app-title" content="E-Slip:SQMM"> -->
 
-    <!-- iOS icon -->
-    <link rel="apple-touch-icon" href="assets/images/icon.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png">
-
-
+            <!-- iOS icon -->
+                <!-- <link rel="apple-touch-icon" href="assets/images/icon.png">
+                <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
+                <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
+                <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png"> -->
 
 
-    <!-- iOS splash -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="assets/images/splash-2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
-    <link href="assets/images/splash-1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
-    <link href="assets/images/splash-1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
-    <link href="assets/images/splash-1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
-    <link href="assets/images/splash-1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
-    <link href="assets/images/splash-750.png" sizes="750x1334" rel="apple-touch-startup-image" />
-    <link href="assets/images/splash-640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+
+
+            <!-- iOS splash -->
+                <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
+                <link href="assets/images/splash-2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+                <link href="assets/images/splash-1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+                <link href="assets/images/splash-1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+                <link href="assets/images/splash-1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+                <link href="assets/images/splash-1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+                <link href="assets/images/splash-750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+                <link href="assets/images/splash-640.png" sizes="640x1136" rel="apple-touch-startup-image" /> -->
 
 
             <?php include 'components/head.php'; ?>

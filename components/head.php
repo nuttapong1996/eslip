@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/fonts.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- favicon -->
 <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">

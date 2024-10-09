@@ -25,9 +25,8 @@ $title = "สลิปเงินเดือน (PDF)";
                                     <div class="col-sm-5">
                                         <div class="card border-0 rounded-0 p-2 mb-4 shadow-sm">
                                                 <h5 class="m-0 text-center text-muted">กรุณาเลือกปีและงวด</h5>
-                                            <div class="card-body">
-                                                <!-- <form class="d-flex flex-column justify-content-center" method="POST" target="pdfFrame" '>                                            -->
-                                                <form class="d-flex flex-column justify-content-center" method="POST" action='components/pdf.php'>                                           
+                                            <div class="card-body">                                                                                          
+                                                <form class="d-flex flex-column justify-content-center" method="POST" action='components/slip.php' target="_blank">                                           
                                                     <?php include 'components/period_select.php'; ?>
                                                     <button class="btn btn-sm btn-outline-success p-3" name='download'>ตกลง</button>
                                                 </form>                                        
