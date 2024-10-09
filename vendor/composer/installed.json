@@ -300,17 +300,17 @@
         },
         {
             "name": "phpmailer/phpmailer",
-            "version": "v6.9.1",
-            "version_normalized": "6.9.1.0",
+            "version": "v6.9.2",
+            "version_normalized": "6.9.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "039de174cd9c17a8389754d3b877a2ed22743e18"
+                "reference": "a7b17b42fa4887c92146243f3d2f4ccb962af17c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/039de174cd9c17a8389754d3b877a2ed22743e18",
-                "reference": "039de174cd9c17a8389754d3b877a2ed22743e18",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/a7b17b42fa4887c92146243f3d2f4ccb962af17c",
+                "reference": "a7b17b42fa4887c92146243f3d2f4ccb962af17c",
                 "shasum": ""
             },
             "require": {
@@ -340,7 +340,7 @@
                 "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)",
                 "thenetworg/oauth2-azure": "Needed for Microsoft XOAUTH2 authentication"
             },
-            "time": "2023-11-25T22:23:28+00:00",
+            "time": "2024-10-09T10:07:50+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -372,7 +372,7 @@
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
             "support": {
                 "issues": "https://github.com/PHPMailer/PHPMailer/issues",
-                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.9.1"
+                "source": "https://github.com/PHPMailer/PHPMailer/tree/v6.9.2"
             },
             "funding": [
                 {
@@ -440,23 +440,23 @@
         },
         {
             "name": "psr/log",
-            "version": "3.0.0",
-            "version_normalized": "3.0.0.0",
+            "version": "3.0.2",
+            "version_normalized": "3.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001"
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe5ea303b0887d5caefd3d431c3e61ad47037001",
-                "reference": "fe5ea303b0887d5caefd3d431c3e61ad47037001",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
+                "reference": "f16e1d5863e37f8d8c2a01719f5b34baa2b714d3",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.0.0"
             },
-            "time": "2021-07-14T16:46:02+00:00",
+            "time": "2024-09-11T13:17:53+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -487,23 +487,23 @@
                 "psr-3"
             ],
             "support": {
-                "source": "https://github.com/php-fig/log/tree/3.0.0"
+                "source": "https://github.com/php-fig/log/tree/3.0.2"
             },
             "install-path": "../psr/log"
         },
         {
             "name": "setasign/fpdi",
-            "version": "v2.6.0",
-            "version_normalized": "2.6.0.0",
+            "version": "v2.6.1",
+            "version_normalized": "2.6.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Setasign/FPDI.git",
-                "reference": "a6db878129ec6c7e141316ee71872923e7f1b7ad"
+                "reference": "09a816004fcee9ed3405bd164147e3fdbb79a56f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/a6db878129ec6c7e141316ee71872923e7f1b7ad",
-                "reference": "a6db878129ec6c7e141316ee71872923e7f1b7ad",
+                "url": "https://api.github.com/repos/Setasign/FPDI/zipball/09a816004fcee9ed3405bd164147e3fdbb79a56f",
+                "reference": "09a816004fcee9ed3405bd164147e3fdbb79a56f",
                 "shasum": ""
             },
             "require": {
@@ -523,7 +523,7 @@
             "suggest": {
                 "setasign/fpdf": "FPDI will extend this class but as it is also possible to use TCPDF or tFPDF as an alternative. There's no fixed dependency configured."
             },
-            "time": "2023-12-11T16:03:32+00:00",
+            "time": "2024-09-02T10:17:15+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -556,7 +556,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Setasign/FPDI/issues",
-                "source": "https://github.com/Setasign/FPDI/tree/v2.6.0"
+                "source": "https://github.com/Setasign/FPDI/tree/v2.6.1"
             },
             "funding": [
                 {
