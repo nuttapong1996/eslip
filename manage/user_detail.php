@@ -55,7 +55,7 @@ if(isset($_SESSION['empcode'])){
                                 <div class="row mb-3">
                                     <div class="col-md-12">
                                     <div class="d-flex flex-column align-items-center"> 
-                                            <input type="file" class="form-control form-control-sm" name="emppic" id="emppic" accept=".jpg" capture="camera" style="display: none;">                                
+                                            <input type="file" class="form-control form-control-sm" name="emppic" id="emppic" accept=".jpg" style="display: none;">                                
                                             <label class="btn btn-outline-secondary btn-sm rounded  mb-2" for="emppic" ><i class="fas fa-camera"></i> &nbsp;เลือกรูปภาพ</label>
                                             <button class="btn btn-primary btn-sm rounded w-25" type="submit" id="upbtn"><i class="fas fa-cloud-upload-alt"></i> อัพโหลด</button>                                  
                                     </div>
