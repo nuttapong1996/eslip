@@ -38,6 +38,6 @@ if(isset($_SESSION['empcode'])){
 <?php
     $conn = null;
 }else{
-    header('location: login');
+    echo "<script>window.location.href = 'login';</script>";
 }
 ?>

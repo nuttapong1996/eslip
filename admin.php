@@ -43,6 +43,6 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
     </html>
 <?php
  }else{
-    header('location:login');
+    echo "<script>window.location.href = 'login';</script>";
 }
 ?>

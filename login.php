@@ -7,37 +7,45 @@ if(isset($_SESSION['empcode'])){
     <!DOCTYPE html>
     <html lang="en">
         <head>
+            <title>SQMM : E-slip</title>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <!-- PWA  -->
-                <!-- <link rel="manifest" href="manifest.json">
-                <meta name="apple-mobile-web-app-capable" content="yes">
-                <meta name="apple-mobile-web-app-status-bar-style" content="black">
-                <meta name="apple-mobile-web-app-title" content="E-Slip:SQMM"> -->
-
-            <!-- iOS icon -->
-                <!-- <link rel="apple-touch-icon" href="assets/images/icon.png">
-                <link rel="apple-touch-icon" sizes="152x152" href="assets/images/icon-152x152.png">
-                <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon-180x180.png">
-                <link rel="apple-touch-icon" sizes="167x167" href="assets/images/icon-167x167.png"> -->
-
-
-
-
-            <!-- iOS splash -->
-                <!-- <meta name="apple-mobile-web-app-capable" content="yes" />
-                <link href="assets/images/splash-2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
-                <link href="assets/images/splash-1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
-                <link href="assets/images/splash-1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
-                <link href="assets/images/splash-1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
-                <link href="assets/images/splash-1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
-                <link href="assets/images/splash-750.png" sizes="750x1334" rel="apple-touch-startup-image" />
-                <link href="assets/images/splash-640.png" sizes="640x1136" rel="apple-touch-startup-image" /> -->
-
-
-            <?php include 'components/head.php'; ?>
-            <title>Login</title>
+            <link rel="manifest" href="manifest.json">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         </head>
+        <!-- Register service worker -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                    }, function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+                });
+            }
+		</script>
+
+        <!-- Script Install App -->
+        <script src="js/inst_app.js"></script>
+
+        <style>
+            #iosInstallBanner{
+                display: none;
+                position: absolute;
+                left: 0;
+                width: 100%;
+                padding: 10px;
+                text-align: center;
+                background: #fff;
+                color: #000;
+                border-top: 1px solid #ccc;
+            }
+        </style>
+
+        <?php include 'components/head.php'; ?>
         <body class="bg-gray ibm-plex-sans-thai-regular">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content ">
@@ -75,16 +83,21 @@ if(isset($_SESSION['empcode'])){
                                     <button type="submit" class="btn btn-primary w-100">เข้าสู่ระบบ</button>
                                     <hr>
                                     <a href="regis" class=""><b>สมัครสมาชิก</b"></a>
-                                </form>                
+                                </form>
+                                <hr>
+                                <a id="installBtn" class="btn btn-success w-100" style="display: none;"> <i class="fa fa-download"></i> ติดตั้งแอป</a>                                       
                             </div>                    
-                            <div class="text-center mt-4">
+                            <div class="text-center mt-4">                            
                                 <small class="text-muted ibm-plex-sans-thai-light">
                                     Developed by IT Department (Maemoh)<br>
                                     &copy; 2024-<?php echo date('Y'); ?> Sahakol Equipment PCL.
-                                </small>
+                                </small>                                
+                            </div>
+                            <div id="iosInstallBanner" >
+                                <p>การติดตั้งแอปบน iOS: <br> เลือก <strong>ปุ่ม</strong> <img src="assets/icons/ios_share.svg" alt="ios_share_icon">และ เลือก <strong>"Add to Home Screen"</strong></p>
                             </div>                
                         </div>
-                    </div>
+                    </div>                   
                 </main>
             </div>
         </div>

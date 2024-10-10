@@ -8,9 +8,25 @@ $title = "สรุปรายการเงินเดือน";
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+             <!-- PWA  -->
+             <link rel="manifest" href="manifest.json">
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
             <?php include 'components/head.php'; ?>
-        <title><?php echo $title; ?></title>
         </head>
+        <!-- Register service worker -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                    }, function(error) {
+                        console.log('Service Worker registration failed:', error);
+                    });
+                });
+            }
+		</script>
+        <title><?php echo $title; ?></title>
         <body class="sb-nav-fixed bg-gray ibm-plex-sans-thai-regular">
             <!-- topnav -->
             <?php include 'components/topnav.php'; ?>

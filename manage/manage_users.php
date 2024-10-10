@@ -56,7 +56,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                                 echo"<td>". $i++."</td>";
                                 echo"<td>".trim($row['emp_code'])."</td>";
                                 echo"<td>".trim($row['name_thai_emp'])."</td>";
-                                echo"<td style=''>". date_format(date_create($row['created_at']),"d-m-Y")."</td>";
+                                echo"<td style=''>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
                                 echo"<td><a class='btn btn-warning btn-sm' href='./admin?manage=edit&id=".$row['emp_code']."'> <i class='fa-solid fa-pen-to-square'></i></a></td>";
                                 echo"<td><a class='btn btn-sm text-danger'  data-bs-toggle='modal' data-bs-target='#DeleteModal'onclick='passValueToModal(\"".$row['name_thai_emp']."\",\"".$row['emp_code']."\")' ><i class='fa-solid fa-trash'></i></a></td>";
                                 echo"</tr>";
@@ -101,7 +101,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
 }else{
-    header('location: ../login');
+    echo "<script>window.location.href = '../login';</script>";
 }
 
 if(isset($_GET['edit_success'])){

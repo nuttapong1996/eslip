@@ -479,7 +479,7 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
     $conn = null;
 
 }else{
-    header("location: ../login");
+    echo "<script>window.location.href = '../login';</script>";
 }
 ?>
 

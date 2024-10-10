@@ -86,7 +86,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
 }else{
-    header("location: ../login");
+    echo "<script>window.location.href = '../login';</script>";
 }
 
 if(isset($_GET['edit_fail'])){

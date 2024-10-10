@@ -104,7 +104,7 @@ if(isset($_SESSION['empcode'])){
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
  }else{
-    header('location:../login');
+    echo "<script>window.location.href = '../login';</script>";
 }
 
 if(isset($_GET['update_success'])){

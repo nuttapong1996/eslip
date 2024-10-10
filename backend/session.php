@@ -9,7 +9,7 @@ if (isset($_SESSION['LAST_ACTIVITY'])) {
     if (time() - $_SESSION['LAST_ACTIVITY'] > $session_lifetime) {
         session_unset();     // ล้างค่า session
         session_destroy();   // ทำลาย session
-        header("Location: logout"); // เปลี่ยนเส้นทางไปยังหน้า logout
+        echo "<script>window.location.href = 'logout';</script>";
         exit();
     }
 }

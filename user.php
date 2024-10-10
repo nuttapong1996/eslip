@@ -45,7 +45,7 @@ $title = "การจัดการ";
     </html>
 <?php 
 }else{
-    header('location:login');
+    echo "<script>window.location.href = 'login';</script>";
 }
 
 if(isset($_GET['pass_error'])){

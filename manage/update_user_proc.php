@@ -29,6 +29,6 @@
         // ปิดการเชื่อมต่อฐานข้อมูล
         $conn = null;
     }else{
-        header("Location: ../login.php");
+        echo "<script>window.location.href = '../login';</script>";
     }
 ?>

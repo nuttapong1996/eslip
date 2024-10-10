@@ -16,7 +16,7 @@ if(isset($_SESSION['empcode'])){
 <img  class="rounded-circle" style="clip-path: circle(); width: 30px; object-fit: cover" src="<?php if($pic_row['emp_pic'] != ""){echo "uploads/emp_pic/".$pic_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage_w.png';}?>"  alt="user_icon">
 <?php
 }else{
-    header("location: ../login");
+    echo "<script>window.location.href = '../login';</script>";
 }
 
 ?>

@@ -26,7 +26,7 @@ if(isset($_SESSION['empcode']) && isset($_POST['email']) && isset($_POST['birhtd
     //ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
 }else{
-    header('location: ../login');
+    echo "<script>window.location.href = '../login';</script>";
 }
 
 
