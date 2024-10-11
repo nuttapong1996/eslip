@@ -3,12 +3,8 @@ const OFFLINE_URL = 'offline.php';
 
 // ไฟล์ที่ต้องการ cache
 const contentToCache = [
-    '/',
-    'login.php',
-    'index.php',
     'offline.php',
-    'assets/images/offline.png',
-    'components/head.php',
+    'fonts/ibm-plex-sans-thai-v10-latin_thai-regular.woff2',
 ];
 
 // ติดตั้ง Service Worker และทำการ cache ไฟล์

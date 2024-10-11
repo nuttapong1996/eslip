@@ -21,27 +21,30 @@
                                     <div class="row mb-3">
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control form-control-sm" name="emp_re" id="empcode"  onkeydown="return /[a-zA-Z0-9]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)" placeholder="กรุณากรอกรหัสพนักงาน" required autocomplete="off"  maxlength="8">
+                                                <input type="text" class="form-control form-control-sm" name="emp_re" id="emp_re"  onkeydown="return /[a-zA-Z0-9]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)" placeholder="กรุณากรอกรหัสพนักงาน" required autocomplete="off"  maxlength="8">
                                                 <label for="empcode">รหัสพนักงาน</label>
                                                 <div id="msg1" ></div>
                                             </div>
                                         </div>                                        
                                     </div>
-                                    <div class="row mb-3">
+                                    <div class="row mb-3" id="iden_re_holder">
                                         <div class="col-sm-12">
                                             <div class="form-floating">
-                                                <input type="text" class="form-control " name="iden_re" id="idencode" onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)"   placeholder="เลขบัตรประชาชน" required autocomplete="off"  maxlength="13" />
+                                                <input type="text" class="form-control " name="iden_re" id="iden_re" onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Enter'].includes(event.key)"   placeholder="เลขบัตรประชาชน" required autocomplete="off"  maxlength="13" />
                                                 <label for="idencode">เลขบัตรประชาชน</label>
                                                 <div id="msg2"></div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="d-grid ">
-                                        <button class="btn btn-sm btn-primary" type="submit">ตกลง</button>
+                                        <button class="btn btn-sm btn-primary" type="submit" id="Btn_re">ตกลง</button>
                                     </div>
                                 </form>
                                 <hr>
-                                <div class="text-center">
+                                <div class="text-center" id="reg_msg">
+                                    <div class="small"><a href="regis"><b>สมัครสมาชิก</b></a></div>
+                                </div>
+                                <div class="text-center" id="login_msg"> 
                                     <div class="small"><a href="login">มีบัญชีอยู่แล้ว? ลงชื่อเข้าใช้</a></div>
                                 </div>
                             </div>

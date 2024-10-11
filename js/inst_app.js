@@ -1,3 +1,7 @@
+
+
+
+
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -20,6 +24,19 @@ window.addEventListener('beforeinstallprompt', (event) => {
     });
   });
 });
-if (navigator.userAgent.match(/(iPhone|iPad|iPod)/i)) {
-  document.getElementById('iosInstallBanner').style.display = 'block';
+
+
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 }
+
+function isInStandaloneMode() {
+  return (window.matchMedia('(display-mode: standalone)').matches) || (window.navigator.standalone);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (isIOS() && !isInStandaloneMode()) {
+      // แสดงขั้นตอนการติดตั้งบน ios
+      document.getElementById('iosInstallBanner').style.display = 'block';
+  }
+});

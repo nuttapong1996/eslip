@@ -12,6 +12,7 @@
 <script src="./js/emp_edit.js"></script>
 <script src="./js/emp_regis.js"></script>
 <script src="./js/emp_pass_edit.js"></script>
+<script src="./js/emp_reset.js"></script>
 
 
 <!-- CSS -->
