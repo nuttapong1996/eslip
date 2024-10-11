@@ -5,7 +5,6 @@ if (isset($_POST['empcode'])) {
     require_once __DIR__ . '/../includes/connect_db.php';
 
     $empcode = $_POST['empcode'];
-    // $empcode = "2630065";
     
     //Query  ยืนยันตัวตนในฐานข้อมูลก่อนทำการลงทะเบียน 
     $user_active ="SELECT code_emp,name_thai_emp ,id_card_number_emp FROM tbl_emp WHERE code_emp =:empcode AND status_emp = 10";
