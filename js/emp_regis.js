@@ -1,6 +1,6 @@
 $(document).ready(function(){
     // ตรวจสอบรหัสพนักงานทุกครั้งที่มีการพิมพ์
-    $('#empcode').on('change', function() {
+    $('#empcode').on('input', function() {
         var employeeId = $(this).val();
         
         // ตรวจสอบว่า input ไม่ว่างเปล่า
@@ -9,11 +9,14 @@ $(document).ready(function(){
                 url: './backend/check_employee.php',
                 method: 'POST',
                 data: { empcode: employeeId },
-                success: function(response) {
-                    if (response === 'active') {
 
-                        $('#empcode').removeClass('is-invalid').addClass('is-valid');
-                        $('#msg1').text('พบรหัสพนักงานในระบบ').show();
+                success: function(response) {
+                    if (response !== 'none') {
+                        var data =JSON.parse(response);
+                        $.each(data, function(index, emp) {
+                            $('#msg1').text('พบรหัสพนักงานในระบบ : '+emp.name_thai_emp).show();
+                        });
+                        $('#empcode').removeClass('is-invalid').addClass('is-valid');                        
                         $('#msg1').removeClass('invalid-feedback').addClass('valid-feedback');
                     } else {
                         $('#idencode').val('');
@@ -33,6 +36,7 @@ $(document).ready(function(){
         }
     });
 
+
     // ตรวจสอบหมายเลขบัตรประชาชนทุกครั้งที่มีการพิมพ์
     $('#idencode').on('input', function() {
         var idencodeId = $(this).val();
@@ -48,7 +52,7 @@ $(document).ready(function(){
                 success: function (response) {
                     if (response === 'found'){
                         $('#idencode').removeClass('is-invalid').addClass('is-valid');
-                        $('#msg2').text('พบหมายเลขบัตรประชาชนในระบบ').show();
+                        $('#msg2').text('หมายเลขบัตรประชาชนถูกต้องตรงกับรหัสพนักงาน').show();
                         $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
                     }else{
                         $('#idencode').removeClass('is-valid').addClass('is-invalid');
@@ -63,20 +67,6 @@ $(document).ready(function(){
             $('#msg2').text('').hide();
         }
     });
-
-
-    // เช็กบัตรประชาชน 13 หลัก
-    // $('#idencode').on('input',function(){
-    //     if($('#idencode').val().length < 13){
-    //         $('#idencode').removeClass('is-valid').addClass('is-invalid');
-    //         $('#msg2').text('กรุณากรอกเลขบัตรประชาชนให้ครบ 13 หลัก').show();
-    //         $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
-    //     }else{
-    //         $('#idencode').removeClass('is-invalid').addClass('is-valid');
-    //         $('#msg2').text('เลขบัตรประชาชนครบ 13 หลัก').show();
-    //         $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
-    //     }
-    // });
 
     // เช็ค ค่า input ที่รับมา หากว่างให้แจ้งเตือน
     $('#empcode').on('input', function() {
@@ -291,6 +281,22 @@ $(document).ready(function(){
         
     });
 
+
+    // ปิดการใช้งาน copy pase cut 
+
+    $('#empcode').bind('cut copy paste', function(e) {
+        e.preventDefault();
+    });
+    $('#idencode').bind('cut copy paste', function(e) {
+        e.preventDefault();
+    });
+    $('#password').bind('cut copy paste', function(e) {
+        e.preventDefault();
+    });
+    $('#cfpassword').bind('cut copy paste', function(e) {
+        e.preventDefault();
+    });
+
     // // When the user clicks on the password field, show the message box
     // $('#password').on('focus', function(){
     //     $('#pwrule').css("display", "block");
@@ -355,6 +361,8 @@ $(document).ready(function(){
     //     }
     // });
 });
+
+
 
 
 
