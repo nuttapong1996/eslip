@@ -40,7 +40,7 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
     $dateobj = new DateTime($bd_row['birthdate']);
     $day_bd = $dateobj->format('d');
     $month_bd = $dateobj->format('m');
-    $yb = $dateobj->format('Y') + 543;
+    $yb = $dateobj->format('Y');
 
     //ตัวแปร Password อิงจากวันเดือนปีเกิด
     $pass = $day_bd.$month_bd.$yb;
