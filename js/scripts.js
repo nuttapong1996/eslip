@@ -68,10 +68,12 @@ window.addEventListener('DOMContentLoaded', event => {
             columns: [
                 {select: 0 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
                 {select: 1 , cellClass: 'text-center',headerClass: 'bg-primary text-white'},
-                {select: 2 ,headerClass: 'bg-primary text-white',searchable: false},
-                {select: 3 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
-                {select: 4 , cellClass: 'text-center',headerClass: 'bg-warning',searchable: false},
-                {select: 5 , cellClass: 'text-center',headerClass: 'bg-danger text-white',searchable: false},
+                {select: 2 , headerClass: 'bg-primary text-white',searchable: false},
+                {select: 3 , cellClass: 'text-center' ,headerClass: 'bg-primary text-white',searchable: false},
+                {select: 4 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
+                
+                {select: 5 , cellClass: 'text-center',headerClass: 'bg-warning',searchable: false},
+                {select: 6 , cellClass: 'text-center',headerClass: 'bg-danger text-white',searchable: false},
             ],
             labels: {
                 placeholder: 'ค้นหาจากรหัสพนักงาน',

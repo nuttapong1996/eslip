@@ -8,10 +8,12 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
     $users= "SELECT 
                 table_regis.emp_code,
                 table_emp.name_thai_emp , 
-                table_regis.created_at  
+                table_regis.created_at ,
+                tbl_dept_emp.short_name_deptemp
             FROM 
                 tbl_regis AS table_regis
                 JOIN tbl_emp AS table_emp ON table_regis.emp_code = table_emp.code_emp
+                JOIN tbl_dept_emp ON table_emp.dept_emp = tbl_dept_emp.code_tbl_deptemp
             ORDER BY created_at DESC";
 
     $users_stmt = $conn->prepare($users);
@@ -44,6 +46,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                             <th>ลำดับ</th>
                             <th>รหัสพนง</th>
                             <th>ชื่อ - สกุล</th>
+                            <th>แผนก/ฝ่าย</th>
                             <th>วันที่ลงทะเบียน</th>
                             <th>แก้ไข</th>
                             <th>ลบ</th>
@@ -56,6 +59,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                                 echo"<td>". $i++."</td>";
                                 echo"<td>".trim($row['emp_code'])."</td>";
                                 echo"<td>".trim($row['name_thai_emp'])."</td>";
+                                echo"<td>".trim($row['short_name_deptemp'])."</td>";
                                 echo"<td style=''>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
                                 echo"<td><a class='btn btn-warning btn-sm' href='./admin?manage=edit&id=".$row['emp_code']."'> <i class='fa-solid fa-pen-to-square'></i></a></td>";
                                 echo"<td><a class='btn btn-sm text-danger'  data-bs-toggle='modal' data-bs-target='#DeleteModal'onclick='passValueToModal(\"".$row['name_thai_emp']."\",\"".$row['emp_code']."\")' ><i class='fa-solid fa-trash'></i></a></td>";

@@ -8,7 +8,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                     table_emp.code_emp , 
                     table_emp.name_thai_emp , 
                     table_emp.position_emp , 
-                    table_dept.name_deptemp,
+                    table_dept.short_name_deptemp,
                     table_regis.iden_code,
                     table_regis.birthdate,
                     table_regis.email,
@@ -39,7 +39,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                                 <input type="hidden" name="empcode" value="<?php echo $detail_row['code_emp'] ?>">
 
                                 <div class="mb-3">                            
-                                    <label for="name"><b>ชื่อ : </b> <?php echo trim($detail_row['name_thai_emp']) ?> <b>รหัส : </b> <?php echo trim($detail_row['code_emp']) ?></label>
+                                    <label for="name"><b>ชื่อ : </b> <?php echo trim($detail_row['name_thai_emp']) ?> <b>รหัส : </b> <?php echo trim($detail_row['code_emp']) ?>  <br><b>ตําแหน่ง : </b><?php echo trim($detail_row['position_emp']) ?><b> แผนก/ฝ่าย : </b><?php echo trim($detail_row['short_name_deptemp']) ?></label>
                                 </div>
 
                                 <div class="form-floating mb-3 ">

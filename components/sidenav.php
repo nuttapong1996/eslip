@@ -36,6 +36,10 @@ if(isset($_SESSION['empcode'])){
                     <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-users-gear"></i></div>
                     การจัดการผู้ใช้งาน
                 </a>
+                <a class="nav-link" href="./admin?manage=stat_user">
+                    <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-group "></i></div>
+                    ยอดผู้สมัครใช้งาน
+                </a>
                 <?php } ?>
 
                 <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

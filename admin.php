@@ -27,6 +27,9 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                             case 'edit':
                                 include './manage/edit_user.php';
                             break;
+                            case 'stat_user':
+                                include './manage/stat_users.php';
+                            break;
                             default:
                                 include './manage/manage_users.php';
                             break;

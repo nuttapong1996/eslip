@@ -12,7 +12,7 @@ if(isset($_SESSION['empcode'])){
                     table_emp.code_emp , 
                     table_emp.name_thai_emp , 
                     table_emp.position_emp , 
-                    table_dept.name_deptemp,
+                    table_dept.short_name_deptemp,
                     table_regis.iden_code,
                     table_regis.birthdate,
                     table_regis.email,
@@ -65,7 +65,7 @@ if(isset($_SESSION['empcode'])){
                                 <div class="row mb-3">
                                     <div class="col-md-12 text-center">
                                     <p class="fw-normal p-0 m-1"><b>ชื่อ - นามสกุล :</b> <?php echo $detail_row['name_thai_emp']."<br><b>รหัสพนักงาน :</b>". $detail_row['code_emp']; ?></p>                                                                
-                                    <p class="fw-normal p-0 m-1"><b>ตำแหน่ง :</b><?php echo $detail_row['position_emp']."<b>แผนก/ฝ่าย :</b>".$detail_row['name_deptemp']; ?></p>                               
+                                    <p class="fw-normal p-0 m-1"><b>ตำแหน่ง :</b><?php echo $detail_row['position_emp']."<b>แผนก/ฝ่าย :</b>".$detail_row['short_name_deptemp']; ?></p>                               
                                                                 
                                     </div>                                 
                                 </div>

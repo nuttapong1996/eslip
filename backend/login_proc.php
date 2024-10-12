@@ -19,6 +19,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
                 table_emp.name_thai_emp, 
                 table_emp.position_emp, 
                 table_dept.name_deptemp,
+                table_dept.short_name_deptemp,
                 table_regis.iden_code,
                 table_regis.birthdate,
                 table_regis.email,
@@ -47,7 +48,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             $_SESSION['empcode'] = $row['code_emp'];
             $_SESSION['name'] = $row['name_thai_emp'];
             $_SESSION['position'] = $row['position_emp'];
-            $_SESSION['dept_emp'] = $row['name_deptemp'];
+            $_SESSION['dept_emp'] = $row['short_name_deptemp'];
             $_SESSION['iden_code'] = $row['iden_code'];
             $_SESSION['birthdate'] = $row['birthdate'];
             $_SESSION['email'] = $row['email'];
