@@ -1,5 +1,5 @@
 <?php 
-if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password'])&&isset($_POST['birhtday'])){
+if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password'])&&isset($_POST['birhtday'])&&isset($_POST['birhtmonth'])&&isset($_POST['birthyear'])){
     
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
@@ -9,7 +9,10 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
     $password =$_POST['password'];
     $email =$_POST['email'];
     $birhtday =$_POST['birhtday'];
+    $birhtmonth =$_POST['birhtmonth'];
+    $birthyear =$_POST['birthyear'];
 
+    $birhtdate = $birthyear.'-'.$birhtmonth.'-'.$birhtday;
 
     //ทำการเข้ารหัสผ่าน
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -54,7 +57,7 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
         $stmt_regis->bindParam(':password', $hashed_password);
         $stmt_regis->bindParam(':email', $email);
         $stmt_regis->bindParam(':idencode', $idencode);
-        $stmt_regis->bindParam(':birhtday', $birhtday);
+        $stmt_regis->bindParam(':birhtday', $birhtdate);
 
         // 1.ตรวจสอบรหัสพนักงานซ้ำบนตาราง tbl_regis
         if($stmt_user_exist->rowCount() > 0){

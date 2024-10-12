@@ -22,7 +22,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-floating mb-3 mb-sm-0">
                                                     <input class="form-control " name="empcode" id="empcode" type="text" onkeydown="return /[a-zA-Z0-9]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="รหัสพนักงาน" required autocomplete="off" maxlength="7"/>
-                                                    <label for="empcode">รหัสพนักงาน</label>
+                                                    <label for="empcode"><i class="text-danger">*</i> รหัสพนักงาน</label>
                                                         <div id="msg1" ></div>                                            
                                                 </div>
                                             </div>
@@ -35,13 +35,72 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="mb-3 text-center">
-                                            <small class="text-bg-warning px-2  "><b>กรุณากรอกวันเดือนปีเกิดให้ถูกต้อง</b> เนื่องจากจะมีผลต่อการเปิดดูสลิปเงินเดือนแบบ PDF</small>
-                                            <div class="form-floating mt-2">                                            
-                                                <input class="form-control" name="birhtday" id="birhtday" type="date" onkeydown="return false"   required autocomplete="off"/>
-                                                <label for="birhtday">เลือก ว-ด-ป เกิด</label>
-                                                <div id="msg3" class="invalid-feedback"></div>                                            
+                                        <div class="mb-3">                                            
+                                            <p class="p-0 m-0">เลือก วัน-เดือน-ปี เกิด</p>
+                                            <div class="row mb-2">
+
+                                                <div class="col-sm-3 mb-3">
+                                                    <div class="form-floating">                                                                                        
+                                                        <!-- <input type="text" class="form-control" name="birhtday" id="birhtday" onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)" > -->
+                                                        <select  name="birhtday" id="birhtday" class="form-select">
+                                                            <option value="" selected>-</option>
+                                                            <?php
+                                                                for ($i = 1; $i <= 31; $i++) {
+                                                                    if ($i < 10) {
+                                                                        echo '<option value="0'.$i.'">'.$i.'</option>';
+                                                                    }
+                                                                    else{
+                                                                        echo '<option value="'.$i.'">'.$i.'</option>';
+                                                                    }                                                                       
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                        <label for="birhtday">วันที่</label>
+                                                        <div id="msgbd" class="invalid-feedback"></div>                                            
+                                                    </div>                                      
+                                                </div>
+
+                                                <div class="col-sm-6 mb-3">
+                                                    <div class="form-floating">                                          
+                                                        <select name="birhtmonth" id="birhtmonth" class="form-select">
+                                                            <option value="" selected>-</option>
+                                                            <option value="01">มกราคม</option>
+                                                            <option value="02">กุมภาพันธ์</option>
+                                                            <option value="03">มีนาคม</option>
+                                                            <option value="04">เมษายน</option>
+                                                            <option value="05">พฤมภาคม</option>
+                                                            <option value="06">มิถุนายน</option>
+                                                            <option value="07">กรกฎาคม</option>
+                                                            <option value="08">สิงหาคม</option>
+                                                            <option value="09">กันยายน</option>
+                                                            <option value="10">ตุลาคม</option>
+                                                            <option value="11">พฤศจิกายน</option>
+                                                            <option value="12">ธันยาคม</option>
+                                                        </select>
+                                                        <label for="birhtmonth">เดือน</label>
+                                                        <div id="msgbm" class="invalid-feedback"></div>                                            
+                                                    </div>                                      
+                                                </div>
+
+                                                <div class="col-sm-3 mb-3">
+                                                    <div class="form-floating">                                            
+                                                        <select name="birthyear" id="birthyear" class="form-select">
+                                                            <option value="" selected>-</option>
+                                                           <?php
+                                                                $yearstart = 1900;
+                                                                $yearend = date('Y');
+                                                                for ($i=$yearend; $i >= $yearstart; $i--) {
+                                                                    echo "<option value='$i'>".($i+543)."</option>";
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                        <label for="birthyear">ปี(พ.ศ.)</label>
+                                                        <div id="msgby" class="invalid-feedback"></div>                                            
+                                                    </div>                                      
+                                                </div>
+
                                             </div>
+                                            <small class="text-bg-warning px-2 mt-2"><b>กรุณากรอกวันเดือนปีเกิดให้ถูกต้อง</b> เนื่องจากจะมีผลต่อการเปิดดูสลิปเงินเดือนแบบ PDF</small>                                         
                                         </div>
                                         <div class="form-floating mb-3">
                                             <input class="form-control" name="email" id="email" type="email" placeholder="name@example.com" autocomplete="off" />

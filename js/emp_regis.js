@@ -56,7 +56,7 @@ $(document).ready(function(){
                         $('#msg2').removeClass('invalid-feedback').addClass('valid-feedback');
                     }else{
                         $('#idencode').removeClass('is-valid').addClass('is-invalid');
-                        $('#msg2').text('ไม่พบหมายเลขบัตรประชาชนในระบบ').show();
+                        $('#msg2').text('หมายเลขบัตรประชาชนไม่ตรงกับรหัสพนักงาน').show();
                         $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
                     }
                 }
@@ -88,13 +88,31 @@ $(document).ready(function(){
         }
     });
 
-    $('#birhtday').on('input', function() {
+    $('#birhtday').on('change', function() {
         if( $('#birhtday').val() === ""){
             $('#birhtday').removeClass('is-valid').addClass('is-invalid');
-            $('#msg3').text('กรุณาเลือกวันเดือนปีที่เกิด').show();
-            $('#msg3').removeClass('valid-feedback').addClass('invalid-feedback');
+            $('#msgbd').text('กรุณาเลือกวันที่เกิด').show();
+            $('#msgbd').removeClass('valid-feedback').addClass('invalid-feedback');
         }else{
             $('#birhtday').removeClass('is-invalid').addClass('is-valid');
+        }
+    });
+    $('#birhtmonth').on('change', function() {
+        if( $('#birhtmonth').val() === ""){
+            $('#birhtmonth').removeClass('is-valid').addClass('is-invalid');
+            $('#msgbm').text('กรุณาเลือกเดือนที่เกิด').show();
+            $('#msgbm').removeClass('valid-feedback').addClass('invalid-feedback');
+        }else{
+            $('#birhtmonth').removeClass('is-invalid').addClass('is-valid');
+        }
+    });
+    $('#birthyear').on('change', function() {
+        if( $('#birthyear').val() === ""){
+            $('#birthyear').removeClass('is-valid').addClass('is-invalid');
+            $('#msgby').text('กรุณาเลือกปีที่เกิด').show();
+            $('#msgby').removeClass('valid-feedback').addClass('invalid-feedback');
+        }else{
+            $('#birthyear').removeClass('is-invalid').addClass('is-valid');
         }
     });
     
@@ -113,9 +131,19 @@ $(document).ready(function(){
             $('#msg2').removeClass('valid-feedback').addClass('invalid-feedback');
         }
         if( $('#birhtday').val() === ""){
-            $('#birhtday').removeClass('is-valid').addClass('is-invalid');
-            $('#msg3').text('กรุณาเลือกวันเดือนปีที่เกิด').show();
-            $('#msg3').removeClass('valid-feedback').addClass('invalid-feedback');
+            $('#birhtday').removeClass('is-valid').addClass('is-invalid');       
+            $('#msgbd').text('กรุณาเลือกวันที่เกิด').show();
+            $('#msgbd').removeClass('valid-feedback').addClass('invalid-feedback');    
+        }
+        if( $('#birhtmonth').val() === "" ){
+            $('#birhtmonth').removeClass('is-valid').addClass('is-invalid');
+            $('#msgbm').text('กรุณาเลือกเดือนที่เกิด').show();          
+            $('#msgbm').removeClass('valid-feedback').addClass('invalid-feedback');
+        }
+        if( $('#birthyear').val() === ""){
+            $('#birthyear').removeClass('is-valid').addClass('is-invalid');
+            $('#msgby').text('กรุณาเลือกปีที่เกิด').show();
+            $('#msgby').removeClass('valid-feedback').addClass('invalid-feedback');
         }
         if( $('#password').val() === ""){
             $('#password').removeClass('is-valid').addClass('is-invalid');
@@ -139,6 +167,14 @@ $(document).ready(function(){
             event.stopPropagation();
         }
         if ($('#birhtday').hasClass('is-invalid')) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        if ($('#birhtmonth').hasClass('is-invalid')) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        if ($('#birthyear').hasClass('is-invalid')) {
             event.preventDefault();
             event.stopPropagation();
         }
