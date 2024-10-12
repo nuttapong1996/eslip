@@ -5,6 +5,8 @@
 <script src="./js/simple-datatables.min.js"></script>
 <script src="./js/sweetalert2@11.js"></script>
 <script src="./js/fontawezome-6.3.0.js"></script>
+<script src="./js/chart.js"></script>
+
 
 <!-- Ajax Script -->
 <script src="./js/scripts.js"></script>
