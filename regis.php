@@ -30,13 +30,13 @@
                                                 <div class="form-floating mb-3 mb-sm-0">
                                                     <input type="hidden" name="empcode2" id="empcode2">
                                                     <input class="form-control" name="idencode" id="idencode" type="text"    onkeydown="return /[0-9]/i.test(event.key)|| ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"   placeholder="เลขบัตรประชาชน" required autocomplete="off" maxlength="13" />
-                                                    <label for="idencode">เลขบัตรประชาชน</label>
+                                                    <label for="idencode"><i class="text-danger">*</i> เลขบัตรประชาชน</label>
                                                     <div id="msg2"></div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mb-3">                                            
-                                            <p class="p-0 m-0">เลือก วัน-เดือน-ปี เกิด</p>
+                                            <p class="p-0 m-0"><i class="text-danger">*</i> เลือก วัน-เดือน-ปี เกิด</p>
                                             <div class="row mb-2">
 
                                                 <div class="col-sm-3 mb-3">
@@ -109,7 +109,7 @@
 
                                         <div class="row mb-3">                                            
                                             <div class="col-md-6 mb-3">                                  
-                                                <label for="password">รหัสผ่าน</label>
+                                                <label for="password"><i class="text-danger">*</i> รหัสผ่าน</label>
                                                 <div class="input-group">
                                                     <input class="form-control rounded-0 rounded-start" name="password" id="password" type="password"  onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="รหัสผ่าน" required autocomplete="off" maxlength="8" />
                                                     <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek1">
@@ -119,7 +119,7 @@
                                                 </div>
                                             </div>                                        
                                             <div class="col-md-6">                                          
-                                                <label for="cfpassword">ยืนยันรหัสผ่าน</label>
+                                                <label for="cfpassword"><i class="text-danger">*</i> ยืนยันรหัสผ่าน</label>
                                                     <div class="input-group">
                                                     <input class="form-control rounded-0 rounded-start" name="cfpassword" id="cfpassword" type="password" onkeydown="return /[a-zA-Z0-9_!@#$%^*-+]/i.test(event.key) || ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'].includes(event.key)"  placeholder="ยืนยันรหัสผ่าน" required autocomplete="off" maxlength="8" />
                                                     <button type="button" class="btn btn-outline-secondary rounded-0 rounded-end" id="passpeek2">
