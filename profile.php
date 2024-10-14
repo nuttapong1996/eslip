@@ -61,6 +61,10 @@ $title = "ข้อมูลผู้ใช้งาน";
                                     <a class="nav-link text-sq p-3 fs-5 border-bottom" href="./admin?manage=users">
                                         <div class="sb-nav-link-icon"><i class="fa-solid fa-users-gear"></i></div>
                                         การจัดการผู้ใช้งาน
+                                    </a>
+                                    <a class="nav-link text-sq p-3 fs-5 border-bottom" href="./admin?manage=stat_user">
+                                        <div class="sb-nav-link-icon"><i class="fa-solid fa-chart-simple"></i></div>
+                                        ยอดผู้สมัครใช้งาน
                                     </a>                           
                                 <?php } ?>
 

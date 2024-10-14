@@ -6,6 +6,7 @@
 <script src="./js/sweetalert2@11.js"></script>
 <script src="./js/fontawezome-6.3.0.js"></script>
 <script src="./js/chart.js"></script>
+<script src="./js/chartjs-plugin-datalabels.min.js"></script>
 
 
 <!-- Ajax Script -->

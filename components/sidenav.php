@@ -37,7 +37,7 @@ if(isset($_SESSION['empcode'])){
                     การจัดการผู้ใช้งาน
                 </a>
                 <a class="nav-link" href="./admin?manage=stat_user">
-                    <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-user-group "></i></div>
+                    <div class="sb-nav-link-icon text-white"><i class="fa-solid fa-chart-simple"></i></div>
                     ยอดผู้สมัครใช้งาน
                 </a>
                 <?php } ?>
