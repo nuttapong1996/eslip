@@ -6,6 +6,13 @@
 
         $id = $_GET['id'];
 
+        //ลบรูปภาพ
+        $imagePath = '../uploads/emp_pic/'.$id.'.jpg';
+        
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
         $delete_sql = "DELETE FROM tbl_regis WHERE emp_code = :empcode";
         $delete_stmt = $conn->prepare($delete_sql);
         $delete_stmt->bindParam(':empcode', $id);
