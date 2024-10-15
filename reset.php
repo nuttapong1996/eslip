@@ -12,62 +12,8 @@ if(isset($_GET['token'])){
         $stmt_token_check->execute();
         $row_token = $stmt_token_check->fetch(PDO::FETCH_ASSOC);
 
-        // echo $row_token['reset_token_expire_date'];
-
-
-        // // Query pull token
-        // $pull_token = "SELECT reset_token_expire_date FROM tbl_regis WHERE reset_token = :token";
-
-        // // หาจํานวนเวลาที่เหลือ
-        // $currentTimestamp = time();
-        // $remainingTime = strtotime($row_token['reset_token_expire_date']) - $currentTimestamp;
-
-        // เวลาหมดอายุของ token
-        // if ($remainingTime < 0 ) {
-        //     $remainingTime = 0;
-        //     // Query clear token
-        //     $clear_token = 'UPDATE tbl_regis SET reset_token = NULL, reset_token_expire_date = NULL WHERE reset_token = :token';
-        //     $stmt_clear_token = $conn->prepare($clear_token);
-        //     $stmt_clear_token->bindParam(':token', $token);
-        //     $stmt_clear_token->execute();       
-
-        //     // header('location: ./forgot?expired');
-        //     echo "error 1";
-        // }
-
-if($stmt_token_check->rowCount() > 0){
+    if($stmt_token_check->rowCount() > 0){
 ?>
-    <!-- <script>
-            // Pass the remaining time from PHP to JavaScript
-            var remainingTime = <?php// echo $remainingTime; ?>;
-
-            // Function to convert seconds into hours, minutes, and seconds format
-            function formatTime(seconds) {
-                let hrs = Math.floor(seconds / 3600);
-                let mins = Math.floor((seconds % 3600) / 60);
-                let secs = Math.floor(seconds % 60);
-                return " โทเค็นหมดอายุภายใน "+ mins + " นาที " + secs + " วินาที";
-            }
-
-            // Countdown function
-            function startCountdown() {
-                let countdownElement = document.getElementById("countdown");
-
-                // Update countdown every second
-                var interval = setInterval(function() {
-                    if (remainingTime <= 0) {
-                        clearInterval(interval);
-                        location.reload();
-                    } else {
-                        countdownElement.innerHTML = formatTime(remainingTime);
-                        remainingTime--;
-                    }
-                }, 1000); // Update every 1 second (1000 milliseconds)
-            }
-            // Start countdown when the page loads
-            window.onload = startCountdown;
-    </script> -->
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -84,12 +30,7 @@ if($stmt_token_check->rowCount() > 0){
                         <div class="col-sm-6">
                             <img src="assets/images/logo.png" class="d-block mx-auto mb-4" width="300px">
                             <div class="card p-3 rounded-0 border-0 shadow-lg ">
-                                <h4 class="text-center fw-normal">ตั้งรหัสผ่านใหม่</h4>
-                                <!-- <div class="d-grid mt-3"> -->
-                                <!-- <small class="text-muted text-center"><?php //echo "กรุณาตั้งรหัสผ่านใหม่<br>ภายในวันที่: ".date_format(date_create($row_token['reset_token_expire_date']),"d/m/Y")." เวลา : ".date_format(date_create($row_token['reset_token_expire_date']),"H:i:s"); ?></small> -->
-                                    
-                                <!-- </div> -->
-                                <!-- <small class="text-muted text-center">กรุณากรอกข้อมูล เพื่อแก้ไขรหัสผ่าน</small> -->
+                                <h4 class="text-center fw-normal">ตั้งรหัสผ่านใหม่</h4>                           
                                 <div class="card-body">
                                     <form method="POST" id="regisForm" class="needs-validation mb-0" novalidate  action="backend/reset_proc.php" autocomplete=off>
                                         <input type="hidden" name="token" value="<?php echo $token; ?>">
