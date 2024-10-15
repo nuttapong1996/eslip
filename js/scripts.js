@@ -58,32 +58,6 @@ window.addEventListener('DOMContentLoaded', event => {
         };
         new simpleDatatables.DataTable(datatablesSimple ,options);
     }
-
-    if (usersDataTable) {
-        let options = {
-            searchable: true,
-            perPageSelect: false,
-            perPage: 20, 
-            fixedColumns: true,
-            columns: [
-                {select: 0 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
-                {select: 1 , cellClass: 'text-center',headerClass: 'bg-primary text-white'},
-                {select: 2 , headerClass: 'bg-primary text-white',searchable: false},
-                {select: 3 , cellClass: 'text-center' ,headerClass: 'bg-primary text-white',searchable: false},
-                {select: 4 , cellClass: 'text-center',headerClass: 'bg-primary text-white',searchable: false},
-                
-                {select: 5 , cellClass: 'text-center',headerClass: 'bg-warning',searchable: false},
-                {select: 6 , cellClass: 'text-center',headerClass: 'bg-danger text-white',searchable: false},
-            ],
-            labels: {
-                placeholder: 'ค้นหาจากรหัสพนักงาน',
-                noRows: 'ไม่พบข้อมูล',
-                noResults: "ไม่พบข้อมูลที่ต้องการ",
-                info: "แสดงรายการที่ {start}  ถึง {end} จากทั้งหมด {rows} รายการ",
-            }         
-        };
-        new simpleDatatables.DataTable(usersDataTable ,options);
-    }
 });
 
 

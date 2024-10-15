@@ -2,7 +2,7 @@
 if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
     // ชื่อหน้าเว็บ
     $title = "การจัดการผู้ใช้งาน";
-    // เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
+    //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
     $users= "SELECT 
@@ -39,32 +39,33 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
     <main>
         <div class="container">
             <div class="row justify-content-center mt-5">
-                <div class="col-md-9">
+                <div class="col-md-9">               
                 <h3 class="text-center mt-3 mb-2"> <i class="fa-solid fa-users-gear"></i> การจัดการผู้ใช้งาน</h3>
-                    <table id="usersDataTable" class="table tabble-bordered bg-light ">
+                    <table id="usersDataTable" class="table tabble-bordered bg-light shadow-sm">
                         <thead>
-                            <th>ลำดับ</th>
-                            <th>รหัสพนง</th>
-                            <th>ชื่อ - สกุล</th>
-                            <th>แผนก/ฝ่าย</th>
-                            <th>วันที่ลงทะเบียน</th>
-                            <th>แก้ไข</th>
-                            <th>ลบ</th>
+                            <th class="bg-primary text-white text-center">ลำดับ</th>
+                            <th class="bg-primary text-white text-center">รหัสพนง</th>
+                            <th class="bg-primary text-white text-center">ชื่อ - สกุล</th>
+                            <th class="bg-primary text-white text-center">แผนก/ฝ่าย</th>
+                            <th class="bg-primary text-white text-center">วันที่ลงทะเบียน</th>
+                            <th class="bg-warning text-dark text-center">แก้ไข</th>
+                            <th class="bg-danger text-white text-center">ลบ</th>
                         </thead>
-                        <tbody class="text-sq-dark">
+                        <tbody class="">
                             <?php
                             $i = 1;
                             foreach($users_stmt as $row){
                                 echo"<tr>";
-                                echo"<td>". $i++."</td>";
-                                echo"<td>".trim($row['emp_code'])."</td>";
+                                echo"<td class='text-center'>". $i++."</td>";
+                                echo"<td class='text-center'>".trim($row['emp_code'])."</td>";
                                 echo"<td>".trim($row['name_thai_emp'])."</td>";
-                                echo"<td>".trim($row['short_name_deptemp'])."</td>";
-                                echo"<td style=''>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
-                                echo"<td><a class='btn btn-warning btn-sm' href='./admin?manage=edit&id=".$row['emp_code']."'> <i class='fa-solid fa-pen-to-square'></i></a></td>";
-                                echo"<td><a class='btn btn-sm text-danger'  data-bs-toggle='modal' data-bs-target='#DeleteModal'onclick='passValueToModal(\"".$row['name_thai_emp']."\",\"".$row['emp_code']."\")' ><i class='fa-solid fa-trash'></i></a></td>";
+                                echo"<td class='text-center'>".trim($row['short_name_deptemp'])."</td>";
+                                echo"<td class='text-center'>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
+                                echo"<td class='text-center'><a class='btn btn-warning' href='./admin?manage=edit&id=".$row['emp_code']."'> <i class='fa-solid fa-pen-to-square'></i></a></td>";
+                                echo"<td class='text-center'><a class='btn btn-danger text-white '  data-bs-toggle='modal' data-bs-target='#DeleteModal'onclick='passValueToModal(\"".$row['name_thai_emp']."\",\"".$row['emp_code']."\")' ><i class='fa-solid fa-trash'></i></a></td>";
                                 echo"</tr>";
-                            }  ?>
+                            }  
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -93,6 +94,22 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
     </div>
 
     <script>
+        	
+    // let table = new DataTable('#usersDataTable');
+
+
+
+        $('#usersDataTable').DataTable( {
+            ordering: false,
+            pageLength: 20,
+            lengthChange : false,
+            responsive :true,
+            language: {
+            url: 'https://cdn.datatables.net/plug-ins/2.0.1/i18n/th.json',
+            }
+        } );
+
+    
         function passValueToModal(name, empcode) {
             document.getElementById("modal-title").innerText = empcode;
             document.getElementById("modal-id").innerText = empcode;

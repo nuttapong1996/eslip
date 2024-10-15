@@ -7,6 +7,9 @@
 <script src="./js/fontawezome-6.3.0.js"></script>
 <script src="./js/chart.js"></script>
 <script src="./js/chartjs-plugin-datalabels.min.js"></script>
+<script src="./js/dataTables.js"></script>
+<script src="./js/responsive.dataTables.js"></script>
+<script src="./js/dataTables.responsive.js"></script>
 
 
 <!-- Ajax Script -->
@@ -18,11 +21,14 @@
 <script src="./js/emp_reset.js"></script>
 
 
+
 <!-- CSS -->
 <link rel="stylesheet" href="./css/bootstrap.min.css">
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/fonts.css">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/dataTables.dataTables.min.css">
+<link rel="stylesheet" href="./css/responsive.dataTables.css">
 
 <!-- favicon -->
 <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
