@@ -12,13 +12,15 @@ if(isset($_GET['token'])){
         $stmt_token_check->execute();
         $row_token = $stmt_token_check->fetch(PDO::FETCH_ASSOC);
 
+        // echo $row_token['reset_token_expire_date'];
 
-        // Query pull token
-        $pull_token = "SELECT reset_token_expire_date FROM tbl_regis WHERE reset_token = :token";
 
-        // หาจํานวนเวลาที่เหลือ
-        $currentTimestamp = time();
-        $remainingTime = strtotime($row_token['reset_token_expire_date']) - $currentTimestamp;
+        // // Query pull token
+        // $pull_token = "SELECT reset_token_expire_date FROM tbl_regis WHERE reset_token = :token";
+
+        // // หาจํานวนเวลาที่เหลือ
+        // $currentTimestamp = time();
+        // $remainingTime = strtotime($row_token['reset_token_expire_date']) - $currentTimestamp;
 
         // เวลาหมดอายุของ token
         // if ($remainingTime < 0 ) {
@@ -33,7 +35,7 @@ if(isset($_GET['token'])){
         //     echo "error 1";
         // }
 
-    if($stmt_token_check->rowCount() > 0){
+if($stmt_token_check->rowCount() > 0){
 ?>
     <!-- <script>
             // Pass the remaining time from PHP to JavaScript
@@ -83,10 +85,10 @@ if(isset($_GET['token'])){
                             <img src="assets/images/logo.png" class="d-block mx-auto mb-4" width="300px">
                             <div class="card p-3 rounded-0 border-0 shadow-lg ">
                                 <h4 class="text-center fw-normal">ตั้งรหัสผ่านใหม่</h4>
-                                <div class="d-grid mt-3">
+                                <!-- <div class="d-grid mt-3"> -->
                                 <!-- <small class="text-muted text-center"><?php //echo "กรุณาตั้งรหัสผ่านใหม่<br>ภายในวันที่: ".date_format(date_create($row_token['reset_token_expire_date']),"d/m/Y")." เวลา : ".date_format(date_create($row_token['reset_token_expire_date']),"H:i:s"); ?></small> -->
                                     
-                                </div>
+                                <!-- </div> -->
                                 <!-- <small class="text-muted text-center">กรุณากรอกข้อมูล เพื่อแก้ไขรหัสผ่าน</small> -->
                                 <div class="card-body">
                                     <form method="POST" id="regisForm" class="needs-validation mb-0" novalidate  action="backend/reset_proc.php" autocomplete=off>
