@@ -21,22 +21,23 @@ if(isset($_GET['token'])){
         $remainingTime = strtotime($row_token['reset_token_expire_date']) - $currentTimestamp;
 
         // เวลาหมดอายุของ token
-        if ($remainingTime < 0 ) {
-            $remainingTime = 0;
-            // Query clear token
-            $clear_token = 'UPDATE tbl_regis SET reset_token = NULL, reset_token_expire_date = NULL WHERE reset_token = :token';
-            $stmt_clear_token = $conn->prepare($clear_token);
-            $stmt_clear_token->bindParam(':token', $token);
-            $stmt_clear_token->execute();       
+        // if ($remainingTime < 0 ) {
+        //     $remainingTime = 0;
+        //     // Query clear token
+        //     $clear_token = 'UPDATE tbl_regis SET reset_token = NULL, reset_token_expire_date = NULL WHERE reset_token = :token';
+        //     $stmt_clear_token = $conn->prepare($clear_token);
+        //     $stmt_clear_token->bindParam(':token', $token);
+        //     $stmt_clear_token->execute();       
 
-            header('location: ./forgot?expired');
-        }
+        //     // header('location: ./forgot?expired');
+        //     echo "error 1";
+        // }
 
     if($stmt_token_check->rowCount() > 0){
 ?>
-    <script>
+    <!-- <script>
             // Pass the remaining time from PHP to JavaScript
-            var remainingTime = <?php echo $remainingTime; ?>;
+            var remainingTime = <?php// echo $remainingTime; ?>;
 
             // Function to convert seconds into hours, minutes, and seconds format
             function formatTime(seconds) {
@@ -63,7 +64,7 @@ if(isset($_GET['token'])){
             }
             // Start countdown when the page loads
             window.onload = startCountdown;
-    </script>
+    </script> -->
 
     <!DOCTYPE html>
     <html lang="en">
@@ -83,7 +84,7 @@ if(isset($_GET['token'])){
                             <div class="card p-3 rounded-0 border-0 shadow-lg ">
                                 <h4 class="text-center fw-normal">ตั้งรหัสผ่านใหม่</h4>
                                 <div class="d-grid mt-3">
-                                <small class="text-muted text-center"><?php echo "กรุณาตั้งรหัสผ่านใหม่<br>ภายในวันที่: ".date_format(date_create($row_token['reset_token_expire_date']),"d/m/Y")." เวลา : ".date_format(date_create($row_token['reset_token_expire_date']),"H:i:s"); ?></small>
+                                <!-- <small class="text-muted text-center"><?php //echo "กรุณาตั้งรหัสผ่านใหม่<br>ภายในวันที่: ".date_format(date_create($row_token['reset_token_expire_date']),"d/m/Y")." เวลา : ".date_format(date_create($row_token['reset_token_expire_date']),"H:i:s"); ?></small> -->
                                     
                                 </div>
                                 <!-- <small class="text-muted text-center">กรุณากรอกข้อมูล เพื่อแก้ไขรหัสผ่าน</small> -->

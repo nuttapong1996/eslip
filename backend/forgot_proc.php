@@ -8,6 +8,8 @@
 
     $empcode =$_POST['emp_re'];
     $idencode =$_POST['iden_re'];
+
+    
     
     // Query เช็กว่ามีรหัสพนักงานและรหัสบัตรประชาชนในฐานข้อมูล
     $forgot = 'SELECT emp_code FROM tbl_regis WHERE emp_code = :empcode AND iden_code =:idencode';
@@ -15,6 +17,12 @@
     $stmt_forgot->bindParam(':empcode', $empcode);
     $stmt_forgot->bindParam(':idencode', $idencode);
     $stmt_forgot->execute();
+
+    // if($stmt_forgot->rowCount() > 0){
+    //     echo $empcode; 
+    //     echo "<br>";
+    //     echo $idencode;
+    // }
 
     if($stmt_forgot->rowCount() > 0){        
         $resetToken = generateToken();
