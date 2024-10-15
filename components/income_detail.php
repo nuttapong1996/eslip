@@ -20,7 +20,7 @@ if(isset($_SESSION['empcode']) && isset($_GET['id'])){
     <div class="card rounded-0 mb-2 border-0 shadow-sm">
         <div class="card-body d-flex flex-column">
             <div class="text-start" style="font-size: 0.9rem;">
-                <p><?php echo"งวดที่ : ".$detail_row['period_payslip'] ." "."วันที่ : ".date_format(date_create($detail_row['date_payslip']),"d/m/Y"); ?></p>
+                <p> <i class="fa-solid fa-calendar-days"></i> <?php echo"งวดที่ : ".$detail_row['period_payslip'] ." "."วันที่ : ".date_format(date_create($detail_row['date_payslip']),"d/m/Y"); ?></p>
             </div>
             <div class="text-start">
                 <p class="mt-2 mb-3 fs-6 text-dark text-decoration-none">รายได้สุทธิ (NET INCOME)</p>

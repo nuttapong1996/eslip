@@ -28,12 +28,15 @@ if(isset($_SESSION['empcode'])){
 <div class="card rounded-0 mb-2 border-0 shadow-sm">
      <div class="card-body d-flex flex-column">
      <div class="text-start" style="font-size: 0.9rem;">
-            <!-- <p class="text-muted">รายได้สุทธิ</p> -->
-            <p><?php echo"งวดที่ : ".$recur_row['period_payslip'] ." "."วันที่ : ".date_format(date_create($recur_row['date_payslip']),"d/m/Y"); ?></p>
+            <p> <i class="fa-solid fa-calendar-days"></i> <?php echo"งวดที่ : ".$recur_row['period_payslip'] ." "."วันที่ : ".date_format(date_create($recur_row['date_payslip']),"d/m/Y"); ?></p>
         </div>
-        <div class="text-start">
+        <div class="text-start">            
             <p class="mt-2 mb-3 fs-5 mb-0 text-dark text-decoration-none">รายได้สุทธิ (NET INCOME)</p>
-            <p class="m-0 fs-4 text-end text-sq-dark text-decoration-none"><?php echo number_format($recur_row['total_net_income_payslip'],2); ?> บาท</p><br>
+            <div class="d-flex justify-content-end">
+                <input type="hidden" id="net_income_value" value="<?php echo number_format($recur_row['total_net_income_payslip'],2); ?>">
+                <p class="m-0 fs-3 px-3 text-end text-dark text-decoration-none " id="net_income">บาท</p><br>
+                <button class="btn  btn-outline-dark rounded-pill" id="net_income_btn"><i class="fa-solid fa-eye-slash" id="net_income_icon" ></i></button>
+            </div>           
         </div>
      </div>
      <div class="card-footer bg-white text-end">
@@ -44,11 +47,9 @@ if(isset($_SESSION['empcode'])){
 <h5 class="mt-4 fw-normal">ตารางรายการเงินเดือนปี <?php echo $year; ?></h5>
 <table id="datatablesSimple" class="table tabble-bordered text-center shadow-sm" style="background-color: #fff;" >
     <thead >
-        <!-- <th class="hidden">No.</th>
-        <th class="hidden">รหัสพนง</th> -->
         <th>งวด</th>
         <th>วันที่</th>
-        <th>รายได้สุทธิ</th>
+        <!-- <th>รายได้สุทธิ</th> -->
         <th>เพิ่มเติม</th>
     </thead>
     <tbody class="text-sq-dark">
@@ -56,8 +57,8 @@ if(isset($_SESSION['empcode'])){
         foreach($cur_year_stmt as $row){
             echo"<tr>";
             echo"<td >". $row['period_payslip']."</td>";
-            echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
-            echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
+            echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";   
+            // echo "<td>". number_format($row['total_net_income_payslip'], 2) . "</td>";
             echo"<td><a class='btn btn-sm text-primary ' href='./detail?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
             echo"</tr>";        
         }  ?>

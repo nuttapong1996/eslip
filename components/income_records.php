@@ -36,7 +36,7 @@ if(isset($_SESSION['empcode'])){
         <thead >
             <th>งวด</th>
             <th>วันที่</th>
-            <th>รายได้สุทธิ</th>
+            <!-- <th>รายได้สุทธิ</th> -->
             <th>เพิ่มเติม</th>
         </thead>
         <tbody class="text-sq-dark">
@@ -45,7 +45,7 @@ if(isset($_SESSION['empcode'])){
                 echo"<tr>";
                 echo"<td >". $row['period_payslip']."</td>";
                 echo"<td>". date_format(date_create($row['date_payslip']),"d/m/Y")."</td>";
-                echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
+                // echo"<td>". number_format($row['total_net_income_payslip'],2)."</td>";
                 echo"<td><a class='btn btn-sm text-primary ' href='./detail?id=".$row['code_tbl_payslip']."'> <i class='fa-solid fa-right-to-bracket'></i></a></td>";
                 echo"</tr>";        
             }  ?>

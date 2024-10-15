@@ -12,6 +12,7 @@
 <script src="./js/dataTables.responsive.js"></script>
 
 
+
 <!-- Ajax Script -->
 <script src="./js/scripts.js"></script>
 <script src="./js/period_select.js"></script>
@@ -19,6 +20,7 @@
 <script src="./js/emp_regis.js"></script>
 <script src="./js/emp_pass_edit.js"></script>
 <script src="./js/emp_reset.js"></script>
+<script src="./js/salary_toggle.js"></script>
 
 
 
