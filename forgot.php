@@ -41,9 +41,12 @@
                                     </div>
                                 </form>
                                 <hr>
-                                <div class="text-center" id="login_msg"> 
-                                    <div class="small"><a href="login">มีบัญชีอยู่แล้ว? ลงชื่อเข้าใช้</a></div>
+                                <div class="text-center" id="reg_msg">
+                                    <small ><a  href="regis">สมัครสมาชิก</a></small>
                                 </div>
+                                <!-- <div class="text-center" id="login_msg"> 
+                                    <div class="small"><a href="login">มีบัญชีอยู่แล้ว? ลงชื่อเข้าใช้</a></div>
+                                </div> -->
                             </div>
                         </div>
                     </div>

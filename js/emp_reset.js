@@ -2,9 +2,8 @@ $(document).ready(function(){
 
     $('#reg_msg').hide();
 
-    $('#emp_re').on('change', function() {
+    $('#emp_re').on('input', function() {
         var employeeId = $(this).val();
-        
         // ตรวจสอบว่า input ไม่ว่างเปล่า
         if (employeeId !== '') {
             $.ajax({
@@ -17,13 +16,12 @@ $(document).ready(function(){
                         $('#msg1').text('พบรหัสพนักงานในระบบ').show();
                         $('#msg1').removeClass('invalid-feedback').addClass('valid-feedback');
                         $('#iden_re_holder').show();
-                        $('#reg_msg').show();
+                        $('#reg_msg').hide();
                         $('#Btn_re').prop('disabled', true);
                         $('#iden_re').focus();
                     } else {
                         $('#iden_re_holder').hide();
                         $('#reg_msg').show();
-                        $('#login_msg').hide();
                         $('#Btn_re').prop('disabled', true);
                         $('#iden_re').val('');
                         $('#emp_re').removeClass('is-valid').addClass('is-invalid');

@@ -32,10 +32,10 @@ if(isset($_SESSION['empcode'])){
         </div>
         <div class="text-start">            
             <p class="mt-2 mb-3 fs-5 mb-0 text-dark text-decoration-none">รายได้สุทธิ (NET INCOME)</p>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex flex-column justify-content-end">
                 <input type="hidden" id="net_income_value" value="<?php echo number_format($recur_row['total_net_income_payslip'],2); ?>">
-                <p class="m-0 fs-3 px-3 text-end text-dark text-decoration-none " id="net_income">บาท</p><br>
-                <button class="btn  btn-outline-dark rounded-pill" id="net_income_btn"><i class="fa-solid fa-eye-slash" id="net_income_icon" ></i></button>
+                <p class="m-0 fs-2 px-3 text-end text-dark text-decoration-none " id="net_income">บาท</p><br>                
+                <button class="btn  btn-outline-dark rounded-pill" id="net_income_btn"><b id="net_income_icon_text" class="" >แสดงยอดเงิน</b> <i class="fa-solid fa-eye" id="net_income_icon" ></i></button>
             </div>           
         </div>
      </div>
