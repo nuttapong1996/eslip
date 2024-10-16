@@ -6,61 +6,71 @@ if(isset($_SESSION['empcode']) && isset($_FILES['emppic'])){
     $empcode = $_SESSION['empcode'];
     $image = $_FILES['emppic'];
 
+    // Function to correct image orientation based on EXIF data
+    function correctImageOrientation($imagePath) {
+        if (function_exists('exif_read_data')) {
+            $exif = @exif_read_data($imagePath);
+
+            if (!empty($exif['Orientation'])) {
+                $imageResource = imagecreatefromjpeg($imagePath); // Assuming it's a JPEG image
+
+                switch ($exif['Orientation']) {
+                    case 3:
+                        $imageResource = imagerotate($imageResource, 180, 0);
+                        break;
+
+                    case 6:
+                        $imageResource = imagerotate($imageResource, -90, 0);
+                        break;
+
+                    case 8:
+                        $imageResource = imagerotate($imageResource, 90, 0);
+                        break;
+                }
+
+                // Save the corrected image back
+                imagejpeg($imageResource, $imagePath, 90); // 90 is the compression quality
+                imagedestroy($imageResource);
+            }
+        }
+    }
+    // Function to compress the uploaded image
+    // function compressImage($imagePath, $imageType) {
+    function compressImage($imagePath) {
+        $quality = 50; // Compression quality for JPEG
+        $compression = 9; // PNG compression level (0 = no compression, 9 = max compression)
+        $compressedImage = $imagePath;
+
+        $imageResource = imagecreatefromjpeg($imagePath);
+        imagejpeg($imageResource, $compressedImage, $quality);
+
+        // if ($imageType == IMAGETYPE_JPEG) {
+        //     $imageResource = imagecreatefromjpeg($imagePath);
+        //     imagejpeg($imageResource, $compressedImage, $quality);
+        // } elseif ($imageType == IMAGETYPE_PNG) {
+        //     $imageResource = imagecreatefrompng($imagePath);
+        //     imagepng($imageResource, $compressedImage, $compression);
+        // }
+
+        // Free memory
+        imagedestroy($imageResource);
+    }
+
+        
+
         // ตรวจสอบการอัพโหลดไฟล์ภาพ
         if ($image['error'] === UPLOAD_ERR_OK && strtolower(pathinfo($image['name'], PATHINFO_EXTENSION)) === 'jpg'){ 
             $uploadDir = '../uploads/emp_pic/';
             $imageName = $empcode . '.jpg'; // ใช้รหัสพนักงานเป็นชื่อไฟล์
             $uploadPath = $uploadDir . $imageName;
+
+                      
             
-            // ย้ายไฟล์ไปยังตำแหน่งชั่วคราวก่อนครอป
-            if (move_uploaded_file($image['tmp_name'], $uploadPath)) {
+            if (move_uploaded_file($image['tmp_name'], $uploadPath)) {     
+                
+                correctImageOrientation($uploadPath);
 
-                // // เริ่มการครอปรูปภาพ
-                // $srcImage = imagecreatefromjpeg($uploadPath);
-
-                // // อ่านข้อมูล EXIF เพื่อตรวจสอบการหมุนของกล้อง
-                // if (function_exists('exif_read_data')) {
-                //     $exif = exif_read_data($uploadPath);
-                //     if (isset($exif['Orientation'])) {
-                //         $orientation = $exif['Orientation'];
-
-                //         // หมุนรูปภาพตามข้อมูล EXIF
-                //         switch ($orientation) {
-                //             case 3:
-                //                 $srcImage = imagerotate($srcImage, 180, 0);
-                //                 break;
-                //             case 6:
-                //                 $srcImage = imagerotate($srcImage, -90, 0);
-                //                 break;
-                //             case 8:
-                //                 $srcImage = imagerotate($srcImage, 90, 0);
-                //                 break;
-                //             default:
-                //                 $srcImage = imagerotate($srcImage, 0, 0);
-                //                 break;
-                //         }
-                //     }
-                // }
-
-                // // ขนาดต้นฉบับของรูป
-                // $originalWidth = imagesx($srcImage);
-                // $originalHeight = imagesy($srcImage);
-
-                // // กำหนดขนาดครอป 500x500 พิกเซล
-                // $cropSize = min($originalWidth, $originalHeight);
-                // $cropX = ($originalWidth - $cropSize) / 2;
-                // $cropY = ($originalHeight - $cropSize) / 2;
-
-                // // สร้างภาพใหม่ขนาด 500x500 พิกเซล
-                // $dstImage = imagecreatetruecolor(500, 500);
-                // imagecopyresampled($dstImage, $srcImage, 0, 0, $cropX, $cropY, 500, 500, $cropSize, $cropSize);
-
-                // // บันทึกภาพที่ครอปแล้วทับไฟล์เดิม
-                // imagejpeg($dstImage, $uploadPath , 90);
-
-                // // ทำความสะอาดหน่วยความจำ
-                // imagedestroy($srcImage);
-                // imagedestroy($dstImage);
+                compressImage($uploadPath); 
 
                     // อัพเดตฐานข้อมูลด้วยเส้นทางไฟล์ของรูปภาพ
                     $img_sql = "UPDATE tbl_regis SET emp_pic = :profile_image WHERE emp_code  = :empcode";
