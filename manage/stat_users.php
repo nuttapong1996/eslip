@@ -59,7 +59,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
 <main>
     <div class="container px-4">
         <div class="row justify-content-center mt-5 mb-3">
-          <h1 class="mb-3">ยอดผู้สมัครใช้งาน</h1>
+          <h1 class="mb-3"><i class="fa-solid fa-chart-simple"></i> ยอดผู้สมัครใช้งาน</h1>
           <p class="text-muted">(Updated <?php echo date('d-m-Y') ?>)</p>
         </div>
         <div class="row justify-content-center  mb-3">            

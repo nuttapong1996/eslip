@@ -32,27 +32,27 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
 
     // $users_row = $users_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-    <style>
+    <!-- <style>
         .dt-search{
             display: flex;
             justify-content: flex-end;
             align-items: center;
             font-weight: bold;
         }
-    </style>
+    </style> -->
     <title><?php echo $title ?></title>
     <main>
         <div class="container">
             <div class="row justify-content-center mt-5">
                 <div class="col-md-9">               
-                <h3 class="text-center mt-3 mb-2"> <i class="fa-solid fa-users-gear"></i> รายชื่อผู้สมัครใช้งานแผนก/ฝ่าย : <?php echo $dept ?></h3>
+                <h3 class="text-center mt-3 mb-2"> <i class="fa-solid fa-table-list"></i> รายชื่อผู้สมัครใช้งาน<br>แผนก/ฝ่าย : <?php echo $dept ?></h3>
                     <table id="usersListDataTable" class="table tabble-bordered bg-light shadow-sm">
                         <thead>
                             <th class="bg-primary text-white text-center">ลำดับ</th>
                             <th class="bg-primary text-white text-center">รหัสพนง</th>
                             <th class="bg-primary text-white text-center">ชื่อ - สกุล</th>
-                            <th class="bg-primary text-white text-center">วันที่ลงทะเบียน</th>
                             <th class="bg-warning text-dark text-center">สถานะ</th>
+                            <th class="bg-primary text-white text-center">วันที่ลงทะเบียน</th>
                         </thead>
                         <tbody class="">
                             <?php
@@ -62,19 +62,19 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                                 echo"<td class='text-center'>". $i++."</td>";
                                 echo"<td class='text-center'>".trim($row['empcode'])."</td>";
                                 echo"<td>".trim($row['name'])."</td>";
-
-                                if($row['created_at'] != null){
-                                    echo"<td class='text-center'>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
-                                }else{
-                                    echo"<td class='text-center'>-</td>";
-                                }
-
                                 if($row['status'] == 'สมัครแล้ว'){
                                     echo"<td class='text-center'><span class='badge bg-success'>สมัครแล้ว</span></td>";
                                 }else{
                                     echo"<td class='text-center'><span class='badge bg-danger'>ยังไม่สมัคร</span></td>";
                                 }
                                 echo"</tr>";
+                                if($row['created_at'] != null){
+                                    echo"<td class='text-center'>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
+                                }else{
+                                    echo"<td class='text-center'>-</td>";
+                                }
+
+                               
                             }  
                             ?>
                         </tbody>
