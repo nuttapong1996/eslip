@@ -25,7 +25,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
   //Query จำนวนผู้สมัครแต่ละแผนก
     $number_emp_sql ="SELECT
                         tbl_dept_emp.short_name_deptemp AS dept,
-                        COUNT(table_regis.emp_code) AS emp_num 
+                        COUNT(table_regis.emp_code) AS emp_num
                       FROM
                         tbl_dept_emp
                         LEFT JOIN tbl_emp AS table_emp ON tbl_dept_emp.code_tbl_deptemp = table_emp.dept_emp
@@ -83,12 +83,13 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
               <div class="col-sm-3 mb-3">
                 <?php if(number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0) == 0){echo '<div class="card border-success text-success">' ;}else{echo '<div class="card border-danger">' ;} ?>
                   <!-- <div class="card"> -->
-                      <div class="card-body">
+                      <div class="card-body">                          
                           <h5 class="card-title"><?php echo $number_emp_row[$key]['dept'];  if(number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0) == 0){ echo '<i class="fas fa-check text-success"></i> <small class="text-muted">ครบแล้ว</small>';}?> </h5>
                           <p class="card-text text-success text-end fs-4"><?php echo number_format($number_emp_row[$key]['emp_num'],0)?> คน</p>
                           <hr>
                           <p class="card-text text-danger text-end fs-5">คงเหลือ <?php echo number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0)?> คน</p>
-                          <p class="card-text text-end">จาก <?php echo number_format($total_emp_row[$key]['emp'],0)?> คน</p>                          
+                          <p class="card-text text-end">จาก <?php echo number_format($total_emp_row[$key]['emp'],0)?> คน</p> 
+                          <a class="btn btn-outline-secondary w-100" href="./admin?manage=users_list&dept=<?php echo $number_emp_row[$key]['dept'] ?>">ดูรายละเอียด</a>                         
                       </div>
                   </div>
               </div>

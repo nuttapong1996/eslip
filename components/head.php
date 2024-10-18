@@ -9,7 +9,7 @@
 <script src="./js/chartjs-plugin-datalabels.min.js"></script>
 <script src="./js/dataTables.js"></script>
 <script src="./js/responsive.dataTables.js"></script>
-<script src="./js/dataTables.responsive.js"></script>
+<script src="./js/dataTables.responsive.js"></script> 
 
 
 
@@ -34,5 +34,19 @@
 
 <!-- favicon -->
 <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<!-- DataTables Buttons CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+
+<!-- DataTables Buttons JS -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+<!-- JSZip (จำเป็นสำหรับ Export to Excel) -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<!-- Buttons HTML5 (สำหรับ Export to Excel) -->
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+
 
 

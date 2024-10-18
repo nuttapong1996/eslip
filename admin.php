@@ -30,6 +30,9 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                             case 'stat_user':
                                 include './manage/stat_users.php';
                             break;
+                            case 'users_list':
+                                include './manage/users_list.php';
+                            break;
                             default:
                                 include './manage/manage_users.php';
                             break;
