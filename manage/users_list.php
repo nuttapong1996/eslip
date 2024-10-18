@@ -32,14 +32,20 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
 
     // $users_row = $users_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-    <!-- <style>
+    <style>
         .dt-search{
             display: flex;
             justify-content: flex-end;
             align-items: center;
             font-weight: bold;
         }
-    </style> -->
+        @media screen and (max-width: 425px) {
+            .dt-search{
+                justify-content: center;
+                margin: 10px 0;
+            }
+        }
+    </style>
     <title><?php echo $title ?></title>
     <main>
         <div class="container">
@@ -51,7 +57,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                             <th class="bg-primary text-white text-center">ลำดับ</th>
                             <th class="bg-primary text-white text-center">รหัสพนง</th>
                             <th class="bg-primary text-white text-center">ชื่อ - สกุล</th>
-                            <th class="bg-warning text-dark text-center">สถานะ</th>
+                            <th class="bg-primary text-white text-center">สถานะ</th>
                             <th class="bg-primary text-white text-center">วันที่ลงทะเบียน</th>
                         </thead>
                         <tbody class="">
@@ -67,14 +73,15 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                                 }else{
                                     echo"<td class='text-center'><span class='badge bg-danger'>ยังไม่สมัคร</span></td>";
                                 }
-                                echo"</tr>";
+
+                                
                                 if($row['created_at'] != null){
                                     echo"<td class='text-center'>". date_format(date_create($row['created_at']),"d-m-Y H:i")."</td>";
                                 }else{
                                     echo"<td class='text-center'>-</td>";
                                 }
 
-                               
+                                echo"</tr>";
                             }  
                             ?>
                         </tbody>
@@ -121,7 +128,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                 }
             ],
             columnDefs: [ {
-                targets: [0,1,2,3],
+                targets: [0,1,2,4],
                 orderable: false
             } ],
             ordering: true,
