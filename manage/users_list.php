@@ -22,7 +22,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                 LEFT JOIN tbl_regis AS table_reg ON table_emp.code_emp = table_reg.emp_code
                 JOIN tbl_dept_emp AS table_dept ON table_emp.dept_emp = table_dept.code_tbl_deptemp
             WHERE 
-                table_dept.short_name_deptemp = :dept AND table_emp.status_emp = 10
+                table_dept.short_name_deptemp = :dept AND table_emp.status_emp = 10 AND table_emp.code_emp NOT LIKE '%C%' 
             ORDER BY 
                status ASC";
 

@@ -13,7 +13,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                       FROM
                         tbl_emp AS table_emp
                         JOIN tbl_dept_emp ON table_emp.dept_emp = tbl_dept_emp.code_tbl_deptemp 
-                      WHERE tbl_dept_emp.short_name_deptemp IN ('MO', 'MP', 'EE', 'CO', 'INV', 'SHE', 'AM', 'HR', 'AC', 'IT', 'PU', 'ME', 'MC', 'EXEC') AND table_emp.status_emp = 10
+                      WHERE tbl_dept_emp.short_name_deptemp IN ('MO', 'MP', 'EE', 'CO', 'INV', 'SHE', 'AD', 'HR', 'AC', 'IT', 'PU', 'ME', 'MC', 'EXEC') AND table_emp.status_emp = 10 AND table_emp.code_emp NOT LIKE '%C%' 
                       GROUP BY tbl_dept_emp.short_name_deptemp
                       ORDER BY tbl_dept_emp.short_name_deptemp";
 
@@ -30,7 +30,7 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                         tbl_dept_emp
                         LEFT JOIN tbl_emp AS table_emp ON tbl_dept_emp.code_tbl_deptemp = table_emp.dept_emp
                         LEFT JOIN tbl_regis AS table_regis ON table_emp.code_emp = table_regis.emp_code
-                      WHERE tbl_dept_emp.short_name_deptemp IN ('MO','MP','EE','CO','INV','SHE','AM','HR','AC','IT','PU','ME','MC','EXEC') 
+                      WHERE tbl_dept_emp.short_name_deptemp IN ('MO','MP','EE','CO','INV','SHE','AD','HR','AC','IT','PU','ME','MC','EXEC') 
                       GROUP BY
                         tbl_dept_emp.short_name_deptemp 
                       ORDER BY
@@ -87,7 +87,14 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                           <h5 class="card-title"><?php echo $number_emp_row[$key]['dept'];  if(number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0) == 0){ echo '<i class="fas fa-check text-success"></i> <small class="text-muted">ครบแล้ว</small>';}?> </h5>
                           <p class="card-text text-success text-end fs-4"><?php echo number_format($number_emp_row[$key]['emp_num'],0)?> คน</p>
                           <hr>
-                          <p class="card-text text-danger text-end fs-5">คงเหลือ <?php echo number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0)?> คน</p>
+                          <p class="card-text text-danger text-end fs-5">คงเหลือ 
+                            <?php //if( ($number_emp_row[$key]['emp_num'] - number_format($total_emp_row[$key]['emp'])) < 0 ) {
+                              //echo number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0); 
+                          //}else{
+                        //      echo number_format($number_emp_row[$key]['emp_num'] - $total_emp_row[$key]['emp'],0);
+                         // }        
+                          ?>
+                          คน</p>
                           <p class="card-text text-end">จาก <?php echo number_format($total_emp_row[$key]['emp'],0)?> คน</p> 
                           <a class="btn btn-outline-secondary w-100" href="./admin?manage=users_list&dept=<?php echo $number_emp_row[$key]['dept'] ?>">ดูรายละเอียด</a>                         
                       </div>
