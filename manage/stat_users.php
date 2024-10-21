@@ -8,14 +8,18 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
 
     //Query จำนวนพนักงานแต่ละแผนกทั้งหมดปัจจุบัน
     $total_emp_sql ="SELECT
-                        tbl_dept_emp.short_name_deptemp AS dept,
+                        table_dept.short_name_deptemp AS dept,
                         COUNT(*) AS emp
                       FROM
-                        tbl_emp AS table_emp
-                        JOIN tbl_dept_emp ON table_emp.dept_emp = tbl_dept_emp.code_tbl_deptemp 
-                      WHERE tbl_dept_emp.short_name_deptemp IN ('MO', 'MP', 'EE', 'CO', 'INV', 'SHE', 'AD', 'HR', 'AC', 'IT', 'PU', 'ME', 'MC', 'EXEC') AND table_emp.status_emp = 10 AND table_emp.code_emp NOT LIKE '%C%' 
-                      GROUP BY tbl_dept_emp.short_name_deptemp
-                      ORDER BY tbl_dept_emp.short_name_deptemp";
+                        tbl_emp AS table_emp,
+                        tbl_dept_emp AS table_dept
+                      WHERE table_dept.short_name_deptemp 
+                        IN ('MO','MP','EE','CO','INV','SHE','AD','HR','AC','IT','PU','ME','MC','EXEC') 
+                        AND table_emp.dept_emp = table_dept.code_tbl_deptemp 
+                        AND table_emp.status_emp = 10 
+                        AND table_emp.code_emp NOT LIKE '%C%' 
+                      GROUP BY table_dept.short_name_deptemp
+                      ORDER BY table_dept.short_name_deptemp";
 
     $total_emp_stmt = $conn->prepare($total_emp_sql);
     $total_emp_stmt->execute();
@@ -24,17 +28,23 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
 
   //Query จำนวนผู้สมัครแต่ละแผนก
     $number_emp_sql ="SELECT
-                        tbl_dept_emp.short_name_deptemp AS dept,
-                        COUNT(table_regis.emp_code) AS emp_num
-                      FROM
-                        tbl_dept_emp
-                        LEFT JOIN tbl_emp AS table_emp ON tbl_dept_emp.code_tbl_deptemp = table_emp.dept_emp
-                        LEFT JOIN tbl_regis AS table_regis ON table_emp.code_emp = table_regis.emp_code
-                      WHERE tbl_dept_emp.short_name_deptemp IN ('MO','MP','EE','CO','INV','SHE','AD','HR','AC','IT','PU','ME','MC','EXEC') 
-                      GROUP BY
-                        tbl_dept_emp.short_name_deptemp 
-                      ORDER BY
-                        tbl_dept_emp.short_name_deptemp;";
+                table_dept.short_name_deptemp AS dept,
+                COUNT(table_regis.emp_code) AS emp_num
+            FROM 
+                tbl_emp AS table_emp,
+                tbl_regis AS table_regis,
+                tbl_dept_emp AS table_dept              
+            WHERE                 
+                table_emp.code_emp = table_regis.emp_code 
+                AND table_emp.dept_emp = table_dept.code_tbl_deptemp
+                AND table_dept.short_name_deptemp IN 
+                    ('MO','MP','EE','CO','INV','SHE','AD','HR','AC','IT','PU','ME','MC','EXEC') 
+                AND table_emp.status_emp = 10 
+                AND table_emp.code_emp NOT LIKE '%C%' 
+            GROUP BY
+                table_dept.short_name_deptemp 
+            ORDER BY
+                table_dept.short_name_deptemp;";
 
     $number_emp_stmt = $conn->prepare($number_emp_sql);
     $number_emp_stmt->execute();
@@ -88,11 +98,11 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
                           <p class="card-text text-success text-end fs-4"><?php echo number_format($number_emp_row[$key]['emp_num'],0)?> คน</p>
                           <hr>
                           <p class="card-text text-danger text-end fs-5">คงเหลือ 
-                            <?php //if( ($number_emp_row[$key]['emp_num'] - number_format($total_emp_row[$key]['emp'])) < 0 ) {
-                              //echo number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0); 
-                          //}else{
-                        //      echo number_format($number_emp_row[$key]['emp_num'] - $total_emp_row[$key]['emp'],0);
-                         // }        
+                            <?php if( ($number_emp_row[$key]['emp_num'] - number_format($total_emp_row[$key]['emp'])) < 0 ) {
+                              echo number_format($total_emp_row[$key]['emp'] - $number_emp_row[$key]['emp_num'],0); 
+                          }else{
+                            echo number_format($number_emp_row[$key]['emp_num'] - $total_emp_row[$key]['emp'],0);
+                          }        
                           ?>
                           คน</p>
                           <p class="card-text text-end">จาก <?php echo number_format($total_emp_row[$key]['emp'],0)?> คน</p> 

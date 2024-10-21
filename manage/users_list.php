@@ -23,14 +23,12 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                 JOIN tbl_dept_emp AS table_dept ON table_emp.dept_emp = table_dept.code_tbl_deptemp
             WHERE 
                 table_dept.short_name_deptemp = :dept AND table_emp.status_emp = 10 AND table_emp.code_emp NOT LIKE '%C%' 
-            ORDER BY 
-               status ASC";
+            ORDER BY status ASC";
 
     $users_stmt = $conn->prepare($users);
     $users_stmt->bindParam(':dept', $dept);
     $users_stmt->execute();
 
-    // $users_row = $users_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <style>
         .dt-search{
@@ -45,13 +43,21 @@ if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['
                 margin: 10px 0;
             }
         }
+        div >li >a {color: #000;}
+        div > li >a:hover{color: #fff;}
     </style>
     <title><?php echo $title ?></title>
     <main>
-        <div class="container">
-            <div class="row justify-content-center mt-5">
+
+        <div class="container px-4">
+            <div class="row mt-5">
+                <div class="col-sm-5">
+                    <li class="fs-6 btn btn-outline-dark "><a class="text-decoration-none" href="admin?manage=stat_user"><i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก</a></li>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-2">
                 <div class="col-md-9">               
-                <h3 class="text-center mt-3 mb-2"> <i class="fa-solid fa-table-list"></i> รายชื่อผู้สมัครใช้งาน<br>แผนก/ฝ่าย : <?php echo $dept ?></h3>
+                <h3 class="text-center mt-3 mb-2"> <i class="fa-solid fa-table-list"></i> รายชื่อผู้สมัครใช้งาน<br>แผนกฝ่าย : <?php echo $dept ?></h3>
                     <table id="usersListDataTable" class="table tabble-bordered bg-light shadow-sm">
                         <thead>
                             <th class="bg-primary text-white text-center">ลำดับ</th>
