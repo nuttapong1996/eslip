@@ -197,6 +197,10 @@ $title = "สลิปเงินเดือน (PDF)";
             });
 
             loadingTask.promise.then(pdfDoc_ => {
+
+                pdfview.style.display = 'block';
+                pdfview.scrollIntoView();
+
                 pdfDoc = pdfDoc_;
                 document.getElementById('page-count').textContent = pdfDoc.numPages;
                 renderPage(pageNum);
@@ -226,8 +230,8 @@ $title = "สลิปเงินเดือน (PDF)";
             
             // pdfTitle.textContent = 'สลิปเงินเดือนงวดที่ : ' +period1+' - งวดที่ : '+period2 + ' ปี: '+year;
 
-            pdfview.style.display = 'block';
-            pdfview.scrollIntoView();
+            // pdfview.style.display = 'block';
+            // pdfview.scrollIntoView();
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'components/slip.php', true);
