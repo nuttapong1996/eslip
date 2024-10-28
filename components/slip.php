@@ -14,7 +14,7 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->SetDisplayMode('fullpage'); 
     $mpdf->AddPage('L'); 
-    $mpdf->setFooter('ออกเมื่อวันที่ {DATE d/m/Y H:i:s} | สำหรับดูเท่านั้น | หน้าที่ {PAGENO} / {nb}');
+    $mpdf->setFooter('ออกเมื่อวันที่ {DATE d/m/Y H:i:s} |  | หน้าที่ {PAGENO} / {nb}');
 
 
     $sql = "SELECT * FROM tbl_payslip WHERE code_emp_payslip =:empcode 
@@ -463,17 +463,21 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
     }
 
     //ตั้งรหัสผ่านให้กับ PDF
-    $mpdf->SetProtection(array('copy','print'),$pass);
+    $mpdf->SetProtection(['copy', 'print'],$pass,$pass);
     //ตั้งชื่อให้กับ PDF
     $slipname ="SQMM_ESL_".$empcode."_".$year."_PP".$period1."-".$period2.".pdf";
     //แสดง PDF
     // $mpdf->Output($slipname ,'I');
+    header('Content-Type: application/pdf');
+    header('Content-Disposition: inline; filename="'.$slipname.'"'); // Inline for viewing
+    header('Access-Control-Allow-Origin: *'); // CORS header if needed
+    $mpdf->Output();
 
     // ส่ง PDF ไปยังหน้าที่ต้องการในรูปแบบที่ดาวน์โหลดได้
-        $pdfContent = $mpdf->Output('' ,'S');
-        header('Content-Type: application/pdf');
-        header('Content-Disposition: attachment; filename="'.$slipname.'"');
-        echo $pdfContent;
+    // $pdfContent = $mpdf->Output('' ,'S');
+    // header('Content-Type: application/pdf');
+    // header('Content-Disposition: attachment; filename="'.$slipname.'"');
+    // echo $pdfContent;
         
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
