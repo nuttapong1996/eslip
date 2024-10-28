@@ -62,34 +62,38 @@ if(isset($_POST['empcode'])&&isset($_POST['idencode'])&&isset($_POST['password']
         // 1.ตรวจสอบรหัสพนักงานซ้ำบนตาราง tbl_regis
         if($stmt_user_exist->rowCount() > 0){
             header("location: ../regis?user_exist");
+            exit;   
         }else{
             // 2.ตรวจสอบเลขบัตรประชาชนซ้ำบนตาราง tbl_regis
             if($stmt_iden_exist->rowCount() > 0){
                 header("location: ../regis?iden_exist");
+                exit;
             }else{
                 //ตรวจสอบค่าว่าง หากผู้ใช้ใส่อีเมลมาก็อนุญาตให้ลงทะเบียน
                 if($email !==""){
-                    // 3.ตรวจสอบอีเมลซ้ำบนตาราง tbl_regis
                     if($stmt_email_exist->rowCount() > 0){
                         header("location: ../regis?email_exist");
-                    }else{                
-                        $stmt_regis->execute();
-                        //ตรวจสอบ Query ของการลงทะเบียน
-                        if($stmt_regis){
-                            header("location: ../login?regis_success");
-                        }else{
-                            header("location: ../regis?regis_fail");
-                        }
+                        exit;
                     }
-                }else{ //หากไม่ได้ใส่ก็อนุญาตใลงทะเบียน
-                    $stmt_regis->execute();
+                }
+                // Query โค๊ด SQL สำหรับลงทะเบียนเพิ่มข้อมูลพนักงาน
+                $stmt_regis->execute();
+                
+                //ตรวจสอบ Query ของการลงทะเบียน
+                if($stmt_regis) {
+                    //ลงทะเบียนสําเร็จ
                     header("location: ../login?regis_success");
-                }      
+                } else {
+                    //ลงทะเบียนไม่สําเร็จ
+                    header("location: ../regis?regis_fail");
+                }
+                exit;
             }
         }
     // ปิดการเชื่อมต่อฐานข้อมูล
     $conn = null;
 }else{
     header("location: ../regis?regis_fail");
+    exit;
 }
 ?>
