@@ -75,7 +75,7 @@
                                                             <option value="09">กันยายน</option>
                                                             <option value="10">ตุลาคม</option>
                                                             <option value="11">พฤศจิกายน</option>
-                                                            <option value="12">ธันยาคม</option>
+                                                            <option value="12">ธันวาคม</option>
                                                         </select>
                                                         <label for="birhtmonth">เดือน</label>
                                                         <div id="msgbm" class="invalid-feedback"></div>                                            
