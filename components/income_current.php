@@ -32,7 +32,7 @@ if(isset($_SESSION['empcode'])){
         text-align: center;
     }
 </style>
-<h5 class="fw-normal">เงินเดือนปัจจุบัน</h5>
+<h5 class="fw-normal">เงินเดือนล่าสุด</h5>
 <div class="card rounded-0 mb-2 border-0 shadow-sm">
 
      <div class="card-body d-flex flex-column">
