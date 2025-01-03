@@ -22,7 +22,14 @@ if(isset($_SESSION['empcode'])){
     $stmt->execute();
 
 ?>
-
+<style>
+    .table, .datatable-table{
+        background: #fff !important;
+    }
+    .datatable-empty{
+        text-align: center;
+    }
+</style>
     <h4 class="mt-3 mb-2 fw-normal text-center">ตารางรายการเงินเดือนปี <?php if(isset($_POST['slipyear'])){ echo $_POST['slipyear']; }else{ echo date("Y");} ?></h4>
     <div class="row justify-content-center">
         <div class="col-sm-12">

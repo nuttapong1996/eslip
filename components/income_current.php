@@ -34,8 +34,10 @@ if(isset($_SESSION['empcode'])){
 </style>
 <h5 class="fw-normal">เงินเดือนปัจจุบัน</h5>
 <div class="card rounded-0 mb-2 border-0 shadow-sm">
+
      <div class="card-body d-flex flex-column">
-     <div class="text-start" style="font-size: 0.9rem;">
+     <?php if(!empty($recur_row['period_payslip'])){ ?>
+        <div class="text-start" style="font-size: 0.9rem;">
             <p> <i class="fa-solid fa-calendar-days"></i> <?php echo"งวดที่ : ".$recur_row['period_payslip'] ." "."วันที่ : ".date_format(date_create($recur_row['date_payslip']),"d/m/Y"); ?></p>
         </div>
         <div class="text-start">            
@@ -49,6 +51,14 @@ if(isset($_SESSION['empcode'])){
      </div>
      <div class="card-footer bg-white text-end">
         <a class="btn text-secondary m-0 p-0" href="./detail?id=<?php echo $recur_row['code_tbl_payslip']; ?>">กดเพื่อดูรายละเอียดเพิ่มเติม</a>
+        <?php } else{ ?>
+            <div class="text-start" style="font-size: 0.9rem;">
+                <p> <i class="fa-solid fa-calendar-days"></i> งวดที่ : -- วันที่ : --/--/----</p>
+            </div>
+               <div class="text-center p-3">
+                <h3 class="m-0 p-0 fw-light">ยังไม่มีรายการเงินเดือน</h3>
+               </div>
+    <?php  }?>
      </div>
 </div>
 
