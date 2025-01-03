@@ -10,10 +10,10 @@ if(isset($_SESSION['empcode'])){
     $empcode = $_SESSION['empcode'];
 
     //Query เงินเดือนปัจจุบัน
-    $recurent_in ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND year_payslip = :year ORDER BY code_tbl_payslip DESC LIMIT 1";
+    $recurent_in ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode ORDER BY code_tbl_payslip DESC LIMIT 1";
     $recur_stmt = $conn->prepare($recurent_in);
     $recur_stmt->bindParam(':empcode', $empcode);
-    $recur_stmt->bindParam(':year', $year);
+    // $recur_stmt->bindParam(':year', $year);
     $recur_stmt->execute();
     $recur_row = $recur_stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -24,6 +24,14 @@ if(isset($_SESSION['empcode'])){
     $cur_year_stmt->bindParam(':year', $year);
     $cur_year_stmt->execute();
 ?>
+<style>
+    .table, .datatable-table{
+        background: #fff !important;
+    }
+    .datatable-empty{
+        text-align: center;
+    }
+</style>
 <h5 class="fw-normal">เงินเดือนปัจจุบัน</h5>
 <div class="card rounded-0 mb-2 border-0 shadow-sm">
      <div class="card-body d-flex flex-column">
