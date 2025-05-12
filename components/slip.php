@@ -83,19 +83,19 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
             // 2.ค่าเข้ากะเช้า
                 //บรรทัด 1
                 if($row['in_a01'] <> 0 && $in1 == "" ){ 
-                    $in1 ="ค่าเข้ากะเช้า";
+                    $in1 ="ค่า Shift";
                     $in_val1 = number_format($row['in_a01'],2);
                 //บรรทัด 2
                 }else if($row['in_a01'] != 0 && $in1 != "" && $in2 ==""){ 
-                    $in2 ="ค่าเข้ากะเช้า";
+                    $in2 ="ค่า Shift";
                     $in_val2 =   number_format($row['in_a01'],2);
                 //บรรทัด 3
                 }else if($row['in_a01'] != 0 && $in2 != "" && $in3 ==""){
-                    $in3 ="ค่าเข้ากะเช้า";
+                    $in3 ="ค่า Shift";
                     $in_val3 =  number_format($row['in_a01'],2);
                 //บรรทัด 4
                 }else if($row['in_a01'] != 0 && $in3 != "" && $in4 ==""){
-                    $in4 ="ค่าเข้ากะเช้า";
+                    $in4 ="ค่า Shift";
                     $in_val4 =  number_format($row['in_a01'],2);
                 }
             // 3.ค่าชั่วโมง
@@ -156,19 +156,19 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
             // 6.ค่าตอบแทนตามผลงาน
                 //บรรทัด 1
                 if($row['in_in01'] <> 0 && $in1 == "" ){ 
-                    $in1 ="ค่าตอบแทนตามผลงาน";
+                    $in1 ="ค่า Incentive";
                     $in_val1 = number_format($row['in_in01'],2);
                 //บรรทัด 2
                 }else if($row['in_in01'] != 0 && $in1 != "" && $in2 ==""){ 
-                    $in2 ="ค่าตอบแทนตามผลงาน";
+                    $in2 ="ค่า Incentive";
                     $in_val2 =   number_format($row['in_in01'],2);
                 //บรรทัด 3
                 }else if($row['in_in01'] != 0 && $in2 != "" && $in3 ==""){
-                    $in3 ="ค่าตอบแทนตามผลงาน";
+                    $in3 ="ค่า Incentive";
                     $in_val3 =  number_format($row['in_in01'],2);
                 //บรรทัด 4
                 }else if($row['in_in01'] != 0 && $in3 != "" && $in4 ==""){
-                    $in4 ="ค่าตอบแทนตามผลงาน";
+                    $in4 ="ค่า Incentive";
                     $in_val4 =  number_format($row['in_in01'],2);
                 }
             // 7.ค่าทำงานต่างประเทศ

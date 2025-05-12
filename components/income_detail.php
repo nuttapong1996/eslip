@@ -89,7 +89,7 @@ if(isset($_SESSION['empcode']) && isset($_GET['id'])){
                             // 2.ค่าเข้ากะเช้า หากไม่มีจะไม่แสดง
                                 if($detail_row['in_a01'] > 0){
                                     echo"<tr>";
-                                        echo "<td colspan='2'>ค่าเข้ากะเช้า</td>";
+                                        echo "<td colspan='2'>ค่า Shift</td>";
                                         echo "<td class='text-end'>".number_format($detail_row['in_a01'],2)."</td>";
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
@@ -121,7 +121,7 @@ if(isset($_SESSION['empcode']) && isset($_GET['id'])){
                             // 6.ค่าตอบแทนตามผลงาน หากไม่มีจะไม่แสดง
                                 if($detail_row['in_in01'] > 0){
                                 echo"<tr>";
-                                    echo "<td colspan='2'>ค่าตอบแทน<br>ตามผลงาน</td>";
+                                    echo "<td colspan='2'>ค่า Incentive</td>";
                                     echo "<td class='text-end'>".number_format($detail_row['in_in01'],2)."</td>";
                                     echo "<td>บาท</td>";
                                 echo"</tr>";
