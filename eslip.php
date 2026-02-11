@@ -1,6 +1,6 @@
 <?php 
 require_once 'backend/session.php';
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
 $title = "สลิปเงินเดือน (PDF)";
 ?>
     <!DOCTYPE html>
@@ -57,7 +57,7 @@ $title = "สลิปเงินเดือน (PDF)";
                                             <div class="card-body">                                                                                          
                                                 <!-- <form class="d-flex flex-column justify-content-center" method="POST" action='components/slip.php' target="_blank">                                            -->
                                                 <form class="d-flex flex-column justify-content-center m-0"  id="pdf-form" method="POST">                                                                                             
-                                                    <input type="hidden" id="empcode" value="<?php echo $_SESSION['empcode'_elip] ?>">                                         
+                                                    <input type="hidden" id="empcode" value="<?php echo $_SESSION['empcode_elip'] ?>">                                         
                                                     <?php include 'components/period_select.php'; ?>
                                                     <button class="btn btn-sm btn-outline-success p-3 m-0" name='download'>ตกลง</button>
                                                 </form>                                        

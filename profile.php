@@ -1,6 +1,6 @@
 <?php 
 require_once 'backend/session.php';
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
 $title = "ข้อมูลผู้ใช้งาน";
 ?>
     <!DOCTYPE html>
@@ -38,7 +38,7 @@ $title = "ข้อมูลผู้ใช้งาน";
                         <div class="sb-sidenav-menu bg-light">
                             <div class="nav">
                                 <div class="user_profile text-sq mb-2">
-                                <div class="sb-sidenav-menu-heading text-center fs-6 pt-0">รหัสพนักงาน :<?php echo $_SESSION['empcode'_elip]; ?> </div>
+                                <div class="sb-sidenav-menu-heading text-center fs-6 pt-0">รหัสพนักงาน :<?php echo $_SESSION['empcode_elip']; ?> </div>
                                     <div class="user-pic">
                                         <?php include 'components/emp_pic_b.php'; ?>
                                     </div>

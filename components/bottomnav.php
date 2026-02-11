@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
 ?>
     <nav class="fixed-bottom navbar navbar-expand  bg-sq-dark" style="height: 90px!important;">
         <div class="d-flex w-100 justify-content-around">

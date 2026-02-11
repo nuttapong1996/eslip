@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'_elip]) && trim($_SESSION['role'])=="am"){
+if(isset($_SESSION['empcode_elip']) && trim($_SESSION['role'])=="am"){
     // ชื่อหน้าเว็บ
     $title = "ยอดผู้สมัครใช้งาน";
 

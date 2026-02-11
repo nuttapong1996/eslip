@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'_elip]) && isset($_GET['id'])){
+if(isset($_SESSION['empcode_elip']) && isset($_GET['id'])){
     
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once('./includes/connect_db.php');
@@ -7,7 +7,7 @@ if(isset($_SESSION['empcode'_elip]) && isset($_GET['id'])){
     //ตัวแปร id รับค่าจากฟอร์ม
     $code_slip =$_GET['id'];
     //ตัวแปรรหัสพนักงาน
-    $empcode =$_SESSION['empcode'_elip];
+    $empcode =$_SESSION['empcode_elip'];
 
     $detail = "SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode AND code_tbl_payslip = :code_slip";
     $detail_stmt = $conn->prepare($detail);

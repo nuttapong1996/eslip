@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
     require_once('./includes/connect_db.php');
 
     $yearlist= "SELECT year_payslip FROM tbl_payslip GROUP BY year_payslip ORDER BY year_payslip DESC";

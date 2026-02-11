@@ -1,9 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['empcode'_elip]) && isset($_FILES['emppic'])){
+if(isset($_SESSION['empcode_elip']) && isset($_FILES['emppic'])){
     require_once __DIR__ . '/../includes/connect_db.php';
 
-    $empcode = $_SESSION['empcode'_elip];
+    $empcode = $_SESSION['empcode_elip'];
     $image = $_FILES['emppic'];
 
     // Function to correct image orientation based on EXIF data

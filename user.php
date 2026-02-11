@@ -1,6 +1,6 @@
 <?php 
 require_once 'backend/session.php';
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
 $title = "การจัดการ";
 ?>
     <!DOCTYPE html>

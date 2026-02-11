@@ -1,6 +1,6 @@
 <?php 
 
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
 
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once('includes/connect_db.php');
@@ -13,7 +13,7 @@ if(isset($_SESSION['empcode'_elip])){
     }
 
 
-    $empcode = $_SESSION['empcode'_elip];
+    $empcode = $_SESSION['empcode_elip'];
 
     $sql = "SELECT * FROM tbl_payslip WHERE year_payslip = :year and code_emp_payslip = :empcode ORDER BY code_tbl_payslip DESC";
     $stmt = $conn->prepare($sql);

@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'_elip])){
+if(isset($_SESSION['empcode_elip'])){
 ?>
 <div class="desktop">
 <nav class="sb-topnav navbar navbar-expand bg-sq-dark">

@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'_elip]) && trim($_SESSION['role'])=="am" && isset($_GET['dept'])){
+if(isset($_SESSION['empcode_elip']) && trim($_SESSION['role'])=="am" && isset($_GET['dept'])){
     // ชื่อหน้าเว็บ
     $title = "รายชื่อผู้สมัครใช้งานแผนก/ฝ่าย" . " " . $_GET['dept'];
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
