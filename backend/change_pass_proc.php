@@ -1,11 +1,11 @@
 <?php
 session_start();
-if(isset($_POST['newpassword']) && isset($_SESSION['empcode'])){
+if(isset($_POST['newpassword']) && isset($_SESSION['empcode'_elip])){
     //เรียกใช้ฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
     $newpassword = $_POST['newpassword'];
-    $empcode = $_SESSION['empcode'];
+    $empcode = $_SESSION['empcode'_elip];
 
     $newhash = password_hash($newpassword, PASSWORD_DEFAULT);
 

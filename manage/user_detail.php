@@ -1,12 +1,12 @@
 <?php
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
     // ชื่อหน้าเว็บ
     $title = "รายละเอียดผู้ใช้งาน";
 
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
-    $empcode = $_SESSION['empcode'];
+    $empcode = $_SESSION['empcode'_elip];
 
     $detail_sql= "SELECT 
                     table_emp.code_emp , 

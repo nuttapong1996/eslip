@@ -7,7 +7,7 @@ session_start();
         require_once __DIR__ . '/../includes/connect_db.php';
 
         $oldpassword = $_POST['oldpassword'];
-        $empcode = $_SESSION['empcode'];
+        $empcode = $_SESSION['empcode'_elip];
 
         $newpassword = 'SELECT password FROM tbl_regis WHERE emp_code =:empcode ';
         $stmt_newpassword = $conn->prepare($newpassword);

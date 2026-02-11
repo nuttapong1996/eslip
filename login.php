@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
     header('location:index');
 }else{
 ?>   

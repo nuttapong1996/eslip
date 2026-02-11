@@ -1,11 +1,11 @@
 <?php
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
 ?>
 <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark bg-sq" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div class="sb-sidenav-menu-heading text-center"> รหัสพนักงาน : <?php echo $_SESSION['empcode']; ?></div>
+                <div class="sb-sidenav-menu-heading text-center"> รหัสพนักงาน : <?php echo $_SESSION['empcode'_elip]; ?></div>
                 <div class="text-center">
                     <?php include 'components/emp_pic.php'; ?>
                 </div>

@@ -1,5 +1,5 @@
 <?php 
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
     // ชื่อหน้าเว็บ
     $title = "เปลี่ยนรหัสผ่าน";
 ?>

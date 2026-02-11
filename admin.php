@@ -1,6 +1,6 @@
 <?php 
 require_once 'backend/session.php';
-if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am"){
+if(isset($_SESSION['empcode'_elip]) && trim($_SESSION['role'])=="am"){
 ?>
     <!DOCTYPE html>
     <html lang="en">

@@ -1,11 +1,11 @@
 <?php
 session_start();
-if(isset($_SESSION['empcode']) && isset($_POST['email']) && isset($_POST['birhtday'])){
+if(isset($_SESSION['empcode'_elip]) && isset($_POST['email']) && isset($_POST['birhtday'])){
 
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once __DIR__ . '/../includes/connect_db.php';
 
-    $empcode = $_SESSION['empcode'];
+    $empcode = $_SESSION['empcode'_elip];
     $email = $_POST['email'];
     $birhtday = $_POST['birhtday'];
 

@@ -1,6 +1,6 @@
 <?php
  session_start();
-    if(isset($_SESSION['empcode']) && trim($_SESSION['role'])=="am" && isset($_GET['id'])){
+    if(isset($_SESSION['empcode'_elip]) && trim($_SESSION['role'])=="am" && isset($_GET['id'])){
         // เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
         require_once __DIR__ . '/../includes/connect_db.php';
 

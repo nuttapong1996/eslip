@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period1']) && isset($_POST['period2'])) {
+if (isset($_SESSION['empcode'_elip]) && isset($_POST['year']) && isset($_POST['period1']) && isset($_POST['period2'])) {
     require_once __DIR__ . '/../vendor/autoload.php';
     require_once __DIR__ . '/../includes/connect_db.php';
 
@@ -9,7 +9,7 @@ if (isset($_SESSION['empcode']) && isset($_POST['year']) && isset($_POST['period
     $year = isset($_POST['year']) ? $_POST['year'] : 'ไม่มีข้อมูล';
     $period1 = isset($_POST['period1']) ? $_POST['period1'] : 'ไม่มีข้อมูล';
     $period2 = isset($_POST['period2']) ? $_POST['period2'] : 'ไม่มีข้อมูล';
-    $empcode =$_SESSION['empcode'];
+    $empcode =$_SESSION['empcode'_elip];
 
     $mpdf = new \Mpdf\Mpdf();
     $mpdf->SetDisplayMode('fullpage'); 

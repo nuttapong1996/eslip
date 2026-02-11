@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
     // เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once('./includes/connect_db.php');
 

@@ -45,7 +45,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         if(password_verify(trim($password), trim($row['password']))){ 
 
             // 3. เก็บ Session
-            $_SESSION['empcode'] = $row['code_emp'];
+            $_SESSION['empcode'_elip] = $row['code_emp'];
             $_SESSION['name'] = $row['name_thai_emp'];
             $_SESSION['position'] = $row['position_emp'];
             $_SESSION['dept_emp'] = $row['short_name_deptemp'];

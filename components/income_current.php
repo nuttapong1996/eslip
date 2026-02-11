@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
     
     //เรียกใช้ฟังก์ชันเชื่อมต่อฐานข้อมูล
     require_once('./includes/connect_db.php');
@@ -7,7 +7,7 @@ if(isset($_SESSION['empcode'])){
     //ตัวแปรปีปัจจุบัน
     $year = date("Y");
     //ตัวแปรรหัสพนักงาน
-    $empcode = $_SESSION['empcode'];
+    $empcode = $_SESSION['empcode'_elip];
 
     //Query เงินเดือนปัจจุบัน
     $recurent_in ="SELECT * FROM tbl_payslip WHERE code_emp_payslip = :empcode ORDER BY code_tbl_payslip DESC LIMIT 1";

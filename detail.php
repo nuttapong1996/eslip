@@ -1,6 +1,6 @@
 <?php 
 require_once 'backend/session.php';
-if(isset($_SESSION['empcode'])){
+if(isset($_SESSION['empcode'_elip])){
 $title = "รายละเอียด";
 ?>
     <!DOCTYPE html>
