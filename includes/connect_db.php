@@ -36,10 +36,10 @@ try{
     $db_user = $_ENV['DB_USERNAME'];
     $db_pass = $_ENV['DB_PASSWORD'];
     $db_name = $_ENV['DB_DATABASE'];
-    $db_port = $_ENV['DB_PORT'];
+    $db_port = !empty($_ENV['DB_PORT']) ? $_ENV['DB_PORT'] : 5432;
 
     //สร้างตัวแปรการเชื่อมต่อฐานข้อมูล PDO Object
-    $conn = new PDO("pgsql:host=$db_host; options='--client_encoding=UTF8' dbname=$db_name", $db_user, $db_pass);
+    $conn = new PDO("pgsql:host=$db_host; port=$db_port; options='--client_encoding=UTF8' dbname=$db_name", $db_user, $db_pass);
 
     //ตั้งค่าโหมดการแจ้งเตือนข้อผิดพลาด
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
