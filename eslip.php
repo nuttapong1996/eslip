@@ -61,6 +61,7 @@ $title = "สลิปเงินเดือน (PDF)";
                                                     <?php include 'components/period_select.php'; ?>
                                                     <button class="btn btn-sm btn-outline-success p-3 m-0" name='download'>ตกลง</button>
                                                 </form>                                        
+                                                <div id="pdf-error" class="alert alert-danger mt-3 mb-0" role="alert" hidden></div>
                                             </div>
                                             <hr>
                                             <span class="btn btn-outline-secondary" id="howto-btn"><i class="fa-solid fa-question-circle"></i> วิธีการเปิดดูไฟล์ PDF</span>
@@ -115,10 +116,6 @@ $title = "สลิปเงินเดือน (PDF)";
             </dialog>  
         </body>
     </html>
-
-    
-
-
     <script>
         const pdfview = document.getElementById('pdfview');
         const form = document.getElementById('pdf-form');
@@ -129,6 +126,16 @@ $title = "สลิปเงินเดือน (PDF)";
             pageIsRendering = false,
             pdfUrl = '';
         pdfview.style.display = 'none';
+
+        const showPdfError = message => {
+            const errorBox = document.getElementById('pdf-error');
+            errorBox.textContent = message;
+            errorBox.hidden = false;
+        };
+
+        const clearPdfError = () => {
+            document.getElementById('pdf-error').hidden = true;
+        };
 
         const dialog = document.querySelector('#howto-dialog');
         const btnHowto = document.querySelector('#howto-btn');
@@ -211,9 +218,10 @@ $title = "สลิปเงินเดือน (PDF)";
                     if (userPassword) {
                         loadPDF(url, userPassword); // Retry with the entered password
                     }
-                } else {
-                    console.error('Error loading PDF:', error);
-                }
+            } else {
+                console.error('Error loading PDF:', error);
+                showPdfError('ไม่สามารถเปิดไฟล์ PDF ได้ กรุณาลองใหม่อีกครั้ง');
+            }
             });
         };
 
@@ -226,12 +234,7 @@ $title = "สลิปเงินเดือน (PDF)";
             const year = document.getElementById('yearSelect').value.trim(); // Get the content field value
             const period1 = document.getElementById('salaryPeriods1').value.trim(); // Get the content field value
             const period2 = document.getElementById('salaryPeriods2').value.trim(); // Get the content field value
-            const pdfTitle = document.getElementById('pdf-title'); // Get the content field value
-            
-            // pdfTitle.textContent = 'สลิปเงินเดือนงวดที่ : ' +period1+' - งวดที่ : '+period2 + ' ปี: '+year;
-
-            // pdfview.style.display = 'block';
-            // pdfview.scrollIntoView();
+            clearPdfError();
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST', 'components/slip.php', true);
@@ -240,6 +243,9 @@ $title = "สลิปเงินเดือน (PDF)";
             xhr.onload = function() {
                 if (xhr.status === 200) {
                     const blob = xhr.response;
+                    if (pdfUrl) {
+                        URL.revokeObjectURL(pdfUrl);
+                    }
                     pdfUrl = URL.createObjectURL(blob);
                     loadPDF(pdfUrl); // Load the PDF in the viewer
 
@@ -250,7 +256,17 @@ $title = "สลิปเงินเดือน (PDF)";
                         link.download = 'SQMM_ESL_'+empcode+'_'+year+'_PP'+period1+'-'+period2+'.pdf';
                         link.click();
                     };
+                } else if (xhr.status === 401) {
+                    showPdfError('เซสชันหมดอายุ กรุณาเข้าสู่ระบบใหม่');
+                } else if (xhr.status === 404) {
+                    showPdfError('ไม่พบข้อมูลสลิปเงินเดือนตามช่วงงวดที่เลือก');
+                } else {
+                    showPdfError('ไม่สามารถสร้างไฟล์ PDF ได้ กรุณาลองใหม่อีกครั้ง');
                 }
+            };
+
+            xhr.onerror = function() {
+                showPdfError('ไม่สามารถเชื่อมต่อเพื่อสร้างไฟล์ PDF ได้ กรุณาลองใหม่อีกครั้ง');
             };
 
             xhr.send(formData);
