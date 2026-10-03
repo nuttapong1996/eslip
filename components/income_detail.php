@@ -162,19 +162,29 @@ if(isset($_SESSION['empcode_elip']) && isset($_GET['id'])){
                     </tr>
                     <!-- รายละเอียดรายการหัก(DEDUCTION) -->
                         <?php
+                            //ภาษี
                             echo"<tr>";
                                 echo "<td colspan='2'>ภาษี</td>";
                                 echo "<td class='text-end' style='width:120px;'>".number_format($detail_row['period_tax_payslip'],2)."</td>";
                                 echo "<td style='width:10px;'>บาท</td>";
                             echo"</tr>";
+                            // ประกันสังคม
                             echo"<tr>";
                                 echo "<td colspan='2'>ประกันสังคม</td>";
                                 echo "<td class='text-end'>".number_format($detail_row['period_sso_payslip'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
+                            // กองทุนสำรองเลี้ยงชีพ
                             echo"<tr>";
                                 echo "<td colspan='2'>กองทุนสำรองเลี้ยงชีพ</td>";
                                 echo "<td class='text-end'>".number_format($detail_row['period_provident_fund_payslip'],2)."</td>";
+                                echo "<td>บาท</td>";
+                            echo"</tr>";
+                            //Update : 3/10/2026
+                            // กองทุนสงเคราะห์ลูกจ้าง
+                            echo"<tr>";
+                                echo "<td colspan='2'>กองทุนสงเคราะห์ลูกจ้าง</td>";
+                                echo "<td class='text-end'>".number_format($detail_row['period_employee_welfare_fund_payslip'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
 
@@ -210,6 +220,7 @@ if(isset($_SESSION['empcode_elip']) && isset($_GET['id'])){
                                         echo "<td>บาท</td>";
                                     echo"</tr>";
                                     }
+
                         ?>
                         <tr class="text-danger border-top ">
                             <th colspan="2">รวมรายหัก</th>
@@ -230,24 +241,34 @@ if(isset($_SESSION['empcode_elip']) && isset($_GET['id'])){
                     </tr>
                     <!-- รายละเอียดรายการสะสม -->
                         <?php
+                            //เงินได้สะสม
                             echo"<tr>";
                                 echo "<th colspan='2'>เงินได้สะสม</th>";
                                 echo "<td class='text-end' style='width:120px;'>".number_format($detail_row['salary_or_year'],2)."</td>";
                                 echo "<td style='width:10px;'>บาท</td>";
                             echo"</tr>";
+                            //ภาษีสะสม
                             echo"<tr>";
                                 echo "<th colspan='2'>ภาษีสะสม</th>";
                                 echo "<td class='text-end'>".number_format($detail_row['tax_or_year'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
+                            //ประกันสังคมสะสม
                             echo"<tr>";
                                 echo "<th colspan='2'>ประกันสังคมสะสม</th>";
                                 echo "<td class='text-end'>".number_format($detail_row['sso_or_year'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
+                            //กองทุนสำรองเลี้ยงชีพสะสม
                             echo"<tr>";
                                 echo "<th colspan='2'>กองทุนสำรอง<br>เลี้ยงชีพสะสม</th>";
                                 echo "<td class='text-end'>".number_format($detail_row['pf_com_money_or_year'],2)."</td>";
+                                echo "<td>บาท</td>";
+                            echo"</tr>";
+                            //กองทุนสงเคราะห์ลูกจ้างสะสม
+                            echo"<tr>";
+                                echo "<th colspan='2'>กองทุนสงเคราะห์<br>ลูกจ้างสะสม</th>";
+                                echo "<td class='text-end'>".number_format($detail_row['ewf_com_money_or_year'],2)."</td>";
                                 echo "<td>บาท</td>";
                             echo"</tr>";
                         ?>
