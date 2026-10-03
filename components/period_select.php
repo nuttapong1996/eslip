@@ -2,8 +2,10 @@
 if(isset($_SESSION['empcode_elip'])){
     require_once('./includes/connect_db.php');
 
-    $yearlist= "SELECT year_payslip FROM tbl_payslip GROUP BY year_payslip ORDER BY year_payslip DESC";
+    // แสดงเฉพาะปีที่พนักงานที่เข้าสู่ระบบมีสลิป เพื่อไม่ให้เลือกงวดของผู้อื่น
+    $yearlist = "SELECT year_payslip FROM tbl_payslip WHERE code_emp_payslip = :empcode GROUP BY year_payslip ORDER BY year_payslip DESC";
     $year_stmt = $conn->prepare($yearlist);
+    $year_stmt->bindValue(':empcode', $_SESSION['empcode_elip']);
     $year_stmt->execute();
     $year_row = $year_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

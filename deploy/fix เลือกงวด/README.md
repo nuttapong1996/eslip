@@ -1,11 +1,12 @@
-# ชุดแก้ไขการเลือกงวด E-Slip
+# Deploy: แก้ไขการเลือกงวดและการเปิด PDF
 
-อัปโหลดไฟล์ในชุดนี้ไปยัง document root ของระบบ E-Slip แล้ววางทับไฟล์เดิมตาม path ด้านล่าง
+ให้คัดลอกไฟล์ในโฟลเดอร์นี้ไปทับในโฟลเดอร์รากของเว็บไซต์ โดยคงโครงสร้าง path เดิมดังนี้
 
-| ไฟล์ในชุดอัปโหลด | Path ปลายทางบน server |
+| ไฟล์ในชุด deploy | วางทับที่ path บนเว็บไซต์ |
 | --- | --- |
-| `backend/getSalaryPeriods.php` | `backend/getSalaryPeriods.php` |
-| `components/period_select.php` | `components/period_select.php` |
-| `js/period_select.js` | `js/period_select.js` |
+| `eslip.php` | `<web-root>/eslip.php` |
+| `backend/getSalaryPeriods.php` | `<web-root>/backend/getSalaryPeriods.php` |
+| `components/period_select.php` | `<web-root>/components/period_select.php` |
+| `js/period_select.js` | `<web-root>/js/period_select.js` |
 
-หลังอัปโหลด ให้ทำ hard refresh ที่หน้า `/eslip` แล้วเลือกปีและตรวจว่ารายการงวดแสดงขึ้นครบถ้วน
+หลังวางไฟล์แล้ว ให้ล้าง cache ของเบราว์เซอร์หรือ hard refresh ก่อนทดสอบเลือกปีและงวดใหม่อีกครั้ง
