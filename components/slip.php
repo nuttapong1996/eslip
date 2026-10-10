@@ -20,7 +20,8 @@ if (!$sessionExpired && isset($_SESSION['empcode_elip']) && isset($_POST['year']
     $period2 = isset($_POST['period2']) ? $_POST['period2'] : 'ไม่มีข้อมูล';
     $empcode = $_SESSION['empcode_elip'];
 
-    $mpdf = new \Mpdf\Mpdf();
+    // Keep mPDF's cache outside vendor/, which is often read-only on the server.
+    $mpdf = new \Mpdf\Mpdf(['tempDir' => sys_get_temp_dir() . '/eslip-mpdf']);
     $mpdf->SetDisplayMode('fullpage');
     $mpdf->AddPage('L');
     $mpdf->setFooter('ออกเมื่อวันที่ {DATE d/m/Y H:i:s} |  | หน้าที่ {PAGENO} / {nb}');
