@@ -11,8 +11,11 @@ if(isset($_SESSION['empcode_elip'])){
     $pic_stmt->bindParam(':empcode', $empcode);
     $pic_stmt->execute();
     $pic_row = $pic_stmt->fetch(PDO::FETCH_ASSOC);
+
+     $profile_pic = 'assets/images/noimage_w.png';
  ?>
-<img  class="rounded-circle" style="clip-path: circle(); width: 100px; height: 100px; object-fit: cover; overflow: hidden;" src="<?php if($pic_row['emp_pic'] != ""){echo "uploads/emp_pic/".$pic_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}?>"  alt="">
+<img  class="rounded-circle" style="clip-path: circle(); width: 100px; height: 100px; object-fit: cover; overflow: hidden;" 
+src="<?php echo $profile_pic; ?>"  alt="">
 <?php
 }else{
     echo "<script>window.location.href = '../login';</script>";

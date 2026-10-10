@@ -43,7 +43,8 @@ if(isset($_SESSION['empcode_elip'])){
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="text-center mb-3">
-                                            <img class="rounded-circle " style="clip-path: circle(); width: 150px; object-fit: cover" src="<?php if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}?>"  id="preview"  width="100px" alt="">
+                                            <!-- <img class="rounded-circle " style="clip-path: circle(); width: 150px; object-fit: cover" src="//if($detail_row['emp_pic'] != ""){echo "uploads/emp_pic/".$detail_row['emp_pic']."?version=".time();}else{echo 'assets/images/noimage.png';}"  id="preview"  width="100px" alt=""> -->
+                                            <img class="rounded-circle " style="clip-path: circle(); width: 100px; object-fit: cover" src="assets/images/noimage.png"  id="preview"  width="100px" alt="">
                                         </div>                                   
                                     </div>                                 
                                 </div>
@@ -52,7 +53,7 @@ if(isset($_SESSION['empcode_elip'])){
                                     <i id="imgname"></i>
                                 </div>
 
-                                <div class="row mb-3">
+                                <!-- <div class="row mb-3">
                                     <div class="col-md-12">
                                     <div class="d-flex flex-column align-items-center"> 
                                             <input type="file" class="form-control form-control-sm" name="emppic" id="emppic" accept=".jpg"  style="display: none;">                                
@@ -60,7 +61,7 @@ if(isset($_SESSION['empcode_elip'])){
                                             <button class="btn btn-primary btn-sm rounded w-25" type="submit" id="upbtn"><i class="fas fa-cloud-upload-alt"></i> อัพโหลด</button>                                  
                                     </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="row mb-3">
                                     <div class="col-md-12 text-center">
