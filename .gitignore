@@ -1,4 +1,5 @@
 /includes/.env
 /uploads/emp_pic
+vendor/
 deploy/
-Readme.md
+.env
